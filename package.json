@@ -4,9 +4,9 @@
   "private": true,
   "description": "What's On Imphal event discovery and promotion frontend",
   "scripts": {
-    "dev": "vite --host 0.0.0.0",
-    "build": "vite build",
-    "preview": "vite preview --host 0.0.0.0"
+    "dev": "vite --host 127.0.0.1",
+    "build": "node ./node_modules/vite/bin/vite.js build",
+    "preview": "node ./node_modules/vite/bin/vite.js preview"
   },
   "dependencies": {
     "vite": "latest"
