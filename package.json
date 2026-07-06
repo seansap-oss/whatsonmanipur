@@ -1,0 +1,15 @@
+{
+  "name": "whatson-imphal-v1",
+  "version": "1.0.0",
+  "private": true,
+  "description": "What's On Imphal event discovery and promotion frontend",
+  "scripts": {
+    "dev": "vite --host 0.0.0.0",
+    "build": "vite build",
+    "preview": "vite preview --host 0.0.0.0"
+  },
+  "dependencies": {
+    "vite": "latest"
+  },
+  "devDependencies": {}
+}
