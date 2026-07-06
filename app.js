@@ -1,4 +1,4 @@
-const STORAGE_KEY = "whatson-imphal-state-v2";
+const STORAGE_KEY = "whatson-imphal-state-v4-last-chance-fixed-content";
 
 const image = {
   hero: "/assets/hero-imphal-night.png",
@@ -296,6 +296,2130 @@ const guideArticles = [
   { id: "guide-stays", title: "Where to stay: hotels, homestays and farm stays", group: "visitor", category: "Where to stay", image: image.promoResort, summary: "A visitor page for hotels, Airbnbs, homestays, farm stays and budget accommodation.", body: "A good stay page should show location, safety, transport access, parking, food nearby, family suitability, and contact options. Paid vendors can later get photo galleries and menus." },
   { id: "guide-taxi", title: "Getting around Imphal", group: "visitor", category: "Taxis and rideshares", image: image.hero, summary: "Local transport overview for public transport, private taxis, parking, maps and visitor movement.", body: "The page should collect public transport notes, private taxi contacts, parking guidance, routes to airport, and district travel basics. Admin can update verified numbers later." },
 ];
+const launchArticles = [
+  {
+    "id": "guide-blue-001",
+    "title": "Free things to do in Imphal this weekend",
+    "group": "things",
+    "category": "Free things to do",
+    "image": "/assets/ai/blue-guide-01.svg",
+    "summary": "A practical weekend guide for low-cost walks, heritage stops, markets and family-friendly public spaces around Imphal.",
+    "body": "A practical weekend guide for low-cost walks, heritage stops, markets and family-friendly public spaces around Imphal. This original guide is written for What's On Imphal & Manipur so it can be edited from AdminPro. Before public launch, replace any temporary contact or timing with verified owner-submitted information. The page should include a clear image, address or area, price notes where relevant, opening or event timing, accessibility notes and a shareable link.",
+    "style": {
+      "font": "Inter",
+      "color": "#12384d",
+      "titleSize": 18,
+      "bodySize": 15
+    }
+  },
+  {
+    "id": "guide-blue-002",
+    "title": "Kangla heritage route for first-time visitors",
+    "group": "things",
+    "category": "Attractions and sights",
+    "image": "/assets/ai/blue-guide-02.svg",
+    "summary": "A calm walking plan around Kangla, with timing, etiquette and nearby cafe break ideas.",
+    "body": "A calm walking plan around Kangla, with timing, etiquette and nearby cafe break ideas. This original guide is written for What's On Imphal & Manipur so it can be edited from AdminPro. Before public launch, replace any temporary contact or timing with verified owner-submitted information. The page should include a clear image, address or area, price notes where relevant, opening or event timing, accessibility notes and a shareable link.",
+    "style": {
+      "font": "Inter",
+      "color": "#12384d",
+      "titleSize": 18,
+      "bodySize": 15
+    }
+  },
+  {
+    "id": "guide-blue-003",
+    "title": "Family and kids day out around Imphal",
+    "group": "things",
+    "category": "Family and kids",
+    "image": "/assets/ai/blue-guide-03.svg",
+    "summary": "Simple family activities, safe timing, snack stops and low-pressure places for children and elders.",
+    "body": "Simple family activities, safe timing, snack stops and low-pressure places for children and elders. This original guide is written for What's On Imphal & Manipur so it can be edited from AdminPro. Before public launch, replace any temporary contact or timing with verified owner-submitted information. The page should include a clear image, address or area, price notes where relevant, opening or event timing, accessibility notes and a shareable link.",
+    "style": {
+      "font": "Inter",
+      "color": "#12384d",
+      "titleSize": 18,
+      "bodySize": 15
+    }
+  },
+  {
+    "id": "guide-blue-004",
+    "title": "Music, concerts and small gig nights guide",
+    "group": "things",
+    "category": "Music & Concerts",
+    "image": "/assets/ai/blue-guide-04.svg",
+    "summary": "A city guide for organisers and audiences looking for intimate gigs, student music nights and acoustic evenings.",
+    "body": "A city guide for organisers and audiences looking for intimate gigs, student music nights and acoustic evenings. This original guide is written for What's On Imphal & Manipur so it can be edited from AdminPro. Before public launch, replace any temporary contact or timing with verified owner-submitted information. The page should include a clear image, address or area, price notes where relevant, opening or event timing, accessibility notes and a shareable link.",
+    "style": {
+      "font": "Inter",
+      "color": "#12384d",
+      "titleSize": 18,
+      "bodySize": 15
+    }
+  },
+  {
+    "id": "guide-blue-005",
+    "title": "Theatre and performance spaces to watch",
+    "group": "things",
+    "category": "Theatre and shows",
+    "image": "/assets/ai/blue-guide-05.svg",
+    "summary": "A starter article for stage shows, community theatre, cultural evenings and rehearsal-friendly venue ideas.",
+    "body": "A starter article for stage shows, community theatre, cultural evenings and rehearsal-friendly venue ideas. This original guide is written for What's On Imphal & Manipur so it can be edited from AdminPro. Before public launch, replace any temporary contact or timing with verified owner-submitted information. The page should include a clear image, address or area, price notes where relevant, opening or event timing, accessibility notes and a shareable link.",
+    "style": {
+      "font": "Inter",
+      "color": "#12384d",
+      "titleSize": 18,
+      "bodySize": 15
+    }
+  },
+  {
+    "id": "guide-blue-006",
+    "title": "Comedy and open mic night starter guide",
+    "group": "things",
+    "category": "Comedy",
+    "image": "/assets/ai/blue-guide-06.svg",
+    "summary": "How cafes and small venues can host clean, local open mic nights with simple rules and ticketing.",
+    "body": "How cafes and small venues can host clean, local open mic nights with simple rules and ticketing. This original guide is written for What's On Imphal & Manipur so it can be edited from AdminPro. Before public launch, replace any temporary contact or timing with verified owner-submitted information. The page should include a clear image, address or area, price notes where relevant, opening or event timing, accessibility notes and a shareable link.",
+    "style": {
+      "font": "Inter",
+      "color": "#12384d",
+      "titleSize": 18,
+      "bodySize": 15
+    }
+  },
+  {
+    "id": "guide-blue-007",
+    "title": "Film clubs and screening night ideas",
+    "group": "things",
+    "category": "Film",
+    "image": "/assets/ai/blue-guide-07.svg",
+    "summary": "A guide to community screenings, college film nights, documentary evenings and post-show discussions.",
+    "body": "A guide to community screenings, college film nights, documentary evenings and post-show discussions. This original guide is written for What's On Imphal & Manipur so it can be edited from AdminPro. Before public launch, replace any temporary contact or timing with verified owner-submitted information. The page should include a clear image, address or area, price notes where relevant, opening or event timing, accessibility notes and a shareable link.",
+    "style": {
+      "font": "Inter",
+      "color": "#12384d",
+      "titleSize": 18,
+      "bodySize": 15
+    }
+  },
+  {
+    "id": "guide-blue-008",
+    "title": "Sports weekend in Imphal",
+    "group": "things",
+    "category": "Sport",
+    "image": "/assets/ai/blue-guide-08.svg",
+    "summary": "Ideas for football, futsal, cycling, martial arts, running groups and local sports meetups.",
+    "body": "Ideas for football, futsal, cycling, martial arts, running groups and local sports meetups. This original guide is written for What's On Imphal & Manipur so it can be edited from AdminPro. Before public launch, replace any temporary contact or timing with verified owner-submitted information. The page should include a clear image, address or area, price notes where relevant, opening or event timing, accessibility notes and a shareable link.",
+    "style": {
+      "font": "Inter",
+      "color": "#12384d",
+      "titleSize": 18,
+      "bodySize": 15
+    }
+  },
+  {
+    "id": "guide-blue-009",
+    "title": "Art exhibitions and student showcases",
+    "group": "things",
+    "category": "Art",
+    "image": "/assets/ai/blue-guide-09.svg",
+    "summary": "A guide for local artists to promote exhibitions, pop-up studios, photography walks and student work.",
+    "body": "A guide for local artists to promote exhibitions, pop-up studios, photography walks and student work. This original guide is written for What's On Imphal & Manipur so it can be edited from AdminPro. Before public launch, replace any temporary contact or timing with verified owner-submitted information. The page should include a clear image, address or area, price notes where relevant, opening or event timing, accessibility notes and a shareable link.",
+    "style": {
+      "font": "Inter",
+      "color": "#12384d",
+      "titleSize": 18,
+      "bodySize": 15
+    }
+  },
+  {
+    "id": "guide-blue-010",
+    "title": "Festival planning calendar for Manipur",
+    "group": "things",
+    "category": "Festivals",
+    "image": "/assets/ai/blue-guide-10.svg",
+    "summary": "How visitors can plan around seasonal cultural events, food stalls, local markets and transport.",
+    "body": "How visitors can plan around seasonal cultural events, food stalls, local markets and transport. This original guide is written for What's On Imphal & Manipur so it can be edited from AdminPro. Before public launch, replace any temporary contact or timing with verified owner-submitted information. The page should include a clear image, address or area, price notes where relevant, opening or event timing, accessibility notes and a shareable link.",
+    "style": {
+      "font": "Inter",
+      "color": "#12384d",
+      "titleSize": 18,
+      "bodySize": 15
+    }
+  },
+  {
+    "id": "guide-blue-011",
+    "title": "Workshops and skill classes in the city",
+    "group": "things",
+    "category": "Workshops",
+    "image": "/assets/ai/blue-guide-11.svg",
+    "summary": "A local guide for weekend workshops, art classes, food demos, music lessons and community learning.",
+    "body": "A local guide for weekend workshops, art classes, food demos, music lessons and community learning. This original guide is written for What's On Imphal & Manipur so it can be edited from AdminPro. Before public launch, replace any temporary contact or timing with verified owner-submitted information. The page should include a clear image, address or area, price notes where relevant, opening or event timing, accessibility notes and a shareable link.",
+    "style": {
+      "font": "Inter",
+      "color": "#12384d",
+      "titleSize": 18,
+      "bodySize": 15
+    }
+  },
+  {
+    "id": "guide-blue-012",
+    "title": "Accessible outing checklist for organisers",
+    "group": "things",
+    "category": "Accessibility",
+    "image": "/assets/ai/blue-guide-12.svg",
+    "summary": "A simple checklist for steps, seating, toilets, parking, lighting, sound levels and family access.",
+    "body": "A simple checklist for steps, seating, toilets, parking, lighting, sound levels and family access. This original guide is written for What's On Imphal & Manipur so it can be edited from AdminPro. Before public launch, replace any temporary contact or timing with verified owner-submitted information. The page should include a clear image, address or area, price notes where relevant, opening or event timing, accessibility notes and a shareable link.",
+    "style": {
+      "font": "Inter",
+      "color": "#12384d",
+      "titleSize": 18,
+      "bodySize": 15
+    }
+  },
+  {
+    "id": "guide-blue-013",
+    "title": "Major events: how to promote without confusion",
+    "group": "things",
+    "category": "Major events",
+    "image": "/assets/ai/blue-guide-13.svg",
+    "summary": "A clear event page should show date, time, map, price, contact, rules, parking and share links.",
+    "body": "A clear event page should show date, time, map, price, contact, rules, parking and share links. This original guide is written for What's On Imphal & Manipur so it can be edited from AdminPro. Before public launch, replace any temporary contact or timing with verified owner-submitted information. The page should include a clear image, address or area, price notes where relevant, opening or event timing, accessibility notes and a shareable link.",
+    "style": {
+      "font": "Inter",
+      "color": "#12384d",
+      "titleSize": 18,
+      "bodySize": 15
+    }
+  },
+  {
+    "id": "guide-blue-014",
+    "title": "Cultural walks and itineraries for visitors",
+    "group": "things",
+    "category": "Cultural walks",
+    "image": "/assets/ai/blue-guide-14.svg",
+    "summary": "Suggested short walking routes that combine landmarks, food, markets and resting points.",
+    "body": "Suggested short walking routes that combine landmarks, food, markets and resting points. This original guide is written for What's On Imphal & Manipur so it can be edited from AdminPro. Before public launch, replace any temporary contact or timing with verified owner-submitted information. The page should include a clear image, address or area, price notes where relevant, opening or event timing, accessibility notes and a shareable link.",
+    "style": {
+      "font": "Inter",
+      "color": "#12384d",
+      "titleSize": 18,
+      "bodySize": 15
+    }
+  },
+  {
+    "id": "guide-blue-015",
+    "title": "Exhibition week: how to plan a visit",
+    "group": "things",
+    "category": "Exhibition",
+    "image": "/assets/ai/blue-guide-15.svg",
+    "summary": "A guide to galleries, college exhibitions, handloom showcases and maker fairs.",
+    "body": "A guide to galleries, college exhibitions, handloom showcases and maker fairs. This original guide is written for What's On Imphal & Manipur so it can be edited from AdminPro. Before public launch, replace any temporary contact or timing with verified owner-submitted information. The page should include a clear image, address or area, price notes where relevant, opening or event timing, accessibility notes and a shareable link.",
+    "style": {
+      "font": "Inter",
+      "color": "#12384d",
+      "titleSize": 18,
+      "bodySize": 15
+    }
+  },
+  {
+    "id": "guide-blue-016",
+    "title": "Today in Imphal: quick discovery guide",
+    "group": "things",
+    "category": "Today",
+    "image": "/assets/ai/blue-guide-16.svg",
+    "summary": "How users can use search, calendar and saved reminders to decide what to do today.",
+    "body": "How users can use search, calendar and saved reminders to decide what to do today. This original guide is written for What's On Imphal & Manipur so it can be edited from AdminPro. Before public launch, replace any temporary contact or timing with verified owner-submitted information. The page should include a clear image, address or area, price notes where relevant, opening or event timing, accessibility notes and a shareable link.",
+    "style": {
+      "font": "Inter",
+      "color": "#12384d",
+      "titleSize": 18,
+      "bodySize": 15
+    }
+  },
+  {
+    "id": "guide-blue-017",
+    "title": "This weekend around Manipur",
+    "group": "things",
+    "category": "This weekend",
+    "image": "/assets/ai/blue-guide-17.svg",
+    "summary": "Weekend trip and event planning with weather checks, transport and reservation reminders.",
+    "body": "Weekend trip and event planning with weather checks, transport and reservation reminders. This original guide is written for What's On Imphal & Manipur so it can be edited from AdminPro. Before public launch, replace any temporary contact or timing with verified owner-submitted information. The page should include a clear image, address or area, price notes where relevant, opening or event timing, accessibility notes and a shareable link.",
+    "style": {
+      "font": "Inter",
+      "color": "#12384d",
+      "titleSize": 18,
+      "bodySize": 15
+    }
+  },
+  {
+    "id": "guide-blue-018",
+    "title": "Coming soon: how to watch future events",
+    "group": "things",
+    "category": "Coming soon",
+    "image": "/assets/ai/blue-guide-18.svg",
+    "summary": "A user guide for following coming-soon listings, reminders and shareable event cards.",
+    "body": "A user guide for following coming-soon listings, reminders and shareable event cards. This original guide is written for What's On Imphal & Manipur so it can be edited from AdminPro. Before public launch, replace any temporary contact or timing with verified owner-submitted information. The page should include a clear image, address or area, price notes where relevant, opening or event timing, accessibility notes and a shareable link.",
+    "style": {
+      "font": "Inter",
+      "color": "#12384d",
+      "titleSize": 18,
+      "bodySize": 15
+    }
+  },
+  {
+    "id": "guide-blue-019",
+    "title": "Cafe culture in Imphal: where to start",
+    "group": "food",
+    "category": "Cafes",
+    "image": "/assets/ai/blue-guide-19.svg",
+    "summary": "A guide to local cafe discovery, quiet work corners, live acoustic nights, desserts and safe evening planning.",
+    "body": "A guide to local cafe discovery, quiet work corners, live acoustic nights, desserts and safe evening planning. This original guide is written for What's On Imphal & Manipur so it can be edited from AdminPro. Before public launch, replace any temporary contact or timing with verified owner-submitted information. The page should include a clear image, address or area, price notes where relevant, opening or event timing, accessibility notes and a shareable link.",
+    "style": {
+      "font": "Inter",
+      "color": "#12384d",
+      "titleSize": 18,
+      "bodySize": 15
+    }
+  },
+  {
+    "id": "guide-blue-020",
+    "title": "Traditional Manipuri meals for visitors",
+    "group": "food",
+    "category": "Restaurants",
+    "image": "/assets/ai/blue-guide-20.svg",
+    "summary": "A visitor-friendly introduction to local meals, seasonal vegetables, fish dishes and respectful ordering.",
+    "body": "A visitor-friendly introduction to local meals, seasonal vegetables, fish dishes and respectful ordering. This original guide is written for What's On Imphal & Manipur so it can be edited from AdminPro. Before public launch, replace any temporary contact or timing with verified owner-submitted information. The page should include a clear image, address or area, price notes where relevant, opening or event timing, accessibility notes and a shareable link.",
+    "style": {
+      "font": "Inter",
+      "color": "#12384d",
+      "titleSize": 18,
+      "bodySize": 15
+    }
+  },
+  {
+    "id": "guide-blue-021",
+    "title": "Street food trail around central Imphal",
+    "group": "food",
+    "category": "Street food",
+    "image": "/assets/ai/blue-guide-21.svg",
+    "summary": "Snack stops, timing, hygiene sense, cash tips and how to discover popular stalls safely.",
+    "body": "Snack stops, timing, hygiene sense, cash tips and how to discover popular stalls safely. This original guide is written for What's On Imphal & Manipur so it can be edited from AdminPro. Before public launch, replace any temporary contact or timing with verified owner-submitted information. The page should include a clear image, address or area, price notes where relevant, opening or event timing, accessibility notes and a shareable link.",
+    "style": {
+      "font": "Inter",
+      "color": "#12384d",
+      "titleSize": 18,
+      "bodySize": 15
+    }
+  },
+  {
+    "id": "guide-blue-022",
+    "title": "Tea shops and quick meeting places",
+    "group": "food",
+    "category": "Tea shops",
+    "image": "/assets/ai/blue-guide-22.svg",
+    "summary": "A local guide for quick meetings, tea breaks, light snacks and small business conversations.",
+    "body": "A local guide for quick meetings, tea breaks, light snacks and small business conversations. This original guide is written for What's On Imphal & Manipur so it can be edited from AdminPro. Before public launch, replace any temporary contact or timing with verified owner-submitted information. The page should include a clear image, address or area, price notes where relevant, opening or event timing, accessibility notes and a shareable link.",
+    "style": {
+      "font": "Inter",
+      "color": "#12384d",
+      "titleSize": 18,
+      "bodySize": 15
+    }
+  },
+  {
+    "id": "guide-blue-023",
+    "title": "Dining deals and cafe promotions guide",
+    "group": "food",
+    "category": "Dining deals",
+    "image": "/assets/ai/blue-guide-23.svg",
+    "summary": "How businesses can present set menus, weekday discounts, student deals and family offers.",
+    "body": "How businesses can present set menus, weekday discounts, student deals and family offers. This original guide is written for What's On Imphal & Manipur so it can be edited from AdminPro. Before public launch, replace any temporary contact or timing with verified owner-submitted information. The page should include a clear image, address or area, price notes where relevant, opening or event timing, accessibility notes and a shareable link.",
+    "style": {
+      "font": "Inter",
+      "color": "#12384d",
+      "titleSize": 18,
+      "bodySize": 15
+    }
+  },
+  {
+    "id": "guide-blue-024",
+    "title": "Takeaway and small kitchen listing guide",
+    "group": "food",
+    "category": "Takeaway",
+    "image": "/assets/ai/blue-guide-24.svg",
+    "summary": "A practical template for takeaway menus, pickup timing, WhatsApp ordering and delivery notes.",
+    "body": "A practical template for takeaway menus, pickup timing, WhatsApp ordering and delivery notes. This original guide is written for What's On Imphal & Manipur so it can be edited from AdminPro. Before public launch, replace any temporary contact or timing with verified owner-submitted information. The page should include a clear image, address or area, price notes where relevant, opening or event timing, accessibility notes and a shareable link.",
+    "style": {
+      "font": "Inter",
+      "color": "#12384d",
+      "titleSize": 18,
+      "bodySize": 15
+    }
+  },
+  {
+    "id": "guide-blue-025",
+    "title": "Food festival organiser checklist",
+    "group": "food",
+    "category": "Dining events",
+    "image": "/assets/ai/blue-guide-25.svg",
+    "summary": "Planning food stalls, hygiene, ticketing, waste, parking and promotion for a successful food event.",
+    "body": "Planning food stalls, hygiene, ticketing, waste, parking and promotion for a successful food event. This original guide is written for What's On Imphal & Manipur so it can be edited from AdminPro. Before public launch, replace any temporary contact or timing with verified owner-submitted information. The page should include a clear image, address or area, price notes where relevant, opening or event timing, accessibility notes and a shareable link.",
+    "style": {
+      "font": "Inter",
+      "color": "#12384d",
+      "titleSize": 18,
+      "bodySize": 15
+    }
+  },
+  {
+    "id": "guide-blue-026",
+    "title": "Local food trails for visitors",
+    "group": "food",
+    "category": "Local food trails",
+    "image": "/assets/ai/blue-guide-26.svg",
+    "summary": "A route idea combining market snacks, lunch, cafe stops and a simple evening dessert plan.",
+    "body": "A route idea combining market snacks, lunch, cafe stops and a simple evening dessert plan. This original guide is written for What's On Imphal & Manipur so it can be edited from AdminPro. Before public launch, replace any temporary contact or timing with verified owner-submitted information. The page should include a clear image, address or area, price notes where relevant, opening or event timing, accessibility notes and a shareable link.",
+    "style": {
+      "font": "Inter",
+      "color": "#12384d",
+      "titleSize": 18,
+      "bodySize": 15
+    }
+  },
+  {
+    "id": "guide-blue-027",
+    "title": "Cafe pop-up blueprint",
+    "group": "food",
+    "category": "Cafes",
+    "image": "/assets/ai/blue-guide-27.svg",
+    "summary": "How a cafe can run a one-day pop-up with a poster, menu, map, limited seats and pre-orders.",
+    "body": "How a cafe can run a one-day pop-up with a poster, menu, map, limited seats and pre-orders. This original guide is written for What's On Imphal & Manipur so it can be edited from AdminPro. Before public launch, replace any temporary contact or timing with verified owner-submitted information. The page should include a clear image, address or area, price notes where relevant, opening or event timing, accessibility notes and a shareable link.",
+    "style": {
+      "font": "Inter",
+      "color": "#12384d",
+      "titleSize": 18,
+      "bodySize": 15
+    }
+  },
+  {
+    "id": "guide-blue-028",
+    "title": "Restaurant page essentials",
+    "group": "food",
+    "category": "Restaurants",
+    "image": "/assets/ai/blue-guide-28.svg",
+    "summary": "Every restaurant page should have photos, menu highlights, opening time, location, phone and parking notes.",
+    "body": "Every restaurant page should have photos, menu highlights, opening time, location, phone and parking notes. This original guide is written for What's On Imphal & Manipur so it can be edited from AdminPro. Before public launch, replace any temporary contact or timing with verified owner-submitted information. The page should include a clear image, address or area, price notes where relevant, opening or event timing, accessibility notes and a shareable link.",
+    "style": {
+      "font": "Inter",
+      "color": "#12384d",
+      "titleSize": 18,
+      "bodySize": 15
+    }
+  },
+  {
+    "id": "guide-blue-029",
+    "title": "Bakery and dessert discovery in Imphal",
+    "group": "food",
+    "category": "Specialty food",
+    "image": "/assets/ai/blue-guide-29.svg",
+    "summary": "A guide for dessert shops, bakeries, celebration cakes and weekend treat promotions.",
+    "body": "A guide for dessert shops, bakeries, celebration cakes and weekend treat promotions. This original guide is written for What's On Imphal & Manipur so it can be edited from AdminPro. Before public launch, replace any temporary contact or timing with verified owner-submitted information. The page should include a clear image, address or area, price notes where relevant, opening or event timing, accessibility notes and a shareable link.",
+    "style": {
+      "font": "Inter",
+      "color": "#12384d",
+      "titleSize": 18,
+      "bodySize": 15
+    }
+  },
+  {
+    "id": "guide-blue-030",
+    "title": "Food photography tips for local vendors",
+    "group": "food",
+    "category": "Guides",
+    "image": "/assets/ai/blue-guide-30.svg",
+    "summary": "Simple photo tips for cafes and restaurants so listings look premium without expensive shoots.",
+    "body": "Simple photo tips for cafes and restaurants so listings look premium without expensive shoots. This original guide is written for What's On Imphal & Manipur so it can be edited from AdminPro. Before public launch, replace any temporary contact or timing with verified owner-submitted information. The page should include a clear image, address or area, price notes where relevant, opening or event timing, accessibility notes and a shareable link.",
+    "style": {
+      "font": "Inter",
+      "color": "#12384d",
+      "titleSize": 18,
+      "bodySize": 15
+    }
+  },
+  {
+    "id": "guide-blue-031",
+    "title": "Family dining guide",
+    "group": "food",
+    "category": "Family and kids",
+    "image": "/assets/ai/blue-guide-31.svg",
+    "summary": "How to choose places with seating, clean toilets, mild food options and easy parking.",
+    "body": "How to choose places with seating, clean toilets, mild food options and easy parking. This original guide is written for What's On Imphal & Manipur so it can be edited from AdminPro. Before public launch, replace any temporary contact or timing with verified owner-submitted information. The page should include a clear image, address or area, price notes where relevant, opening or event timing, accessibility notes and a shareable link.",
+    "style": {
+      "font": "Inter",
+      "color": "#12384d",
+      "titleSize": 18,
+      "bodySize": 15
+    }
+  },
+  {
+    "id": "guide-blue-032",
+    "title": "Vegetarian and seasonal produce guide",
+    "group": "food",
+    "category": "Restaurants",
+    "image": "/assets/ai/blue-guide-32.svg",
+    "summary": "A helpful page for seasonal vegetables, local markets and lighter meal options.",
+    "body": "A helpful page for seasonal vegetables, local markets and lighter meal options. This original guide is written for What's On Imphal & Manipur so it can be edited from AdminPro. Before public launch, replace any temporary contact or timing with verified owner-submitted information. The page should include a clear image, address or area, price notes where relevant, opening or event timing, accessibility notes and a shareable link.",
+    "style": {
+      "font": "Inter",
+      "color": "#12384d",
+      "titleSize": 18,
+      "bodySize": 15
+    }
+  },
+  {
+    "id": "guide-blue-033",
+    "title": "Live music cafe evening planner",
+    "group": "food",
+    "category": "Music & Concerts",
+    "image": "/assets/ai/blue-guide-33.svg",
+    "summary": "How cafes can combine music nights, food packages and ticketed tables with clear listings.",
+    "body": "How cafes can combine music nights, food packages and ticketed tables with clear listings. This original guide is written for What's On Imphal & Manipur so it can be edited from AdminPro. Before public launch, replace any temporary contact or timing with verified owner-submitted information. The page should include a clear image, address or area, price notes where relevant, opening or event timing, accessibility notes and a shareable link.",
+    "style": {
+      "font": "Inter",
+      "color": "#12384d",
+      "titleSize": 18,
+      "bodySize": 15
+    }
+  },
+  {
+    "id": "guide-blue-034",
+    "title": "Coffee, tea and work-friendly corners",
+    "group": "food",
+    "category": "Cafes",
+    "image": "/assets/ai/blue-guide-34.svg",
+    "summary": "A calm guide to laptop-friendly seating, charging, quiet hours and small-group meetings.",
+    "body": "A calm guide to laptop-friendly seating, charging, quiet hours and small-group meetings. This original guide is written for What's On Imphal & Manipur so it can be edited from AdminPro. Before public launch, replace any temporary contact or timing with verified owner-submitted information. The page should include a clear image, address or area, price notes where relevant, opening or event timing, accessibility notes and a shareable link.",
+    "style": {
+      "font": "Inter",
+      "color": "#12384d",
+      "titleSize": 18,
+      "bodySize": 15
+    }
+  },
+  {
+    "id": "guide-blue-035",
+    "title": "Ima Keithel shopping guide for visitors",
+    "group": "shopping",
+    "category": "Markets",
+    "image": "/assets/ai/blue-guide-35.svg",
+    "summary": "How to explore Ima Keithel respectfully, compare items, ask questions and support local sellers.",
+    "body": "How to explore Ima Keithel respectfully, compare items, ask questions and support local sellers. This original guide is written for What's On Imphal & Manipur so it can be edited from AdminPro. Before public launch, replace any temporary contact or timing with verified owner-submitted information. The page should include a clear image, address or area, price notes where relevant, opening or event timing, accessibility notes and a shareable link.",
+    "style": {
+      "font": "Inter",
+      "color": "#12384d",
+      "titleSize": 18,
+      "bodySize": 15
+    }
+  },
+  {
+    "id": "guide-blue-036",
+    "title": "Handloom and textile buyer guide",
+    "group": "shopping",
+    "category": "Handloom and handicrafts",
+    "image": "/assets/ai/blue-guide-36.svg",
+    "summary": "A guide to traditional textiles, care, gifting, price transparency and artisan stories.",
+    "body": "A guide to traditional textiles, care, gifting, price transparency and artisan stories. This original guide is written for What's On Imphal & Manipur so it can be edited from AdminPro. Before public launch, replace any temporary contact or timing with verified owner-submitted information. The page should include a clear image, address or area, price notes where relevant, opening or event timing, accessibility notes and a shareable link.",
+    "style": {
+      "font": "Inter",
+      "color": "#12384d",
+      "titleSize": 18,
+      "bodySize": 15
+    }
+  },
+  {
+    "id": "guide-blue-037",
+    "title": "Local fashion and accessories in Imphal",
+    "group": "shopping",
+    "category": "Fashion",
+    "image": "/assets/ai/blue-guide-37.svg",
+    "summary": "Discover local labels, accessories, custom wear, festival outfits and student-friendly shops.",
+    "body": "Discover local labels, accessories, custom wear, festival outfits and student-friendly shops. This original guide is written for What's On Imphal & Manipur so it can be edited from AdminPro. Before public launch, replace any temporary contact or timing with verified owner-submitted information. The page should include a clear image, address or area, price notes where relevant, opening or event timing, accessibility notes and a shareable link.",
+    "style": {
+      "font": "Inter",
+      "color": "#12384d",
+      "titleSize": 18,
+      "bodySize": 15
+    }
+  },
+  {
+    "id": "guide-blue-038",
+    "title": "Gifts and homewares from Manipur",
+    "group": "shopping",
+    "category": "Gifts and homewares",
+    "image": "/assets/ai/blue-guide-38.svg",
+    "summary": "A shopping guide for souvenirs, home decor, crafts, local snacks and thoughtful gifts.",
+    "body": "A shopping guide for souvenirs, home decor, crafts, local snacks and thoughtful gifts. This original guide is written for What's On Imphal & Manipur so it can be edited from AdminPro. Before public launch, replace any temporary contact or timing with verified owner-submitted information. The page should include a clear image, address or area, price notes where relevant, opening or event timing, accessibility notes and a shareable link.",
+    "style": {
+      "font": "Inter",
+      "color": "#12384d",
+      "titleSize": 18,
+      "bodySize": 15
+    }
+  },
+  {
+    "id": "guide-blue-039",
+    "title": "Technology and mobile shop listing guide",
+    "group": "shopping",
+    "category": "Technology and entertainment",
+    "image": "/assets/ai/blue-guide-39.svg",
+    "summary": "How tech shops can show products, service categories, warranty notes and location clearly.",
+    "body": "How tech shops can show products, service categories, warranty notes and location clearly. This original guide is written for What's On Imphal & Manipur so it can be edited from AdminPro. Before public launch, replace any temporary contact or timing with verified owner-submitted information. The page should include a clear image, address or area, price notes where relevant, opening or event timing, accessibility notes and a shareable link.",
+    "style": {
+      "font": "Inter",
+      "color": "#12384d",
+      "titleSize": 18,
+      "bodySize": 15
+    }
+  },
+  {
+    "id": "guide-blue-040",
+    "title": "Sports and outdoor shopping guide",
+    "group": "shopping",
+    "category": "Sports and outdoor",
+    "image": "/assets/ai/blue-guide-40.svg",
+    "summary": "Where outdoor, trekking, sports and fitness shops can promote gear, offers and seasonal needs.",
+    "body": "Where outdoor, trekking, sports and fitness shops can promote gear, offers and seasonal needs. This original guide is written for What's On Imphal & Manipur so it can be edited from AdminPro. Before public launch, replace any temporary contact or timing with verified owner-submitted information. The page should include a clear image, address or area, price notes where relevant, opening or event timing, accessibility notes and a shareable link.",
+    "style": {
+      "font": "Inter",
+      "color": "#12384d",
+      "titleSize": 18,
+      "bodySize": 15
+    }
+  },
+  {
+    "id": "guide-blue-041",
+    "title": "Hardware and construction marketplace guide",
+    "group": "shopping",
+    "category": "Hardware and construction",
+    "image": "/assets/ai/blue-guide-41.svg",
+    "summary": "A useful category for materials, tools, electrical items, plumbing, delivery notes and contractor contacts.",
+    "body": "A useful category for materials, tools, electrical items, plumbing, delivery notes and contractor contacts. This original guide is written for What's On Imphal & Manipur so it can be edited from AdminPro. Before public launch, replace any temporary contact or timing with verified owner-submitted information. The page should include a clear image, address or area, price notes where relevant, opening or event timing, accessibility notes and a shareable link.",
+    "style": {
+      "font": "Inter",
+      "color": "#12384d",
+      "titleSize": 18,
+      "bodySize": 15
+    }
+  },
+  {
+    "id": "guide-blue-042",
+    "title": "Local retail offers: how to list them",
+    "group": "shopping",
+    "category": "Local retail offers",
+    "image": "/assets/ai/blue-guide-42.svg",
+    "summary": "Short offer listings need price, validity, branch, product photo, phone and terms.",
+    "body": "Short offer listings need price, validity, branch, product photo, phone and terms. This original guide is written for What's On Imphal & Manipur so it can be edited from AdminPro. Before public launch, replace any temporary contact or timing with verified owner-submitted information. The page should include a clear image, address or area, price notes where relevant, opening or event timing, accessibility notes and a shareable link.",
+    "style": {
+      "font": "Inter",
+      "color": "#12384d",
+      "titleSize": 18,
+      "bodySize": 15
+    }
+  },
+  {
+    "id": "guide-blue-043",
+    "title": "Weekend market discovery guide",
+    "group": "shopping",
+    "category": "Markets",
+    "image": "/assets/ai/blue-guide-43.svg",
+    "summary": "A route for weekend browsing, local food, handloom, accessories and small gifts.",
+    "body": "A route for weekend browsing, local food, handloom, accessories and small gifts. This original guide is written for What's On Imphal & Manipur so it can be edited from AdminPro. Before public launch, replace any temporary contact or timing with verified owner-submitted information. The page should include a clear image, address or area, price notes where relevant, opening or event timing, accessibility notes and a shareable link.",
+    "style": {
+      "font": "Inter",
+      "color": "#12384d",
+      "titleSize": 18,
+      "bodySize": 15
+    }
+  },
+  {
+    "id": "guide-blue-044",
+    "title": "Homegrown brands to watch",
+    "group": "shopping",
+    "category": "Fashion",
+    "image": "/assets/ai/blue-guide-44.svg",
+    "summary": "How local brands can build premium pages with lookbooks, story, size guide and ordering info.",
+    "body": "How local brands can build premium pages with lookbooks, story, size guide and ordering info. This original guide is written for What's On Imphal & Manipur so it can be edited from AdminPro. Before public launch, replace any temporary contact or timing with verified owner-submitted information. The page should include a clear image, address or area, price notes where relevant, opening or event timing, accessibility notes and a shareable link.",
+    "style": {
+      "font": "Inter",
+      "color": "#12384d",
+      "titleSize": 18,
+      "bodySize": 15
+    }
+  },
+  {
+    "id": "guide-blue-045",
+    "title": "Specialty food shops and local products",
+    "group": "shopping",
+    "category": "Specialty food",
+    "image": "/assets/ai/blue-guide-45.svg",
+    "summary": "A guide to packaged food, pickles, tea, snacks and local produce sellers.",
+    "body": "A guide to packaged food, pickles, tea, snacks and local produce sellers. This original guide is written for What's On Imphal & Manipur so it can be edited from AdminPro. Before public launch, replace any temporary contact or timing with verified owner-submitted information. The page should include a clear image, address or area, price notes where relevant, opening or event timing, accessibility notes and a shareable link.",
+    "style": {
+      "font": "Inter",
+      "color": "#12384d",
+      "titleSize": 18,
+      "bodySize": 15
+    }
+  },
+  {
+    "id": "guide-blue-046",
+    "title": "Student shopping and budget finds",
+    "group": "shopping",
+    "category": "Local retail offers",
+    "image": "/assets/ai/blue-guide-46.svg",
+    "summary": "Practical ideas for students looking for affordable food, stationery, accessories and weekend offers.",
+    "body": "Practical ideas for students looking for affordable food, stationery, accessories and weekend offers. This original guide is written for What's On Imphal & Manipur so it can be edited from AdminPro. Before public launch, replace any temporary contact or timing with verified owner-submitted information. The page should include a clear image, address or area, price notes where relevant, opening or event timing, accessibility notes and a shareable link.",
+    "style": {
+      "font": "Inter",
+      "color": "#12384d",
+      "titleSize": 18,
+      "bodySize": 15
+    }
+  },
+  {
+    "id": "guide-blue-047",
+    "title": "Festival shopping preparation",
+    "group": "shopping",
+    "category": "Festivals",
+    "image": "/assets/ai/blue-guide-47.svg",
+    "summary": "How users can prepare outfits, gifts, food orders, decorations and bookings before festive weeks.",
+    "body": "How users can prepare outfits, gifts, food orders, decorations and bookings before festive weeks. This original guide is written for What's On Imphal & Manipur so it can be edited from AdminPro. Before public launch, replace any temporary contact or timing with verified owner-submitted information. The page should include a clear image, address or area, price notes where relevant, opening or event timing, accessibility notes and a shareable link.",
+    "style": {
+      "font": "Inter",
+      "color": "#12384d",
+      "titleSize": 18,
+      "bodySize": 15
+    }
+  },
+  {
+    "id": "guide-blue-048",
+    "title": "Retail photo checklist",
+    "group": "shopping",
+    "category": "Guides",
+    "image": "/assets/ai/blue-guide-48.svg",
+    "summary": "Simple image rules that make local products look trustworthy and premium online.",
+    "body": "Simple image rules that make local products look trustworthy and premium online. This original guide is written for What's On Imphal & Manipur so it can be edited from AdminPro. Before public launch, replace any temporary contact or timing with verified owner-submitted information. The page should include a clear image, address or area, price notes where relevant, opening or event timing, accessibility notes and a shareable link.",
+    "style": {
+      "font": "Inter",
+      "color": "#12384d",
+      "titleSize": 18,
+      "bodySize": 15
+    }
+  },
+  {
+    "id": "guide-blue-049",
+    "title": "Shop page menu for premium sellers",
+    "group": "shopping",
+    "category": "Guides",
+    "image": "/assets/ai/blue-guide-49.svg",
+    "summary": "Premium vendors can use galleries, product categories, WhatsApp links, maps and rotating ads.",
+    "body": "Premium vendors can use galleries, product categories, WhatsApp links, maps and rotating ads. This original guide is written for What's On Imphal & Manipur so it can be edited from AdminPro. Before public launch, replace any temporary contact or timing with verified owner-submitted information. The page should include a clear image, address or area, price notes where relevant, opening or event timing, accessibility notes and a shareable link.",
+    "style": {
+      "font": "Inter",
+      "color": "#12384d",
+      "titleSize": 18,
+      "bodySize": 15
+    }
+  },
+  {
+    "id": "guide-blue-050",
+    "title": "Craft workshop and maker fair guide",
+    "group": "shopping",
+    "category": "Workshops",
+    "image": "/assets/ai/blue-guide-50.svg",
+    "summary": "A guide for craft workshops, makers, artists and small creative businesses.",
+    "body": "A guide for craft workshops, makers, artists and small creative businesses. This original guide is written for What's On Imphal & Manipur so it can be edited from AdminPro. Before public launch, replace any temporary contact or timing with verified owner-submitted information. The page should include a clear image, address or area, price notes where relevant, opening or event timing, accessibility notes and a shareable link.",
+    "style": {
+      "font": "Inter",
+      "color": "#12384d",
+      "titleSize": 18,
+      "bodySize": 15
+    }
+  },
+  {
+    "id": "guide-blue-051",
+    "title": "Imphal airport arrival guide",
+    "group": "visitor",
+    "category": "Airport info",
+    "image": "/assets/ai/blue-guide-51.svg",
+    "summary": "A first-arrival guide covering pickup planning, city direction, contact numbers and luggage-friendly travel.",
+    "body": "A first-arrival guide covering pickup planning, city direction, contact numbers and luggage-friendly travel. This original guide is written for What's On Imphal & Manipur so it can be edited from AdminPro. Before public launch, replace any temporary contact or timing with verified owner-submitted information. The page should include a clear image, address or area, price notes where relevant, opening or event timing, accessibility notes and a shareable link.",
+    "style": {
+      "font": "Inter",
+      "color": "#12384d",
+      "titleSize": 18,
+      "bodySize": 15
+    }
+  },
+  {
+    "id": "guide-blue-052",
+    "title": "Where to stay in Imphal and nearby areas",
+    "group": "visitor",
+    "category": "Where to stay",
+    "image": "/assets/ai/blue-guide-52.svg",
+    "summary": "How visitors can compare hotels, homestays, farm stays, guest houses and location convenience.",
+    "body": "How visitors can compare hotels, homestays, farm stays, guest houses and location convenience. This original guide is written for What's On Imphal & Manipur so it can be edited from AdminPro. Before public launch, replace any temporary contact or timing with verified owner-submitted information. The page should include a clear image, address or area, price notes where relevant, opening or event timing, accessibility notes and a shareable link.",
+    "style": {
+      "font": "Inter",
+      "color": "#12384d",
+      "titleSize": 18,
+      "bodySize": 15
+    }
+  },
+  {
+    "id": "guide-blue-053",
+    "title": "Hotels and business travel basics",
+    "group": "visitor",
+    "category": "Hotels",
+    "image": "/assets/ai/blue-guide-53.svg",
+    "summary": "A practical hotel guide for event visitors, business travelers, parking, food access and early check-in.",
+    "body": "A practical hotel guide for event visitors, business travelers, parking, food access and early check-in. This original guide is written for What's On Imphal & Manipur so it can be edited from AdminPro. Before public launch, replace any temporary contact or timing with verified owner-submitted information. The page should include a clear image, address or area, price notes where relevant, opening or event timing, accessibility notes and a shareable link.",
+    "style": {
+      "font": "Inter",
+      "color": "#12384d",
+      "titleSize": 18,
+      "bodySize": 15
+    }
+  },
+  {
+    "id": "guide-blue-054",
+    "title": "Homestays and family stays guide",
+    "group": "visitor",
+    "category": "Homestays",
+    "image": "/assets/ai/blue-guide-54.svg",
+    "summary": "What guests should ask before booking: location, meals, privacy, transport, family suitability and rules.",
+    "body": "What guests should ask before booking: location, meals, privacy, transport, family suitability and rules. This original guide is written for What's On Imphal & Manipur so it can be edited from AdminPro. Before public launch, replace any temporary contact or timing with verified owner-submitted information. The page should include a clear image, address or area, price notes where relevant, opening or event timing, accessibility notes and a shareable link.",
+    "style": {
+      "font": "Inter",
+      "color": "#12384d",
+      "titleSize": 18,
+      "bodySize": 15
+    }
+  },
+  {
+    "id": "guide-blue-055",
+    "title": "Farm stays and weekend retreats",
+    "group": "visitor",
+    "category": "Farm stays",
+    "image": "/assets/ai/blue-guide-55.svg",
+    "summary": "A calm guide to rural stays, valley views, local meals, transport and quiet weekend planning.",
+    "body": "A calm guide to rural stays, valley views, local meals, transport and quiet weekend planning. This original guide is written for What's On Imphal & Manipur so it can be edited from AdminPro. Before public launch, replace any temporary contact or timing with verified owner-submitted information. The page should include a clear image, address or area, price notes where relevant, opening or event timing, accessibility notes and a shareable link.",
+    "style": {
+      "font": "Inter",
+      "color": "#12384d",
+      "titleSize": 18,
+      "bodySize": 15
+    }
+  },
+  {
+    "id": "guide-blue-056",
+    "title": "Public transport and shared travel basics",
+    "group": "visitor",
+    "category": "Public transport",
+    "image": "/assets/ai/blue-guide-56.svg",
+    "summary": "A simple visitor page for buses, shared vehicles, route planning and asking local guidance safely.",
+    "body": "A simple visitor page for buses, shared vehicles, route planning and asking local guidance safely. This original guide is written for What's On Imphal & Manipur so it can be edited from AdminPro. Before public launch, replace any temporary contact or timing with verified owner-submitted information. The page should include a clear image, address or area, price notes where relevant, opening or event timing, accessibility notes and a shareable link.",
+    "style": {
+      "font": "Inter",
+      "color": "#12384d",
+      "titleSize": 18,
+      "bodySize": 15
+    }
+  },
+  {
+    "id": "guide-blue-057",
+    "title": "Private taxi and rideshare guide",
+    "group": "visitor",
+    "category": "Private taxis",
+    "image": "/assets/ai/blue-guide-57.svg",
+    "summary": "How to book, confirm fare, save driver contact, share route and plan return travel.",
+    "body": "How to book, confirm fare, save driver contact, share route and plan return travel. This original guide is written for What's On Imphal & Manipur so it can be edited from AdminPro. Before public launch, replace any temporary contact or timing with verified owner-submitted information. The page should include a clear image, address or area, price notes where relevant, opening or event timing, accessibility notes and a shareable link.",
+    "style": {
+      "font": "Inter",
+      "color": "#12384d",
+      "titleSize": 18,
+      "bodySize": 15
+    }
+  },
+  {
+    "id": "guide-blue-058",
+    "title": "Driving and parking in Imphal",
+    "group": "visitor",
+    "category": "Driving and parking",
+    "image": "/assets/ai/blue-guide-58.svg",
+    "summary": "Useful notes for parking, event drop-offs, traffic timing, fuel stops and night travel planning.",
+    "body": "Useful notes for parking, event drop-offs, traffic timing, fuel stops and night travel planning. This original guide is written for What's On Imphal & Manipur so it can be edited from AdminPro. Before public launch, replace any temporary contact or timing with verified owner-submitted information. The page should include a clear image, address or area, price notes where relevant, opening or event timing, accessibility notes and a shareable link.",
+    "style": {
+      "font": "Inter",
+      "color": "#12384d",
+      "titleSize": 18,
+      "bodySize": 15
+    }
+  },
+  {
+    "id": "guide-blue-059",
+    "title": "Maps and walking routes for first timers",
+    "group": "visitor",
+    "category": "Maps",
+    "image": "/assets/ai/blue-guide-59.svg",
+    "summary": "How to use saved maps, landmark-based navigation, offline screenshots and safe walking routes.",
+    "body": "How to use saved maps, landmark-based navigation, offline screenshots and safe walking routes. This original guide is written for What's On Imphal & Manipur so it can be edited from AdminPro. Before public launch, replace any temporary contact or timing with verified owner-submitted information. The page should include a clear image, address or area, price notes where relevant, opening or event timing, accessibility notes and a shareable link.",
+    "style": {
+      "font": "Inter",
+      "color": "#12384d",
+      "titleSize": 18,
+      "bodySize": 15
+    }
+  },
+  {
+    "id": "guide-blue-060",
+    "title": "Travel essentials for Manipur",
+    "group": "visitor",
+    "category": "Travel essentials",
+    "image": "/assets/ai/blue-guide-60.svg",
+    "summary": "Weather, clothing, cash, mobile data, ID, medicines and polite local etiquette for visitors.",
+    "body": "Weather, clothing, cash, mobile data, ID, medicines and polite local etiquette for visitors. This original guide is written for What's On Imphal & Manipur so it can be edited from AdminPro. Before public launch, replace any temporary contact or timing with verified owner-submitted information. The page should include a clear image, address or area, price notes where relevant, opening or event timing, accessibility notes and a shareable link.",
+    "style": {
+      "font": "Inter",
+      "color": "#12384d",
+      "titleSize": 18,
+      "bodySize": 15
+    }
+  },
+  {
+    "id": "guide-blue-061",
+    "title": "Visitor centres and information desks",
+    "group": "visitor",
+    "category": "Visitor centres",
+    "image": "/assets/ai/blue-guide-61.svg",
+    "summary": "A page template for official help points, hotel desks, tourist counters and local guidance.",
+    "body": "A page template for official help points, hotel desks, tourist counters and local guidance. This original guide is written for What's On Imphal & Manipur so it can be edited from AdminPro. Before public launch, replace any temporary contact or timing with verified owner-submitted information. The page should include a clear image, address or area, price notes where relevant, opening or event timing, accessibility notes and a shareable link.",
+    "style": {
+      "font": "Inter",
+      "color": "#12384d",
+      "titleSize": 18,
+      "bodySize": 15
+    }
+  },
+  {
+    "id": "guide-blue-062",
+    "title": "Loktak day trip guide",
+    "group": "visitor",
+    "category": "Attractions and sights",
+    "image": "/assets/ai/blue-guide-62.svg",
+    "summary": "Planning transport, food, return timing, photo stops and responsible lake visits.",
+    "body": "Planning transport, food, return timing, photo stops and responsible lake visits. This original guide is written for What's On Imphal & Manipur so it can be edited from AdminPro. Before public launch, replace any temporary contact or timing with verified owner-submitted information. The page should include a clear image, address or area, price notes where relevant, opening or event timing, accessibility notes and a shareable link.",
+    "style": {
+      "font": "Inter",
+      "color": "#12384d",
+      "titleSize": 18,
+      "bodySize": 15
+    }
+  },
+  {
+    "id": "guide-blue-063",
+    "title": "Ukhrul hills visitor planning",
+    "group": "visitor",
+    "category": "District guide",
+    "image": "/assets/ai/blue-guide-63.svg",
+    "summary": "A guide for hill travel preparation, stay checks, road timing and weather awareness.",
+    "body": "A guide for hill travel preparation, stay checks, road timing and weather awareness. This original guide is written for What's On Imphal & Manipur so it can be edited from AdminPro. Before public launch, replace any temporary contact or timing with verified owner-submitted information. The page should include a clear image, address or area, price notes where relevant, opening or event timing, accessibility notes and a shareable link.",
+    "style": {
+      "font": "Inter",
+      "color": "#12384d",
+      "titleSize": 18,
+      "bodySize": 15
+    }
+  },
+  {
+    "id": "guide-blue-064",
+    "title": "Moreh border town visitor notes",
+    "group": "visitor",
+    "category": "District guide",
+    "image": "/assets/ai/blue-guide-64.svg",
+    "summary": "A practical page for trip purpose, transport planning, documents, timings and local guidance.",
+    "body": "A practical page for trip purpose, transport planning, documents, timings and local guidance. This original guide is written for What's On Imphal & Manipur so it can be edited from AdminPro. Before public launch, replace any temporary contact or timing with verified owner-submitted information. The page should include a clear image, address or area, price notes where relevant, opening or event timing, accessibility notes and a shareable link.",
+    "style": {
+      "font": "Inter",
+      "color": "#12384d",
+      "titleSize": 18,
+      "bodySize": 15
+    }
+  },
+  {
+    "id": "guide-blue-065",
+    "title": "Senapati and hill route ideas",
+    "group": "visitor",
+    "category": "District guide",
+    "image": "/assets/ai/blue-guide-65.svg",
+    "summary": "A broad guide for scenic routes, food stops, safety, stay planning and local contacts.",
+    "body": "A broad guide for scenic routes, food stops, safety, stay planning and local contacts. This original guide is written for What's On Imphal & Manipur so it can be edited from AdminPro. Before public launch, replace any temporary contact or timing with verified owner-submitted information. The page should include a clear image, address or area, price notes where relevant, opening or event timing, accessibility notes and a shareable link.",
+    "style": {
+      "font": "Inter",
+      "color": "#12384d",
+      "titleSize": 18,
+      "bodySize": 15
+    }
+  },
+  {
+    "id": "guide-blue-066",
+    "title": "Emergency and useful contact checklist",
+    "group": "visitor",
+    "category": "Travel essentials",
+    "image": "/assets/ai/blue-guide-66.svg",
+    "summary": "What every visitor page should show: police, hospital, transport contact, hotel and organiser number.",
+    "body": "What every visitor page should show: police, hospital, transport contact, hotel and organiser number. This original guide is written for What's On Imphal & Manipur so it can be edited from AdminPro. Before public launch, replace any temporary contact or timing with verified owner-submitted information. The page should include a clear image, address or area, price notes where relevant, opening or event timing, accessibility notes and a shareable link.",
+    "style": {
+      "font": "Inter",
+      "color": "#12384d",
+      "titleSize": 18,
+      "bodySize": 15
+    }
+  },
+  {
+    "id": "guide-blue-067",
+    "title": "Accessible visitor planning",
+    "group": "visitor",
+    "category": "Accessibility",
+    "image": "/assets/ai/blue-guide-67.svg",
+    "summary": "How to check ramps, steps, seating, toilets, parking and travel time before visiting.",
+    "body": "How to check ramps, steps, seating, toilets, parking and travel time before visiting. This original guide is written for What's On Imphal & Manipur so it can be edited from AdminPro. Before public launch, replace any temporary contact or timing with verified owner-submitted information. The page should include a clear image, address or area, price notes where relevant, opening or event timing, accessibility notes and a shareable link.",
+    "style": {
+      "font": "Inter",
+      "color": "#12384d",
+      "titleSize": 18,
+      "bodySize": 15
+    }
+  },
+  {
+    "id": "guide-blue-068",
+    "title": "Weekend trip packing guide",
+    "group": "visitor",
+    "category": "Guides",
+    "image": "/assets/ai/blue-guide-68.svg",
+    "summary": "A compact list for day trips, rain, power bank, cash, ID, water and warm layers.",
+    "body": "A compact list for day trips, rain, power bank, cash, ID, water and warm layers. This original guide is written for What's On Imphal & Manipur so it can be edited from AdminPro. Before public launch, replace any temporary contact or timing with verified owner-submitted information. The page should include a clear image, address or area, price notes where relevant, opening or event timing, accessibility notes and a shareable link.",
+    "style": {
+      "font": "Inter",
+      "color": "#12384d",
+      "titleSize": 18,
+      "bodySize": 15
+    }
+  }
+];
+
+const launchEvents = [
+  {
+    "id": "evt-blue-001",
+    "title": "Imphal Blue Weekend Market",
+    "category": "Markets",
+    "group": "shopping",
+    "date": "2026-07-06",
+    "time": "10:00 AM",
+    "location": "Ema Keithel extension lane",
+    "district": "Imphal West",
+    "price": "Free",
+    "image": "/assets/ai/blue-guide-25.svg",
+    "summary": "Market stalls, local food, accessories and small maker tables with a clean blue launch theme.",
+    "organiser": "What's On Local Desk",
+    "packageId": "free",
+    "status": "approved",
+    "featured": false,
+    "paid": false
+  },
+  {
+    "id": "evt-blue-002",
+    "title": "Kangla Evening Heritage Talk",
+    "category": "Cultural walks",
+    "group": "things",
+    "date": "2026-07-09",
+    "time": "2:00 PM",
+    "location": "Kangla gate area",
+    "district": "Imphal West",
+    "price": "Free",
+    "image": "/assets/ai/blue-guide-26.svg",
+    "summary": "A calm evening talk and walk concept for heritage-first visitors.",
+    "organiser": "What's On Local Desk",
+    "packageId": "highlight",
+    "status": "approved",
+    "featured": true,
+    "paid": true
+  },
+  {
+    "id": "evt-blue-003",
+    "title": "Local Cafe Acoustic Session",
+    "category": "Cafes",
+    "group": "food",
+    "date": "2026-07-12",
+    "time": "5:30 PM",
+    "location": "Central Imphal cafe zone",
+    "district": "Imphal East",
+    "price": "Rs 150",
+    "image": "/assets/ai/blue-guide-27.svg",
+    "summary": "Small-room music, coffee and a featured local artist night.",
+    "organiser": "What's On Local Desk",
+    "packageId": "oneoff",
+    "status": "approved",
+    "featured": true,
+    "paid": true
+  },
+  {
+    "id": "evt-blue-004",
+    "title": "Loktak Responsible Travel Briefing",
+    "category": "Travel essentials",
+    "group": "visitor",
+    "date": "2026-07-15",
+    "time": "7:00 PM",
+    "location": "Sendra visitor point",
+    "district": "Bishnupur",
+    "price": "Guide",
+    "image": "/assets/ai/blue-guide-28.svg",
+    "summary": "Visitor briefing for respectful lake travel and weekend planning.",
+    "organiser": "What's On Local Desk",
+    "packageId": "monthly10",
+    "status": "approved",
+    "featured": true,
+    "paid": true
+  },
+  {
+    "id": "evt-blue-005",
+    "title": "Handloom Maker Pop-up",
+    "category": "Handloom and handicrafts",
+    "group": "shopping",
+    "date": "2026-07-18",
+    "time": "10:00 AM",
+    "location": "City Convention Centre",
+    "district": "Imphal East",
+    "price": "Market",
+    "image": "/assets/ai/blue-guide-29.svg",
+    "summary": "Textile, accessories and artisan story cards for premium local shopping.",
+    "organiser": "What's On Local Desk",
+    "packageId": "premiumshop",
+    "status": "approved",
+    "featured": true,
+    "paid": true
+  },
+  {
+    "id": "evt-blue-006",
+    "title": "Family Sunday Park Morning",
+    "category": "Family and kids",
+    "group": "things",
+    "date": "2026-07-21",
+    "time": "2:00 PM",
+    "location": "City park area",
+    "district": "Imphal West",
+    "price": "Free",
+    "image": "/assets/ai/blue-guide-30.svg",
+    "summary": "A simple family morning listing with snacks, games and shaded seating notes.",
+    "organiser": "What's On Local Desk",
+    "packageId": "free",
+    "status": "approved",
+    "featured": false,
+    "paid": false
+  },
+  {
+    "id": "evt-blue-007",
+    "title": "Food Trail: Local Lunch Edition",
+    "category": "Restaurants",
+    "group": "food",
+    "date": "2026-07-24",
+    "time": "5:30 PM",
+    "location": "Imphal food route",
+    "district": "Imphal West",
+    "price": "Food & Drink",
+    "image": "/assets/ai/blue-guide-31.svg",
+    "summary": "A curated food-route preview for visitors and local groups.",
+    "organiser": "What's On Local Desk",
+    "packageId": "highlight",
+    "status": "approved",
+    "featured": true,
+    "paid": true
+  },
+  {
+    "id": "evt-blue-008",
+    "title": "Student Art and Photo Showcase",
+    "category": "Art",
+    "group": "things",
+    "date": "2026-07-27",
+    "time": "7:00 PM",
+    "location": "College gallery area",
+    "district": "Imphal West",
+    "price": "Free",
+    "image": "/assets/ai/blue-guide-32.svg",
+    "summary": "Student work, small prints, photography and beginner-friendly exhibition notes.",
+    "organiser": "What's On Local Desk",
+    "packageId": "oneoff",
+    "status": "approved",
+    "featured": true,
+    "paid": true
+  },
+  {
+    "id": "evt-blue-009",
+    "title": "Hill Travel Planning Desk",
+    "category": "District guide",
+    "group": "visitor",
+    "date": "2026-07-06",
+    "time": "10:00 AM",
+    "location": "Ukhrul town desk",
+    "district": "Ukhrul",
+    "price": "Coming soon",
+    "image": "/assets/ai/blue-guide-33.svg",
+    "summary": "Transport, stay and route planning help for hill visitors.",
+    "organiser": "What's On Local Desk",
+    "packageId": "monthly10",
+    "status": "approved",
+    "featured": true,
+    "paid": true
+  },
+  {
+    "id": "evt-blue-010",
+    "title": "Retail Offer Weekend",
+    "category": "Local retail offers",
+    "group": "shopping",
+    "date": "2026-07-09",
+    "time": "2:00 PM",
+    "location": "Paona and Thangal area",
+    "district": "Imphal West",
+    "price": "Offers",
+    "image": "/assets/ai/blue-guide-34.svg",
+    "summary": "Short-time offers from local shops, accessories and specialty food sellers.",
+    "organiser": "What's On Local Desk",
+    "packageId": "premiumshop",
+    "status": "approved",
+    "featured": true,
+    "paid": true
+  },
+  {
+    "id": "evt-blue-011",
+    "title": "Sports Meetup Sunday",
+    "category": "Sport",
+    "group": "things",
+    "date": "2026-08-12",
+    "time": "5:30 PM",
+    "location": "Local ground",
+    "district": "Imphal East",
+    "price": "Free",
+    "image": "/assets/ai/blue-guide-35.svg",
+    "summary": "Community football, cycling and fitness meetup information.",
+    "organiser": "What's On Local Desk",
+    "packageId": "free",
+    "status": "approved",
+    "featured": false,
+    "paid": false
+  },
+  {
+    "id": "evt-blue-012",
+    "title": "Cafe Menu Photography Workshop",
+    "category": "Workshops",
+    "group": "food",
+    "date": "2026-08-15",
+    "time": "7:00 PM",
+    "location": "Premium cafe partner venue",
+    "district": "Imphal West",
+    "price": "Rs 300",
+    "image": "/assets/ai/blue-guide-36.svg",
+    "summary": "A practical workshop for local businesses to improve menu and product photos.",
+    "organiser": "What's On Local Desk",
+    "packageId": "highlight",
+    "status": "approved",
+    "featured": true,
+    "paid": true
+  },
+  {
+    "id": "evt-blue-013",
+    "title": "Imphal Blue Weekend Market 2",
+    "category": "Markets",
+    "group": "shopping",
+    "date": "2026-08-18",
+    "time": "10:00 AM",
+    "location": "Ema Keithel extension lane",
+    "district": "Imphal West",
+    "price": "Free",
+    "image": "/assets/ai/blue-guide-37.svg",
+    "summary": "Market stalls, local food, accessories and small maker tables with a clean blue launch theme.",
+    "organiser": "What's On Local Desk",
+    "packageId": "oneoff",
+    "status": "approved",
+    "featured": true,
+    "paid": true
+  },
+  {
+    "id": "evt-blue-014",
+    "title": "Kangla Evening Heritage Talk 2",
+    "category": "Cultural walks",
+    "group": "things",
+    "date": "2026-08-21",
+    "time": "2:00 PM",
+    "location": "Kangla gate area",
+    "district": "Imphal West",
+    "price": "Free",
+    "image": "/assets/ai/blue-guide-38.svg",
+    "summary": "A calm evening talk and walk concept for heritage-first visitors.",
+    "organiser": "What's On Local Desk",
+    "packageId": "monthly10",
+    "status": "approved",
+    "featured": true,
+    "paid": true
+  },
+  {
+    "id": "evt-blue-015",
+    "title": "Local Cafe Acoustic Session 2",
+    "category": "Cafes",
+    "group": "food",
+    "date": "2026-08-24",
+    "time": "5:30 PM",
+    "location": "Central Imphal cafe zone",
+    "district": "Imphal East",
+    "price": "Rs 150",
+    "image": "/assets/ai/blue-guide-39.svg",
+    "summary": "Small-room music, coffee and a featured local artist night.",
+    "organiser": "What's On Local Desk",
+    "packageId": "premiumshop",
+    "status": "approved",
+    "featured": true,
+    "paid": true
+  },
+  {
+    "id": "evt-blue-016",
+    "title": "Loktak Responsible Travel Briefing 2",
+    "category": "Travel essentials",
+    "group": "visitor",
+    "date": "2026-08-27",
+    "time": "7:00 PM",
+    "location": "Sendra visitor point",
+    "district": "Bishnupur",
+    "price": "Guide",
+    "image": "/assets/ai/blue-guide-40.svg",
+    "summary": "Visitor briefing for respectful lake travel and weekend planning.",
+    "organiser": "What's On Local Desk",
+    "packageId": "free",
+    "status": "approved",
+    "featured": false,
+    "paid": false
+  },
+  {
+    "id": "evt-blue-017",
+    "title": "Handloom Maker Pop-up 2",
+    "category": "Handloom and handicrafts",
+    "group": "shopping",
+    "date": "2026-08-06",
+    "time": "10:00 AM",
+    "location": "City Convention Centre",
+    "district": "Imphal East",
+    "price": "Market",
+    "image": "/assets/ai/blue-guide-41.svg",
+    "summary": "Textile, accessories and artisan story cards for premium local shopping.",
+    "organiser": "What's On Local Desk",
+    "packageId": "highlight",
+    "status": "approved",
+    "featured": true,
+    "paid": true
+  },
+  {
+    "id": "evt-blue-018",
+    "title": "Family Sunday Park Morning 2",
+    "category": "Family and kids",
+    "group": "things",
+    "date": "2026-08-09",
+    "time": "2:00 PM",
+    "location": "City park area",
+    "district": "Imphal West",
+    "price": "Free",
+    "image": "/assets/ai/blue-guide-42.svg",
+    "summary": "A simple family morning listing with snacks, games and shaded seating notes.",
+    "organiser": "What's On Local Desk",
+    "packageId": "oneoff",
+    "status": "approved",
+    "featured": true,
+    "paid": true
+  },
+  {
+    "id": "evt-blue-019",
+    "title": "Food Trail: Local Lunch Edition 2",
+    "category": "Restaurants",
+    "group": "food",
+    "date": "2026-08-12",
+    "time": "5:30 PM",
+    "location": "Imphal food route",
+    "district": "Imphal West",
+    "price": "Food & Drink",
+    "image": "/assets/ai/blue-guide-43.svg",
+    "summary": "A curated food-route preview for visitors and local groups.",
+    "organiser": "What's On Local Desk",
+    "packageId": "monthly10",
+    "status": "approved",
+    "featured": true,
+    "paid": true
+  },
+  {
+    "id": "evt-blue-020",
+    "title": "Student Art and Photo Showcase 2",
+    "category": "Art",
+    "group": "things",
+    "date": "2026-08-15",
+    "time": "7:00 PM",
+    "location": "College gallery area",
+    "district": "Imphal West",
+    "price": "Free",
+    "image": "/assets/ai/blue-guide-44.svg",
+    "summary": "Student work, small prints, photography and beginner-friendly exhibition notes.",
+    "organiser": "What's On Local Desk",
+    "packageId": "premiumshop",
+    "status": "approved",
+    "featured": true,
+    "paid": true
+  },
+  {
+    "id": "evt-blue-021",
+    "title": "Hill Travel Planning Desk 2",
+    "category": "District guide",
+    "group": "visitor",
+    "date": "2026-09-18",
+    "time": "10:00 AM",
+    "location": "Ukhrul town desk",
+    "district": "Ukhrul",
+    "price": "Coming soon",
+    "image": "/assets/ai/blue-guide-45.svg",
+    "summary": "Transport, stay and route planning help for hill visitors.",
+    "organiser": "What's On Local Desk",
+    "packageId": "free",
+    "status": "approved",
+    "featured": false,
+    "paid": false
+  },
+  {
+    "id": "evt-blue-022",
+    "title": "Retail Offer Weekend 2",
+    "category": "Local retail offers",
+    "group": "shopping",
+    "date": "2026-09-21",
+    "time": "2:00 PM",
+    "location": "Paona and Thangal area",
+    "district": "Imphal West",
+    "price": "Offers",
+    "image": "/assets/ai/blue-guide-46.svg",
+    "summary": "Short-time offers from local shops, accessories and specialty food sellers.",
+    "organiser": "What's On Local Desk",
+    "packageId": "highlight",
+    "status": "approved",
+    "featured": true,
+    "paid": true
+  },
+  {
+    "id": "evt-blue-023",
+    "title": "Sports Meetup Sunday 2",
+    "category": "Sport",
+    "group": "things",
+    "date": "2026-09-24",
+    "time": "5:30 PM",
+    "location": "Local ground",
+    "district": "Imphal East",
+    "price": "Free",
+    "image": "/assets/ai/blue-guide-47.svg",
+    "summary": "Community football, cycling and fitness meetup information.",
+    "organiser": "What's On Local Desk",
+    "packageId": "oneoff",
+    "status": "approved",
+    "featured": true,
+    "paid": true
+  },
+  {
+    "id": "evt-blue-024",
+    "title": "Cafe Menu Photography Workshop 2",
+    "category": "Workshops",
+    "group": "food",
+    "date": "2026-09-27",
+    "time": "7:00 PM",
+    "location": "Premium cafe partner venue",
+    "district": "Imphal West",
+    "price": "Rs 300",
+    "image": "/assets/ai/blue-guide-48.svg",
+    "summary": "A practical workshop for local businesses to improve menu and product photos.",
+    "organiser": "What's On Local Desk",
+    "packageId": "monthly10",
+    "status": "approved",
+    "featured": true,
+    "paid": true
+  },
+  {
+    "id": "evt-blue-025",
+    "title": "Imphal Blue Weekend Market 3",
+    "category": "Markets",
+    "group": "shopping",
+    "date": "2026-09-06",
+    "time": "10:00 AM",
+    "location": "Ema Keithel extension lane",
+    "district": "Imphal West",
+    "price": "Free",
+    "image": "/assets/ai/blue-guide-49.svg",
+    "summary": "Market stalls, local food, accessories and small maker tables with a clean blue launch theme.",
+    "organiser": "What's On Local Desk",
+    "packageId": "premiumshop",
+    "status": "approved",
+    "featured": true,
+    "paid": true
+  },
+  {
+    "id": "evt-blue-026",
+    "title": "Kangla Evening Heritage Talk 3",
+    "category": "Cultural walks",
+    "group": "things",
+    "date": "2026-09-09",
+    "time": "2:00 PM",
+    "location": "Kangla gate area",
+    "district": "Imphal West",
+    "price": "Free",
+    "image": "/assets/ai/blue-guide-50.svg",
+    "summary": "A calm evening talk and walk concept for heritage-first visitors.",
+    "organiser": "What's On Local Desk",
+    "packageId": "free",
+    "status": "approved",
+    "featured": false,
+    "paid": false
+  },
+  {
+    "id": "evt-blue-027",
+    "title": "Local Cafe Acoustic Session 3",
+    "category": "Cafes",
+    "group": "food",
+    "date": "2026-09-12",
+    "time": "5:30 PM",
+    "location": "Central Imphal cafe zone",
+    "district": "Imphal East",
+    "price": "Rs 150",
+    "image": "/assets/ai/blue-guide-51.svg",
+    "summary": "Small-room music, coffee and a featured local artist night.",
+    "organiser": "What's On Local Desk",
+    "packageId": "highlight",
+    "status": "approved",
+    "featured": true,
+    "paid": true
+  },
+  {
+    "id": "evt-blue-028",
+    "title": "Loktak Responsible Travel Briefing 3",
+    "category": "Travel essentials",
+    "group": "visitor",
+    "date": "2026-09-15",
+    "time": "7:00 PM",
+    "location": "Sendra visitor point",
+    "district": "Bishnupur",
+    "price": "Guide",
+    "image": "/assets/ai/blue-guide-52.svg",
+    "summary": "Visitor briefing for respectful lake travel and weekend planning.",
+    "organiser": "What's On Local Desk",
+    "packageId": "oneoff",
+    "status": "approved",
+    "featured": true,
+    "paid": true
+  },
+  {
+    "id": "evt-blue-029",
+    "title": "Handloom Maker Pop-up 3",
+    "category": "Handloom and handicrafts",
+    "group": "shopping",
+    "date": "2026-09-18",
+    "time": "10:00 AM",
+    "location": "City Convention Centre",
+    "district": "Imphal East",
+    "price": "Market",
+    "image": "/assets/ai/blue-guide-53.svg",
+    "summary": "Textile, accessories and artisan story cards for premium local shopping.",
+    "organiser": "What's On Local Desk",
+    "packageId": "monthly10",
+    "status": "approved",
+    "featured": true,
+    "paid": true
+  },
+  {
+    "id": "evt-blue-030",
+    "title": "Family Sunday Park Morning 3",
+    "category": "Family and kids",
+    "group": "things",
+    "date": "2026-09-21",
+    "time": "2:00 PM",
+    "location": "City park area",
+    "district": "Imphal West",
+    "price": "Free",
+    "image": "/assets/ai/blue-guide-54.svg",
+    "summary": "A simple family morning listing with snacks, games and shaded seating notes.",
+    "organiser": "What's On Local Desk",
+    "packageId": "premiumshop",
+    "status": "approved",
+    "featured": true,
+    "paid": true
+  },
+  {
+    "id": "evt-blue-031",
+    "title": "Food Trail: Local Lunch Edition 3",
+    "category": "Restaurants",
+    "group": "food",
+    "date": "2026-10-24",
+    "time": "5:30 PM",
+    "location": "Imphal food route",
+    "district": "Imphal West",
+    "price": "Food & Drink",
+    "image": "/assets/ai/blue-guide-55.svg",
+    "summary": "A curated food-route preview for visitors and local groups.",
+    "organiser": "What's On Local Desk",
+    "packageId": "free",
+    "status": "approved",
+    "featured": false,
+    "paid": false
+  },
+  {
+    "id": "evt-blue-032",
+    "title": "Student Art and Photo Showcase 3",
+    "category": "Art",
+    "group": "things",
+    "date": "2026-10-27",
+    "time": "7:00 PM",
+    "location": "College gallery area",
+    "district": "Imphal West",
+    "price": "Free",
+    "image": "/assets/ai/blue-guide-56.svg",
+    "summary": "Student work, small prints, photography and beginner-friendly exhibition notes.",
+    "organiser": "What's On Local Desk",
+    "packageId": "highlight",
+    "status": "approved",
+    "featured": true,
+    "paid": true
+  },
+  {
+    "id": "evt-blue-033",
+    "title": "Hill Travel Planning Desk 3",
+    "category": "District guide",
+    "group": "visitor",
+    "date": "2026-10-06",
+    "time": "10:00 AM",
+    "location": "Ukhrul town desk",
+    "district": "Ukhrul",
+    "price": "Coming soon",
+    "image": "/assets/ai/blue-guide-57.svg",
+    "summary": "Transport, stay and route planning help for hill visitors.",
+    "organiser": "What's On Local Desk",
+    "packageId": "oneoff",
+    "status": "approved",
+    "featured": true,
+    "paid": true
+  },
+  {
+    "id": "evt-blue-034",
+    "title": "Retail Offer Weekend 3",
+    "category": "Local retail offers",
+    "group": "shopping",
+    "date": "2026-10-09",
+    "time": "2:00 PM",
+    "location": "Paona and Thangal area",
+    "district": "Imphal West",
+    "price": "Offers",
+    "image": "/assets/ai/blue-guide-58.svg",
+    "summary": "Short-time offers from local shops, accessories and specialty food sellers.",
+    "organiser": "What's On Local Desk",
+    "packageId": "monthly10",
+    "status": "approved",
+    "featured": true,
+    "paid": true
+  },
+  {
+    "id": "evt-blue-035",
+    "title": "Sports Meetup Sunday 3",
+    "category": "Sport",
+    "group": "things",
+    "date": "2026-10-12",
+    "time": "5:30 PM",
+    "location": "Local ground",
+    "district": "Imphal East",
+    "price": "Free",
+    "image": "/assets/ai/blue-guide-59.svg",
+    "summary": "Community football, cycling and fitness meetup information.",
+    "organiser": "What's On Local Desk",
+    "packageId": "premiumshop",
+    "status": "approved",
+    "featured": true,
+    "paid": true
+  },
+  {
+    "id": "evt-blue-036",
+    "title": "Cafe Menu Photography Workshop 3",
+    "category": "Workshops",
+    "group": "food",
+    "date": "2026-10-15",
+    "time": "7:00 PM",
+    "location": "Premium cafe partner venue",
+    "district": "Imphal West",
+    "price": "Rs 300",
+    "image": "/assets/ai/blue-guide-60.svg",
+    "summary": "A practical workshop for local businesses to improve menu and product photos.",
+    "organiser": "What's On Local Desk",
+    "packageId": "free",
+    "status": "approved",
+    "featured": false,
+    "paid": false
+  }
+];
+
+const launchPromotions = [
+  {
+    "id": "promo-blue-001",
+    "title": "Blue Corner Cafe",
+    "category": "Cafes",
+    "group": "food",
+    "location": "Imphal & Manipur",
+    "district": "Imphal East",
+    "image": "/assets/ai/blue-guide-45.svg",
+    "summary": "Coffee, brunch, desserts and quiet work corners with a premium listing page.",
+    "packageId": "highlight",
+    "status": "approved",
+    "paid": true,
+    "featured": true
+  },
+  {
+    "id": "promo-blue-002",
+    "title": "Ema Keithel Textile Desk",
+    "category": "Handloom and handicrafts",
+    "group": "shopping",
+    "location": "Imphal & Manipur",
+    "district": "Imphal West",
+    "image": "/assets/ai/blue-guide-46.svg",
+    "summary": "Curated local textiles, gifts and artisan product stories.",
+    "packageId": "oneoff",
+    "status": "approved",
+    "paid": true,
+    "featured": true
+  },
+  {
+    "id": "promo-blue-003",
+    "title": "Hill View Homestay",
+    "category": "Homestays",
+    "group": "visitor",
+    "location": "Imphal & Manipur",
+    "district": "Ukhrul",
+    "image": "/assets/ai/blue-guide-47.svg",
+    "summary": "A calm stay page for hill visitors with gallery, transport notes and meal options.",
+    "packageId": "monthly10",
+    "status": "approved",
+    "paid": true,
+    "featured": true
+  },
+  {
+    "id": "promo-blue-004",
+    "title": "City Gear and Electronics",
+    "category": "Technology and entertainment",
+    "group": "shopping",
+    "location": "Imphal & Manipur",
+    "district": "Imphal West",
+    "image": "/assets/ai/blue-guide-48.svg",
+    "summary": "Local tech, accessories, repair categories and verified contact details.",
+    "packageId": "premiumshop",
+    "status": "approved",
+    "paid": true,
+    "featured": true
+  },
+  {
+    "id": "promo-blue-005",
+    "title": "Loktak Weekend Retreat",
+    "category": "Resorts",
+    "group": "visitor",
+    "location": "Imphal & Manipur",
+    "district": "Bishnupur",
+    "image": "/assets/ai/blue-guide-49.svg",
+    "summary": "Weekend stay, lake views, food notes and responsible travel guidance.",
+    "packageId": "highlight",
+    "status": "approved",
+    "paid": true,
+    "featured": true
+  },
+  {
+    "id": "promo-blue-006",
+    "title": "Acoustic Nights Partner Venue",
+    "category": "Music & Concerts",
+    "group": "things",
+    "location": "Imphal & Manipur",
+    "district": "Imphal West",
+    "image": "/assets/ai/blue-guide-50.svg",
+    "summary": "Small venue promotions for music nights, comedy and cultural sessions.",
+    "packageId": "oneoff",
+    "status": "approved",
+    "paid": true,
+    "featured": true
+  },
+  {
+    "id": "promo-blue-007",
+    "title": "Family Dining Partner",
+    "category": "Restaurants",
+    "group": "food",
+    "location": "Imphal & Manipur",
+    "district": "Imphal East",
+    "image": "/assets/ai/blue-guide-51.svg",
+    "summary": "Family seating, menu highlights, parking notes and shareable offers.",
+    "packageId": "monthly10",
+    "status": "approved",
+    "paid": true,
+    "featured": true
+  },
+  {
+    "id": "promo-blue-008",
+    "title": "Sports and Outdoor Store",
+    "category": "Sports and outdoor",
+    "group": "shopping",
+    "location": "Imphal & Manipur",
+    "district": "Imphal West",
+    "image": "/assets/ai/blue-guide-52.svg",
+    "summary": "Outdoor gear, sports accessories, seasonal offers and contact route.",
+    "packageId": "premiumshop",
+    "status": "approved",
+    "paid": true,
+    "featured": true
+  },
+  {
+    "id": "promo-blue-009",
+    "title": "Blue Corner Cafe 2",
+    "category": "Cafes",
+    "group": "food",
+    "location": "Imphal & Manipur",
+    "district": "Imphal East",
+    "image": "/assets/ai/blue-guide-53.svg",
+    "summary": "Coffee, brunch, desserts and quiet work corners with a premium listing page.",
+    "packageId": "highlight",
+    "status": "approved",
+    "paid": true,
+    "featured": true
+  },
+  {
+    "id": "promo-blue-010",
+    "title": "Ema Keithel Textile Desk 2",
+    "category": "Handloom and handicrafts",
+    "group": "shopping",
+    "location": "Imphal & Manipur",
+    "district": "Imphal West",
+    "image": "/assets/ai/blue-guide-54.svg",
+    "summary": "Curated local textiles, gifts and artisan product stories.",
+    "packageId": "oneoff",
+    "status": "approved",
+    "paid": true,
+    "featured": true
+  },
+  {
+    "id": "promo-blue-011",
+    "title": "Hill View Homestay 2",
+    "category": "Homestays",
+    "group": "visitor",
+    "location": "Imphal & Manipur",
+    "district": "Ukhrul",
+    "image": "/assets/ai/blue-guide-55.svg",
+    "summary": "A calm stay page for hill visitors with gallery, transport notes and meal options.",
+    "packageId": "monthly10",
+    "status": "approved",
+    "paid": true,
+    "featured": true
+  },
+  {
+    "id": "promo-blue-012",
+    "title": "City Gear and Electronics 2",
+    "category": "Technology and entertainment",
+    "group": "shopping",
+    "location": "Imphal & Manipur",
+    "district": "Imphal West",
+    "image": "/assets/ai/blue-guide-56.svg",
+    "summary": "Local tech, accessories, repair categories and verified contact details.",
+    "packageId": "premiumshop",
+    "status": "approved",
+    "paid": true,
+    "featured": true
+  },
+  {
+    "id": "promo-blue-013",
+    "title": "Loktak Weekend Retreat 2",
+    "category": "Resorts",
+    "group": "visitor",
+    "location": "Imphal & Manipur",
+    "district": "Bishnupur",
+    "image": "/assets/ai/blue-guide-57.svg",
+    "summary": "Weekend stay, lake views, food notes and responsible travel guidance.",
+    "packageId": "highlight",
+    "status": "approved",
+    "paid": true,
+    "featured": true
+  },
+  {
+    "id": "promo-blue-014",
+    "title": "Acoustic Nights Partner Venue 2",
+    "category": "Music & Concerts",
+    "group": "things",
+    "location": "Imphal & Manipur",
+    "district": "Imphal West",
+    "image": "/assets/ai/blue-guide-58.svg",
+    "summary": "Small venue promotions for music nights, comedy and cultural sessions.",
+    "packageId": "oneoff",
+    "status": "approved",
+    "paid": true,
+    "featured": true
+  },
+  {
+    "id": "promo-blue-015",
+    "title": "Family Dining Partner 2",
+    "category": "Restaurants",
+    "group": "food",
+    "location": "Imphal & Manipur",
+    "district": "Imphal East",
+    "image": "/assets/ai/blue-guide-59.svg",
+    "summary": "Family seating, menu highlights, parking notes and shareable offers.",
+    "packageId": "monthly10",
+    "status": "approved",
+    "paid": true,
+    "featured": true
+  },
+  {
+    "id": "promo-blue-016",
+    "title": "Sports and Outdoor Store 2",
+    "category": "Sports and outdoor",
+    "group": "shopping",
+    "location": "Imphal & Manipur",
+    "district": "Imphal West",
+    "image": "/assets/ai/blue-guide-60.svg",
+    "summary": "Outdoor gear, sports accessories, seasonal offers and contact route.",
+    "packageId": "premiumshop",
+    "status": "approved",
+    "paid": true,
+    "featured": true
+  },
+  {
+    "id": "promo-blue-017",
+    "title": "Blue Corner Cafe 3",
+    "category": "Cafes",
+    "group": "food",
+    "location": "Imphal & Manipur",
+    "district": "Imphal East",
+    "image": "/assets/ai/blue-guide-61.svg",
+    "summary": "Coffee, brunch, desserts and quiet work corners with a premium listing page.",
+    "packageId": "highlight",
+    "status": "approved",
+    "paid": true,
+    "featured": true
+  },
+  {
+    "id": "promo-blue-018",
+    "title": "Ema Keithel Textile Desk 3",
+    "category": "Handloom and handicrafts",
+    "group": "shopping",
+    "location": "Imphal & Manipur",
+    "district": "Imphal West",
+    "image": "/assets/ai/blue-guide-62.svg",
+    "summary": "Curated local textiles, gifts and artisan product stories.",
+    "packageId": "oneoff",
+    "status": "approved",
+    "paid": true,
+    "featured": true
+  },
+  {
+    "id": "promo-blue-019",
+    "title": "Hill View Homestay 3",
+    "category": "Homestays",
+    "group": "visitor",
+    "location": "Imphal & Manipur",
+    "district": "Ukhrul",
+    "image": "/assets/ai/blue-guide-63.svg",
+    "summary": "A calm stay page for hill visitors with gallery, transport notes and meal options.",
+    "packageId": "monthly10",
+    "status": "approved",
+    "paid": true,
+    "featured": true
+  },
+  {
+    "id": "promo-blue-020",
+    "title": "City Gear and Electronics 3",
+    "category": "Technology and entertainment",
+    "group": "shopping",
+    "location": "Imphal & Manipur",
+    "district": "Imphal West",
+    "image": "/assets/ai/blue-guide-64.svg",
+    "summary": "Local tech, accessories, repair categories and verified contact details.",
+    "packageId": "premiumshop",
+    "status": "approved",
+    "paid": true,
+    "featured": true
+  },
+  {
+    "id": "promo-blue-021",
+    "title": "Loktak Weekend Retreat 3",
+    "category": "Resorts",
+    "group": "visitor",
+    "location": "Imphal & Manipur",
+    "district": "Bishnupur",
+    "image": "/assets/ai/blue-guide-65.svg",
+    "summary": "Weekend stay, lake views, food notes and responsible travel guidance.",
+    "packageId": "highlight",
+    "status": "approved",
+    "paid": true,
+    "featured": true
+  },
+  {
+    "id": "promo-blue-022",
+    "title": "Acoustic Nights Partner Venue 3",
+    "category": "Music & Concerts",
+    "group": "things",
+    "location": "Imphal & Manipur",
+    "district": "Imphal West",
+    "image": "/assets/ai/blue-guide-66.svg",
+    "summary": "Small venue promotions for music nights, comedy and cultural sessions.",
+    "packageId": "oneoff",
+    "status": "approved",
+    "paid": true,
+    "featured": true
+  },
+  {
+    "id": "promo-blue-023",
+    "title": "Family Dining Partner 3",
+    "category": "Restaurants",
+    "group": "food",
+    "location": "Imphal & Manipur",
+    "district": "Imphal East",
+    "image": "/assets/ai/blue-guide-67.svg",
+    "summary": "Family seating, menu highlights, parking notes and shareable offers.",
+    "packageId": "monthly10",
+    "status": "approved",
+    "paid": true,
+    "featured": true
+  },
+  {
+    "id": "promo-blue-024",
+    "title": "Sports and Outdoor Store 3",
+    "category": "Sports and outdoor",
+    "group": "shopping",
+    "location": "Imphal & Manipur",
+    "district": "Imphal West",
+    "image": "/assets/ai/blue-guide-68.svg",
+    "summary": "Outdoor gear, sports accessories, seasonal offers and contact route.",
+    "packageId": "premiumshop",
+    "status": "approved",
+    "paid": true,
+    "featured": true
+  },
+  {
+    "id": "promo-blue-025",
+    "title": "Blue Corner Cafe 4",
+    "category": "Cafes",
+    "group": "food",
+    "location": "Imphal & Manipur",
+    "district": "Imphal East",
+    "image": "/assets/ai/blue-guide-69.svg",
+    "summary": "Coffee, brunch, desserts and quiet work corners with a premium listing page.",
+    "packageId": "highlight",
+    "status": "approved",
+    "paid": true,
+    "featured": true
+  },
+  {
+    "id": "promo-blue-026",
+    "title": "Ema Keithel Textile Desk 4",
+    "category": "Handloom and handicrafts",
+    "group": "shopping",
+    "location": "Imphal & Manipur",
+    "district": "Imphal West",
+    "image": "/assets/ai/blue-guide-70.svg",
+    "summary": "Curated local textiles, gifts and artisan product stories.",
+    "packageId": "oneoff",
+    "status": "approved",
+    "paid": true,
+    "featured": true
+  },
+  {
+    "id": "promo-blue-027",
+    "title": "Hill View Homestay 4",
+    "category": "Homestays",
+    "group": "visitor",
+    "location": "Imphal & Manipur",
+    "district": "Ukhrul",
+    "image": "/assets/ai/blue-guide-71.svg",
+    "summary": "A calm stay page for hill visitors with gallery, transport notes and meal options.",
+    "packageId": "monthly10",
+    "status": "approved",
+    "paid": true,
+    "featured": true
+  },
+  {
+    "id": "promo-blue-028",
+    "title": "City Gear and Electronics 4",
+    "category": "Technology and entertainment",
+    "group": "shopping",
+    "location": "Imphal & Manipur",
+    "district": "Imphal West",
+    "image": "/assets/ai/blue-guide-72.svg",
+    "summary": "Local tech, accessories, repair categories and verified contact details.",
+    "packageId": "premiumshop",
+    "status": "approved",
+    "paid": true,
+    "featured": true
+  },
+  {
+    "id": "promo-blue-029",
+    "title": "Loktak Weekend Retreat 4",
+    "category": "Resorts",
+    "group": "visitor",
+    "location": "Imphal & Manipur",
+    "district": "Bishnupur",
+    "image": "/assets/ai/blue-guide-01.svg",
+    "summary": "Weekend stay, lake views, food notes and responsible travel guidance.",
+    "packageId": "highlight",
+    "status": "approved",
+    "paid": true,
+    "featured": true
+  },
+  {
+    "id": "promo-blue-030",
+    "title": "Acoustic Nights Partner Venue 4",
+    "category": "Music & Concerts",
+    "group": "things",
+    "location": "Imphal & Manipur",
+    "district": "Imphal West",
+    "image": "/assets/ai/blue-guide-02.svg",
+    "summary": "Small venue promotions for music nights, comedy and cultural sessions.",
+    "packageId": "oneoff",
+    "status": "approved",
+    "paid": true,
+    "featured": true
+  },
+  {
+    "id": "promo-blue-031",
+    "title": "Family Dining Partner 4",
+    "category": "Restaurants",
+    "group": "food",
+    "location": "Imphal & Manipur",
+    "district": "Imphal East",
+    "image": "/assets/ai/blue-guide-03.svg",
+    "summary": "Family seating, menu highlights, parking notes and shareable offers.",
+    "packageId": "monthly10",
+    "status": "approved",
+    "paid": true,
+    "featured": true
+  },
+  {
+    "id": "promo-blue-032",
+    "title": "Sports and Outdoor Store 4",
+    "category": "Sports and outdoor",
+    "group": "shopping",
+    "location": "Imphal & Manipur",
+    "district": "Imphal West",
+    "image": "/assets/ai/blue-guide-04.svg",
+    "summary": "Outdoor gear, sports accessories, seasonal offers and contact route.",
+    "packageId": "premiumshop",
+    "status": "approved",
+    "paid": true,
+    "featured": true
+  }
+];
 
 const holidays2026 = [
   ["2026-01-26", "Republic Day"],
@@ -315,6 +2439,45 @@ const holidays2026 = [
   ["2026-12-25", "Christmas"],
 ].map(([date, title]) => ({ id: `holiday-${date}`, date, title, category: "Public holiday", image: image.culture }));
 
+const publicPhotoPool = [
+  image.hero,
+  image.culture,
+  image.market,
+  image.music,
+  image.loktak,
+  image.cafe,
+  image.promoCafe,
+  image.promoConcert,
+  image.promoResort,
+  image.handloom,
+  image.expo,
+];
+
+function fixedPhotoForItem(item = {}, index = 0) {
+  const text = [item.title, item.category, item.group, item.location, item.district, item.summary].map(plainTextSafe).join(" ").toLowerCase();
+  if (/cafe|coffee|tea|restaurant|food|dining|meal|snack|breakfast|brunch|thali/.test(text)) return [image.cafe, image.promoCafe, image.market][index % 3];
+  if (/handloom|textile|shopping|market|retail|gift|fashion|accessor|artisan|craft|shop|offer|ima/.test(text)) return [image.market, image.handloom, image.expo, image.promoCafe][index % 4];
+  if (/music|concert|gig|acoustic|comedy|theatre|film|night|stage|entertainment/.test(text)) return [image.music, image.promoConcert, image.hero][index % 3];
+  if (/loktak|lake|tour|travel|visitor|airport|taxi|hotel|homestay|resort|stay|farm|district|hill|route|walking|map|ukhrul|senapati|bishnupur|churachandpur|chandel|tamenglong|moreh/.test(text)) return [image.loktak, image.promoResort, image.hero, image.market][index % 4];
+  if (/culture|festival|heritage|kangla|lai|dance|traditional|thang-ta|yaoshang|sangai|temple/.test(text)) return [image.culture, image.expo, image.market][index % 3];
+  return publicPhotoPool[index % publicPhotoPool.length];
+}
+
+function plainTextSafe(value = "") {
+  return String(value || "").replace(/<[^>]*>/g, " ").replace(/&amp;/g, "&");
+}
+
+function hydrateVisuals(items = [], offset = 0) {
+  return items.map((item, index) => ({
+    ...item,
+    image: fixedPhotoForItem(item, index + offset),
+  }));
+}
+
+const finalEvents = hydrateVisuals([...seedEvents, ...launchEvents], 0);
+const finalPromotions = hydrateVisuals([...seedPromotions, ...launchPromotions], 80);
+const finalArticles = hydrateVisuals([...guideArticles, ...launchArticles], 160);
+
 const defaultState = {
   profile: { name: "Guest User", email: "", phone: "", activePackage: "free", joined: new Date().toISOString() },
   settings: {
@@ -323,24 +2486,29 @@ const defaultState = {
     heroTitle: "Discover Imphal's best nights",
     heroSubtitle: "Food, music and culture come alive",
     heroImage: image.hero,
-    accent: "#b7251d",
+    accent: "#4eb8e8",
     font: "Merriweather",
     youtubeUrl: "https://www.youtube.com/embed/dQw4w9WgXcQ",
     supportPhone: "+91 98765 43210",
     supportEmail: "support@whatson.imphal.in",
     upiId: "whatsonimphal@upi",
+    seoTitle: "What's On Imphal & Manipur | Events, Food, Markets and Visitor Guides",
+    seoDescription: "Discover events, cafes, markets, shopping, stays, visitor information and local promotions across Imphal and Manipur.",
+    facebookUrl: "https://facebook.com/whatsonimphal",
+    instagramUrl: "https://instagram.com/whatsonimphal",
+    youtubeUrlPublic: "https://youtube.com/@whatsonimphal",
     tickerVisible: true,
     tickerSpeed: 36,
-    tickerBackground: "#fff148",
+    tickerBackground: "#dff3ff",
     tickerItems: [
       { id: "tick-1", icon: "📣", text: "Post your event and reach people across Imphal & Manipur", color: "#171512", font: "Inter", size: 15, bold: true, link: "#create" },
-      { id: "tick-2", icon: "🔥", text: "Premium highlights rotate on the homepage after admin approval", color: "#b7251d", font: "Inter", size: 15, bold: true, link: "#vendor" },
-      { id: "tick-3", icon: "🎟", text: "Coming soon: festivals, cafes, markets, stays and local offers", color: "#174735", font: "Inter", size: 15, bold: false, link: "#latest" },
+      { id: "tick-2", icon: "🔥", text: "Premium highlights rotate on the homepage after admin approval", color: "#0f5f86", font: "Inter", size: 15, bold: true, link: "#vendor" },
+      { id: "tick-3", icon: "🎟", text: "Coming soon: festivals, cafes, markets, stays and local offers", color: "#164e69", font: "Inter", size: 15, bold: false, link: "#latest" },
     ],
     heroMediaType: "image",
     heroOverlay: 68,
     heroTitleColor: "#ffffff",
-    heroSubtitleColor: "#fff3e8",
+    heroSubtitleColor: "#eaf8ff",
     heroTitleSize: 34,
     heroSubtitleSize: 16,
     heroTextFont: "Merriweather",
@@ -349,9 +2517,9 @@ const defaultState = {
     subArticleTitle: "For local organisers",
     subArticleBody: "Create listings, choose a promotion package, and submit for admin review before publication.",
   },
-  events: seedEvents,
-  promotions: seedPromotions,
-  articles: guideArticles,
+  events: finalEvents,
+  promotions: finalPromotions,
+  articles: finalArticles,
   savedEventIds: [],
   reminders: [],
   payments: [],
@@ -582,6 +2750,27 @@ function allPublicItems() {
   return [...approvedEvents(), ...approvedPromotions(), ...currentArticles()];
 }
 
+function typeForItem(item) {
+  if (!item) return "article";
+  if (item.date) return "event";
+  if (state.promotions.some((promo) => promo.id === item.id)) return "promo";
+  return "article";
+}
+
+function routeForItem(item) {
+  const type = typeForItem(item);
+  if (type === "event") return `event/${item.id}`;
+  if (type === "promo") return `promo/${item.id}`;
+  return `guide/${item.id}`;
+}
+
+function renderListCard(item) {
+  const type = typeForItem(item);
+  if (type === "event") return renderEventCard(item);
+  if (type === "promo") return renderPromoListingCard(item);
+  return renderGuideCard(item);
+}
+
 function weightedFeaturedItems() {
   return [...approvedEvents(), ...approvedPromotions()]
     .filter((item) => item.paid || item.featured)
@@ -598,8 +2787,38 @@ function dayBadge(value) {
 }
 
 function setCssVars() {
-  document.documentElement.style.setProperty("--accent", state.settings.accent || "#b7251d");
+  document.documentElement.style.setProperty("--accent", state.settings.accent || "#4eb8e8");
   document.documentElement.style.setProperty("--site-font", state.settings.font === "Inter" ? "Inter, Arial, sans-serif" : "Merriweather, Georgia, serif");
+}
+
+function updateMetaForRoute() {
+  const title = plainText(state.settings.seoTitle || state.settings.siteTitle || "What's On Imphal & Manipur");
+  const description = plainText(state.settings.seoDescription || state.settings.tagline || "Events, food, markets and visitor guides across Manipur.");
+  document.title = title;
+  upsertMeta("description", description);
+  upsertMeta("og:title", title, "property");
+  upsertMeta("og:description", description, "property");
+  upsertMeta("og:type", "website", "property");
+  upsertMeta("og:image", location.origin + (state.settings.heroImage || image.hero), "property");
+  upsertJsonLd({
+    "@context": "https://schema.org",
+    "@type": "WebSite",
+    name: "What's On Imphal & Manipur",
+    url: location.origin,
+    potentialAction: { "@type": "SearchAction", target: `${location.origin}/#latest?q={search_term_string}`, "query-input": "required name=search_term_string" }
+  });
+}
+
+function upsertMeta(key, content, attr = "name") {
+  let el = document.head.querySelector(`meta[${attr}="${key}"]`);
+  if (!el) { el = document.createElement("meta"); el.setAttribute(attr, key); document.head.appendChild(el); }
+  el.setAttribute("content", content);
+}
+
+function upsertJsonLd(data) {
+  let el = document.head.querySelector("script[data-whatson-jsonld]");
+  if (!el) { el = document.createElement("script"); el.type = "application/ld+json"; el.dataset.whatsonJsonld = "1"; document.head.appendChild(el); }
+  el.textContent = JSON.stringify(data);
 }
 
 function searchItems(query = "", category = "", when = "", where = "") {
@@ -632,6 +2851,7 @@ function itemsByGroup(group) {
 
 function render() {
   setCssVars();
+  updateMetaForRoute();
   document.querySelector("#app").innerHTML = `${renderHeader()}${renderTicker()}<main class="page-shell">${renderRoute()}</main>${renderFooter()}${renderBottomNav()}`;
   bindEvents();
   if (route === "admin") focusAdminPreviewSelection();
@@ -663,7 +2883,7 @@ function renderTicker(inPreview = false) {
     return item.link ? `<a href="${escapeHtml(item.link)}">${content}</a>` : `<span>${content}</span>`;
   }).join("");
   const speed = Math.max(12, Number(state.settings.tickerSpeed || 36));
-  const bg = state.settings.tickerBackground || "#fff148";
+  const bg = state.settings.tickerBackground || "#dff3ff";
   return `<section class="site-ticker ${inPreview ? "preview-ticker" : ""}${adminSelectClass("ticker", "ticker")}"${adminSelectAttrs("ticker", "ticker")} style="--ticker-speed:${speed}s;--ticker-bg:${escapeHtml(bg)}"><div class="ticker-track">${track}</div></section>`;
 }
 
@@ -723,7 +2943,7 @@ function renderMegaMenu(key) {
 }
 
 function renderGuideRow(title, index) {
-  const imgs = [image.culture, image.cafe, image.market, image.loktak];
+  const imgs = [image.culture, image.cafe, image.market, image.loktak, "/assets/ai/blue-guide-01.svg", "/assets/ai/blue-guide-02.svg", "/assets/ai/blue-guide-03.svg"];
   return `<button class="guide-row" data-menu-search="${escapeHtml(title)}"><img src="${imgs[index % imgs.length]}" alt="${escapeHtml(title)}"><span>${escapeHtml(title)}</span></button>`;
 }
 
@@ -736,6 +2956,7 @@ function renderRoute() {
   if (route === "admin") return renderAdmin();
   if (route.startsWith("event/")) return renderEventDetail(route.split("/")[1]);
   if (route.startsWith("guide/")) return renderGuideDetail(route.split("/")[1]);
+  if (route.startsWith("promo/")) return renderPromotionDetail(route.split("/")[1]);
   if (route.startsWith("collection/")) return renderCollection(route.split("/")[1]);
   return renderHome();
 }
@@ -758,12 +2979,12 @@ function renderHome() {
       ${renderHeroMedia()}
     </section>
     <section class="content-grid">${renderFeaturedEvent(featured)}<div class="stack"><div class="section-head"><h2>Happening this week</h2><button class="link-btn" data-route="latest">View all events</button></div><div class="event-row">${week.map(renderEventCard).join("")}</div></div>${renderOrganiserPanel()}</section>
-    ${renderHomeSection("Melbourne-style free discoveries", articles.slice(0, 4))}
+    ${renderHomeSection("Free discoveries", articles.slice(0, 4))}
     ${renderHomeSection("What's on this month", month)}
     <section class="city-banner"><div><h2>Winter only in the city</h2><p>Use this space for paid hero campaigns, sponsor photography, and seasonal city guides.</p></div><img src="${image.hero}" alt="Imphal city night"></section>
     ${renderHomeSection("Family and kids", family)}
     ${renderHomeSection("Coming soon", coming.length ? coming : approvedEvents().slice(-4))}
-    ${renderHomeSection("Discover more", articles.slice(3, 7), true)}
+    ${renderHomeSection("Discover more", articles.slice(8, 12), true)}
     <section class="stats-strip"><div><strong>${approvedEvents().length}</strong><span>approved events</span></div><div><strong>${articles.length}</strong><span>guide pages</span></div><div><strong>${state.savedEventIds.length}</strong><span>saved by you</span></div><div><strong>Reviewed</strong><span>before publish</span></div></section>
   `;
 }
@@ -772,7 +2993,7 @@ function renderHeroMedia() {
   const useVideo = state.settings.heroMediaType === "video" && state.settings.youtubeUrl;
   const overlay = Math.min(90, Math.max(0, Number(state.settings.heroOverlay || 68))) / 100;
   const titleStyle = `font-family:${escapeHtml(fontStack(state.settings.heroTextFont))};font-size:${Number(state.settings.heroTitleSize || 34)}px;color:${escapeHtml(state.settings.heroTitleColor || "#ffffff")}`;
-  const subtitleStyle = `font-size:${Number(state.settings.heroSubtitleSize || 16)}px;color:${escapeHtml(state.settings.heroSubtitleColor || "#fff3e8")}`;
+  const subtitleStyle = `font-size:${Number(state.settings.heroSubtitleSize || 16)}px;color:${escapeHtml(state.settings.heroSubtitleColor || "#eaf8ff")}`;
   if (useVideo) {
     return `<article class="hero-card hero-video-card${adminSelectClass("hero", "hero")}"${adminSelectAttrs("hero", "hero")}><iframe src="${escapeHtml(state.settings.youtubeUrl)}" title="${escapeHtml(plainText(state.settings.heroTitle))}" allowfullscreen></iframe><span class="feature-badge">Featured promotion</span><div class="hero-video-overlay" style="background:rgba(0,0,0,${overlay})"><h2 style="${titleStyle}">${renderRichContent(state.settings.heroTitle)}</h2><p style="${subtitleStyle}">${renderRichContent(state.settings.heroSubtitle)}</p></div></article>`;
   }
@@ -823,21 +3044,25 @@ function renderFeaturedEvent(item) {
 function renderEventCard(event) {
   const badge = dayBadge(event.date);
   const saved = state.savedEventIds.includes(event.id);
-  return `<article class="event-card${adminSelectClass("event", event.id)}"${adminSelectAttrs("event", event.id)}><a href="#event/${event.id}" class="card-image-link"><img src="${escapeHtml(event.image)}" alt="${escapeHtml(plainText(event.title))}"><span class="mini-date"><strong>${badge.day}</strong>${badge.month}</span></a><div class="card-body"><span class="pill ${event.paid ? "paid" : ""}">${event.paid ? packageById(event.packageId).label : event.price}</span><h3>${renderRichContent(event.title)}</h3><p>${renderRichContent(event.location)}</p><div class="card-actions"><button class="${saved ? "active-icon" : ""}" data-save="${event.id}">${saved ? "Saved" : "Save"}</button><button data-remind="${event.id}">Reminder</button><button data-share="${event.id}">Share</button></div></div></article>`;
+  return `<article class="event-card${adminSelectClass("event", event.id)}"${adminSelectAttrs("event", event.id)} data-card-route="event/${escapeHtml(event.id)}"><a href="#event/${escapeHtml(event.id)}" class="card-image-link"><img src="${escapeHtml(event.image)}" alt="${escapeHtml(plainText(event.title))}"><span class="mini-date"><strong>${badge.day}</strong>${badge.month}</span></a><div class="card-body"><span class="pill ${event.paid ? "paid" : ""}">${event.paid ? packageById(event.packageId).label : event.price}</span><h3><a href="#event/${escapeHtml(event.id)}">${renderRichContent(event.title)}</a></h3><p>${renderRichContent(event.location)}</p><div class="card-actions"><button class="${saved ? "active-icon" : ""}" data-save="${event.id}">${saved ? "Saved" : "Save"}</button><button data-remind="${event.id}">Reminder</button><button data-share="${event.id}">Share</button></div></div></article>`;
 }
 
 function renderStoryCard(item, round = false) {
-  const targetRoute = item.date ? `event/${item.id}` : `guide/${item.id}`;
-  const adminType = item.date ? "event" : (state.promotions.some((promo) => promo.id === item.id) ? "promo" : "article");
+  const targetRoute = routeForItem(item);
+  const adminType = typeForItem(item);
   const style = item.style || {};
   const cardStyle = style.font ? `font-family:${escapeHtml(fontStack(style.font))}` : "";
   const titleStyle = `color:${escapeHtml(style.color || "inherit")};font-size:${Number(style.titleSize || 17)}px`;
   const bodyStyle = `font-size:${Number(style.bodySize || 15)}px`;
-  return `<article class="story-card ${round ? "round" : ""}${adminSelectClass(adminType, item.id)}"${adminSelectAttrs(adminType, item.id)} style="${cardStyle}"><a href="#${targetRoute}"><img src="${escapeHtml(item.image)}" alt="${escapeHtml(plainText(item.title))}"></a><span>${item.date ? formatDate(item.date) : escapeHtml(item.category)}</span><h3 style="${titleStyle}">${renderRichContent(item.title)}</h3><p style="${bodyStyle}">${renderRichContent(item.summary)}</p><button data-share="${item.id}">Share</button></article>`;
+  return `<article class="story-card ${round ? "round" : ""}${adminSelectClass(adminType, item.id)}"${adminSelectAttrs(adminType, item.id)} data-card-route="${escapeHtml(targetRoute)}" style="${cardStyle}"><a href="#${targetRoute}"><img src="${escapeHtml(item.image)}" alt="${escapeHtml(plainText(item.title))}"></a><span>${item.date ? formatDate(item.date) : escapeHtml(item.category)}</span><h3 style="${titleStyle}"><a href="#${targetRoute}">${renderRichContent(item.title)}</a></h3><p style="${bodyStyle}">${renderRichContent(item.summary)}</p><div class="story-actions"><button data-share="${item.id}">Share</button><button data-route="${targetRoute}">Open</button></div></article>`;
 }
 
 function renderPromoCard(item) {
-  return `<article class="promo-card${adminSelectClass("promo", item.id)}"${adminSelectAttrs("promo", item.id)}><img src="${escapeHtml(item.image)}" alt="${escapeHtml(plainText(item.title))}"><div><span>${escapeHtml(item.category)} · ${packageById(item.packageId).label}</span><h3>${escapeHtml(item.title)}</h3><p>${escapeHtml(item.summary)}</p></div></article>`;
+  return `<article class="promo-card${adminSelectClass("promo", item.id)}"${adminSelectAttrs("promo", item.id)} data-card-route="promo/${escapeHtml(item.id)}"><a href="#promo/${escapeHtml(item.id)}"><img src="${escapeHtml(item.image)}" alt="${escapeHtml(plainText(item.title))}"></a><div><span>${escapeHtml(item.category)} · ${packageById(item.packageId).label}</span><h3><a href="#promo/${escapeHtml(item.id)}">${escapeHtml(plainText(item.title))}</a></h3><p>${escapeHtml(plainText(item.summary))}</p></div></article>`;
+}
+
+function renderPromoListingCard(item) {
+  return `<article class="event-card${adminSelectClass("promo", item.id)}"${adminSelectAttrs("promo", item.id)} data-card-route="promo/${escapeHtml(item.id)}"><a href="#promo/${escapeHtml(item.id)}" class="card-image-link"><img src="${escapeHtml(item.image)}" alt="${escapeHtml(plainText(item.title))}"></a><div class="card-body"><span class="pill paid">${escapeHtml(item.category)} · ${packageById(item.packageId).label}</span><h3>${escapeHtml(plainText(item.title))}</h3><p>${escapeHtml(plainText(item.summary))}</p><div class="card-actions"><button data-share="${item.id}">Share</button><button data-route="promo/${escapeHtml(item.id)}">Open</button></div></div></article>`;
 }
 
 function renderOrganiserPanel() {
@@ -847,17 +3072,17 @@ function renderOrganiserPanel() {
 function renderLatest() {
   const params = new URLSearchParams(sessionStorage.getItem("whatson-search") || "");
   const results = searchItems(params.get("query") || "", params.get("category") || "", params.get("when") || "", params.get("where") || "");
-  return `<section class="view-header"><p class="eyebrow">Latest</p><h1>Find events, venues and local guides</h1><p>Search cafes, concerts, districts, food, hotels, parks, venues, resorts, markets, shops and visitor information.</p></section>${renderSearchPanel()}<section class="result-bar"><strong>${results.length}</strong> matching results<span>Events, promotions and guides</span></section><section class="listing-grid">${results.map((item) => (item.date ? renderEventCard(item) : renderGuideCard(item))).join("") || renderEmpty("No matching results yet.", "Try another keyword or create the first listing.")}</section>`;
+  return `<section class="view-header"><p class="eyebrow">Latest</p><h1>Find events, venues and local guides</h1><p>Search cafes, concerts, districts, food, hotels, parks, venues, resorts, markets, shops and visitor information.</p></section>${renderSearchPanel()}<section class="result-bar"><strong>${results.length}</strong> matching results<span>Events, promotions and guides</span></section><section class="listing-grid">${results.map(renderListCard).join("") || renderEmpty("No matching results yet.", "Try another keyword or create the first listing.")}</section>`;
 }
 
 function renderGuideCard(item) {
-  return `<article class="event-card${adminSelectClass("article", item.id)}"${adminSelectAttrs("article", item.id)}><a href="#guide/${item.id}" class="card-image-link"><img src="${escapeHtml(item.image)}" alt="${escapeHtml(plainText(item.title))}"></a><div class="card-body"><span class="pill">${escapeHtml(item.category)}</span><h3>${escapeHtml(item.title)}</h3><p>${escapeHtml(item.summary)}</p><div class="card-actions"><button data-share="${item.id}">Share</button><button data-route="guide/${item.id}">Read</button></div></div></article>`;
+  return `<article class="event-card${adminSelectClass("article", item.id)}"${adminSelectAttrs("article", item.id)} data-card-route="guide/${escapeHtml(item.id)}"><a href="#guide/${escapeHtml(item.id)}" class="card-image-link"><img src="${escapeHtml(item.image)}" alt="${escapeHtml(plainText(item.title))}"></a><div class="card-body"><span class="pill">${escapeHtml(item.category)}</span><h3><a href="#guide/${escapeHtml(item.id)}">${escapeHtml(plainText(item.title))}</a></h3><p>${escapeHtml(plainText(item.summary))}</p><div class="card-actions"><button data-share="${item.id}">Share</button><button data-route="guide/${escapeHtml(item.id)}">Open</button></div></div></article>`;
 }
 
 function renderCollection(key) {
   const group = categoryGroups[key] || { label: "Explore" };
   const items = itemsByGroup(key);
-  return `<section class="view-header"><p class="eyebrow">${escapeHtml(group.label)}</p><h1>${escapeHtml(group.label)} in Imphal & Manipur</h1><p>Curated events, guides, offers and useful local information. Every item includes an image so the page stays visual on mobile.</p></section><section class="listing-grid">${items.map((item) => (item.date ? renderEventCard(item) : renderGuideCard(item))).join("")}</section>`;
+  return `<section class="view-header"><p class="eyebrow">${escapeHtml(group.label)}</p><h1>${escapeHtml(group.label)} in Imphal & Manipur</h1><p>Curated events, guides, offers and useful local information. Every item includes an image so the page stays visual on mobile.</p></section><section class="listing-grid">${items.map(renderListCard).join("")}</section>`;
 }
 
 function renderCreate() {
@@ -881,7 +3106,8 @@ function renderCalendarItem(event) {
 function renderProfile() {
   const active = packageById(state.profile.activePackage);
   const saved = approvedEvents().filter((event) => state.savedEventIds.includes(event.id));
-  return `<section class="view-header"><p class="eyebrow">Profile</p><h1>Your local event account</h1><p>Profile is available from the burger menu and mobile footer. Triple-click Account details or Promote to open hidden AdminPro while testing.</p></section><section class="form-grid"><form class="panel-form" id="profileForm"><h2 data-secret-trigger>Account details</h2><label>Name <input name="name" value="${escapeHtml(state.profile.name)}" required></label><label>Email <input name="email" type="email" value="${escapeHtml(state.profile.email)}" placeholder="you@example.com"></label><label>Phone <input name="phone" value="${escapeHtml(state.profile.phone)}" placeholder="+91..."></label><button class="btn primary wide" type="submit">Save profile</button></form><aside class="side-panel"><h2>Current package</h2><p><strong>${escapeHtml(active.name)}</strong></p><p>${escapeHtml(active.cadence)}</p><button class="btn dark wide" data-route="vendor">Upgrade package</button><h2>Saved events</h2>${saved.map(renderCalendarItem).join("") || `<p class="muted">Nothing saved yet.</p>`}</aside></section>`;
+  const myListings = [...state.events, ...state.promotions].filter((item) => item.organiser === state.profile.name || item.status === "pending").slice(0, 8);
+  return `<section class="view-header"><p class="eyebrow">Profile</p><h1>Your local event account</h1><p>Sign up with email or phone, save events, track submitted listings and manage your premium package. Triple-click Account details or Promote to open hidden AdminPro while testing.</p></section><section class="form-grid"><form class="panel-form" id="profileForm"><h2 data-secret-trigger>Account details</h2><label>Name <input name="name" value="${escapeHtml(state.profile.name)}" required></label><label>Email login <input name="email" type="email" value="${escapeHtml(state.profile.email)}" placeholder="you@example.com"></label><label>Phone / OTP login <input name="phone" value="${escapeHtml(state.profile.phone)}" placeholder="+91..."></label><label>Preferred district <input name="district" list="districtList" value="${escapeHtml(state.profile.district || "Imphal West")}"><datalist id="districtList">${districts.map((d) => `<option value="${d}">`).join("")}</datalist></label><div class="split"><label><input name="notifyEmail" type="checkbox" ${state.profile.notifyEmail ? "checked" : ""}> Email reminders</label><label><input name="notifyPhone" type="checkbox" ${state.profile.notifyPhone ? "checked" : ""}> Phone reminders</label></div><button class="btn primary wide" type="submit">Save profile</button><p class="muted">Production login will connect to Supabase Auth. This local build saves your profile in the browser for testing.</p></form><aside class="side-panel"><h2>Current package</h2><p><strong>${escapeHtml(active.name)}</strong></p><p>${escapeHtml(active.cadence)}</p><button class="btn dark wide" data-route="vendor">Upgrade package</button><h2>Saved events</h2>${saved.map(renderCalendarItem).join("") || `<p class="muted">Nothing saved yet.</p>`}<h2>My submissions</h2>${myListings.map((item) => `<p class="mini-line"><strong>${escapeHtml(plainText(item.title))}</strong><br>${escapeHtml(item.status || "draft")} · ${escapeHtml(item.category || "Listing")}</p>`).join("") || `<p class="muted">No submissions yet.</p>`}</aside></section>`;
 }
 
 function renderVendor() {
@@ -920,11 +3146,16 @@ function renderAdmin() {
         </section>
         ${renderSelectedAdminEditor()}
         ${renderAdminQuickPicker()}
+        ${renderLaunchReadinessPanel()}
         <section class="admin-editor-box"><h2>Approval queue</h2>${pending.map(renderApprovalItem).join("") || `<p class="muted">No pending listings. New submissions will appear here.</p>`}</section>
         <button class="btn primary wide" type="submit">Publish changes</button>
       </form>
     </section>
   `;
+}
+
+function renderLaunchReadinessPanel() {
+  return `<section class="admin-editor-box launch-readiness"><h2>Launch readiness</h2><div class="readiness-grid"><span>AdminPro editable homepage</span><strong>Ready</strong><span>Original guide content</span><strong>${currentArticles().length} pages</strong><span>Image-backed cards</span><strong>Ready</strong><span>Profile/account scaffold</span><strong>Ready</strong><span>Event submission workflow</span><strong>Ready</strong><span>UPI/GPay test links</span><strong>Staged</strong><span>SEO metadata + sitemap</span><strong>Ready</strong></div><p class="muted">Supabase Auth and verified payment callbacks are still required before charging real customers.</p></section>`;
 }
 
 function renderAdminQuickPicker() {
@@ -960,7 +3191,7 @@ function renderAdminNoSelection() {
 function renderTickerEditor(compactShell = false, title = "Ticker tape") {
   const items = state.settings.tickerItems || [];
   const sectionClass = compactShell ? "admin-nested-editor" : "admin-editor-box";
-  return `<section class="${sectionClass}"><input type="hidden" name="tickerEditorPresent" value="1"><div class="editor-box-head"><h2>${escapeHtml(title)}</h2><label class="toggle-row">Visible <input name="tickerVisible" type="checkbox" ${state.settings.tickerVisible ? "checked" : ""}></label></div><div class="split"><label>Scrolling speed <input name="tickerSpeed" type="range" min="12" max="80" value="${Number(state.settings.tickerSpeed || 36)}"></label><label>Bar color <input name="tickerBackground" type="color" value="${escapeHtml(state.settings.tickerBackground || "#fff148")}"></label></div><div class="ticker-editor-list">${items.map(renderTickerRowEditor).join("")}</div><button class="btn ghost wide" type="button" data-add-ticker>Add ticker row</button></section>`;
+  return `<section class="${sectionClass}"><input type="hidden" name="tickerEditorPresent" value="1"><div class="editor-box-head"><h2>${escapeHtml(title)}</h2><label class="toggle-row">Visible <input name="tickerVisible" type="checkbox" ${state.settings.tickerVisible ? "checked" : ""}></label></div><div class="split"><label>Scrolling speed <input name="tickerSpeed" type="range" min="12" max="80" value="${Number(state.settings.tickerSpeed || 36)}"></label><label>Bar color <input name="tickerBackground" type="color" value="${escapeHtml(state.settings.tickerBackground || "#dff3ff")}"></label></div><div class="ticker-editor-list">${items.map(renderTickerRowEditor).join("")}</div><button class="btn ghost wide" type="button" data-add-ticker>Add ticker row</button></section>`;
 }
 
 function renderTickerRowEditor(item, index) {
@@ -969,7 +3200,7 @@ function renderTickerRowEditor(item, index) {
 
 function renderHeroEditor(compactShell = false, title = "Hero section") {
   const sectionClass = compactShell ? "admin-nested-editor" : "admin-editor-box";
-  return `<section class="${sectionClass}"><input type="hidden" name="heroEditorPresent" value="1"><h2>${escapeHtml(title)}</h2><label>Media type <select name="heroMediaType"><option value="image" ${state.settings.heroMediaType === "image" ? "selected" : ""}>Image</option><option value="video" ${state.settings.heroMediaType === "video" ? "selected" : ""}>YouTube video</option></select></label><label>Hero image URL <input name="heroImage" value="${escapeHtml(state.settings.heroImage)}"></label><label>Upload hero image <input name="heroFile" type="file" accept="image/*"></label><label>YouTube embed or watch URL <input name="youtubeUrl" value="${escapeHtml(state.settings.youtubeUrl || "")}" placeholder="https://youtube.com/watch?v=..."></label><label>Hero title - rich text</label>${renderRichTextEditor("heroTitle", state.settings.heroTitle || "", true)}<label>Hero subtitle - rich text</label>${renderRichTextEditor("heroSubtitle", state.settings.heroSubtitle || "", true)}<div class="split"><div><label>Site title - rich text</label>${renderRichTextEditor("siteTitle", state.settings.siteTitle || "", true)}</div><div><label>Tagline - rich text</label>${renderRichTextEditor("tagline", state.settings.tagline || "", true)}</div></div><div class="split"><label>Site color <input name="accent" type="color" value="${escapeHtml(state.settings.accent)}"></label><label>Site font ${renderFontSelect("font", state.settings.font || "Merriweather")}</label></div><div class="split"><label>Default hero title color <input name="heroTitleColor" type="color" value="${escapeHtml(state.settings.heroTitleColor || "#ffffff")}"></label><label>Default subtitle color <input name="heroSubtitleColor" type="color" value="${escapeHtml(state.settings.heroSubtitleColor || "#fff3e8")}"></label></div><div class="split"><label>Default title size <input name="heroTitleSize" type="number" min="18" max="76" value="${Number(state.settings.heroTitleSize || 34)}"></label><label>Default subtitle size <input name="heroSubtitleSize" type="number" min="12" max="34" value="${Number(state.settings.heroSubtitleSize || 16)}"></label></div><div class="split"><label>Default text font ${renderFontSelect("heroTextFont", state.settings.heroTextFont || "Merriweather")}</label><label>Dark overlay <input name="heroOverlay" type="range" min="0" max="90" value="${Number(state.settings.heroOverlay || 68)}"></label></div></section>`;
+  return `<section class="${sectionClass}"><input type="hidden" name="heroEditorPresent" value="1"><h2>${escapeHtml(title)}</h2><label>Media type <select name="heroMediaType"><option value="image" ${state.settings.heroMediaType === "image" ? "selected" : ""}>Image</option><option value="video" ${state.settings.heroMediaType === "video" ? "selected" : ""}>YouTube video</option></select></label><label>Hero image URL <input name="heroImage" value="${escapeHtml(state.settings.heroImage)}"></label><label>Upload hero image <input name="heroFile" type="file" accept="image/*"></label><label>YouTube embed or watch URL <input name="youtubeUrl" value="${escapeHtml(state.settings.youtubeUrl || "")}" placeholder="https://youtube.com/watch?v=..."></label><label>Hero title - rich text</label>${renderRichTextEditor("heroTitle", state.settings.heroTitle || "", true)}<label>Hero subtitle - rich text</label>${renderRichTextEditor("heroSubtitle", state.settings.heroSubtitle || "", true)}<div class="split"><div><label>Site title - rich text</label>${renderRichTextEditor("siteTitle", state.settings.siteTitle || "", true)}</div><div><label>Tagline - rich text</label>${renderRichTextEditor("tagline", state.settings.tagline || "", true)}</div></div><div class="split"><label>Site color <input name="accent" type="color" value="${escapeHtml(state.settings.accent)}"></label><label>Site font ${renderFontSelect("font", state.settings.font || "Merriweather")}</label></div><div class="split"><label>Default hero title color <input name="heroTitleColor" type="color" value="${escapeHtml(state.settings.heroTitleColor || "#ffffff")}"></label><label>Default subtitle color <input name="heroSubtitleColor" type="color" value="${escapeHtml(state.settings.heroSubtitleColor || "#eaf8ff")}"></label></div><div class="split"><label>Default title size <input name="heroTitleSize" type="number" min="18" max="76" value="${Number(state.settings.heroTitleSize || 34)}"></label><label>Default subtitle size <input name="heroSubtitleSize" type="number" min="12" max="34" value="${Number(state.settings.heroSubtitleSize || 16)}"></label></div><div class="split"><label>Default text font ${renderFontSelect("heroTextFont", state.settings.heroTextFont || "Merriweather")}</label><label>Dark overlay <input name="heroOverlay" type="range" min="0" max="90" value="${Number(state.settings.heroOverlay || 68)}"></label></div><h3>SEO, support and socials</h3><label>SEO title <input name="seoTitle" value="${escapeHtml(state.settings.seoTitle || "")}"></label><label>SEO description <textarea name="seoDescription">${escapeHtml(state.settings.seoDescription || "")}</textarea></label><div class="split"><label>Support email <input name="supportEmail" value="${escapeHtml(state.settings.supportEmail || "")}"></label><label>Support phone <input name="supportPhone" value="${escapeHtml(state.settings.supportPhone || "")}"></label></div><div class="split"><label>Facebook URL <input name="facebookUrl" value="${escapeHtml(state.settings.facebookUrl || "")}"></label><label>Instagram URL <input name="instagramUrl" value="${escapeHtml(state.settings.instagramUrl || "")}"></label></div></section>`;
 }
 
 function renderArticleEditors(compactShell = false) {
@@ -1078,12 +3309,18 @@ function renderGuideDetail(id) {
   return `<section class="detail-layout"><img class="detail-image" src="${escapeHtml(article.image)}" alt="${escapeHtml(plainText(article.title))}"><article class="detail-panel"><span class="pill">${renderRichContent(article.category)}</span><h1>${renderRichContent(article.title)}</h1><p>${renderRichContent(article.summary)}</p><div class="rich-output">${renderRichContent(article.body)}</div><div class="share-brand">Shared from What's On Imphal & Manipur · whatson.imphal.in</div><div class="button-line"><button class="btn primary" data-search-now="${escapeHtml(article.category)}">Find related</button><button class="btn ghost" data-share="${article.id}">Share</button></div></article></section>`;
 }
 
+function renderPromotionDetail(id) {
+  const promo = state.promotions.find((item) => item.id === id);
+  if (!promo) return renderEmpty("Promotion not found.", "Return to Latest and try again.");
+  return `<section class="detail-layout"><img class="detail-image" src="${escapeHtml(promo.image)}" alt="${escapeHtml(plainText(promo.title))}"><article class="detail-panel"><span class="pill paid">${escapeHtml(promo.category)} · ${escapeHtml(packageById(promo.packageId).label)}</span><h1>${renderRichContent(promo.title)}</h1><p>${renderRichContent(promo.summary)}</p><dl><div><dt>Location</dt><dd>${escapeHtml(promo.location || "Imphal & Manipur")}</dd></div><div><dt>District</dt><dd>${escapeHtml(promo.district || "Manipur")}</dd></div><div><dt>Promotion type</dt><dd>${escapeHtml(packageById(promo.packageId).name)}</dd></div></dl><div class="rich-output"><p>This is an original What's On Imphal & Manipur promotion page. Business owners can replace this launch copy with verified menus, photos, offers, contact details and opening hours from AdminPro.</p></div><div class="share-brand">Shared from What's On Imphal & Manipur · whatson.imphal.in</div><div class="button-line"><button class="btn primary" data-route="vendor">Promote your business</button><button class="btn ghost" data-share="${promo.id}">Share</button></div></article></section>`;
+}
+
 function renderEmpty(title, copy) {
   return `<div class="empty-state"><strong>${escapeHtml(title)}</strong><p>${escapeHtml(copy)}</p></div>`;
 }
 
 function renderFooter() {
-  return `<footer class="site-footer"><div><a href="#home" class="brand"><span class="brand-mark">WO</span><span>${renderRichContent(state.settings.siteTitle)}</span></a><p>Your guide to what is happening in and around Imphal and Manipur.</p></div><nav><a href="#create">Post your event</a><a href="#vendor">Promote</a><a href="mailto:${escapeHtml(state.settings.supportEmail)}">Support</a><a href="https://facebook.com" target="_blank" rel="noreferrer">Facebook</a><a href="https://youtube.com" target="_blank" rel="noreferrer">YouTube</a><a href="https://instagram.com" target="_blank" rel="noreferrer">Instagram</a><a href="https://snapchat.com" target="_blank" rel="noreferrer">Snapchat</a><a href="https://buzztown.in" target="_blank" rel="noreferrer">Buzztown</a></nav></footer>`;
+  return `<footer class="site-footer"><div><a href="#home" class="brand"><span class="brand-mark">WO</span><span>${renderRichContent(state.settings.siteTitle)}</span></a><p>Your guide to what is happening in and around Imphal and Manipur.</p></div><nav><a href="#create">Post your event</a><a href="#vendor">Promote</a><a href="mailto:${escapeHtml(state.settings.supportEmail)}">Support</a><a href="${escapeHtml(state.settings.facebookUrl || "https://facebook.com")}" target="_blank" rel="noreferrer">Facebook</a><a href="${escapeHtml(state.settings.youtubeUrlPublic || "https://youtube.com")}" target="_blank" rel="noreferrer">YouTube</a><a href="${escapeHtml(state.settings.instagramUrl || "https://instagram.com")}" target="_blank" rel="noreferrer">Instagram</a><a href="https://snapchat.com" target="_blank" rel="noreferrer">Snapchat</a><a href="https://buzztown.in" target="_blank" rel="noreferrer">Buzztown</a></nav></footer>`;
 }
 
 function renderBottomNav() {
@@ -1104,6 +3341,12 @@ function bindEvents() {
     event.preventDefault();
     event.stopPropagation();
     navigate(button.dataset.route);
+  }));
+
+  document.querySelectorAll("[data-card-route]").forEach((card) => card.addEventListener("click", (event) => {
+    if (route === "admin" || event.target.closest("a, button, input, select, textarea, [contenteditable]")) return;
+    event.preventDefault();
+    navigate(card.dataset.cardRoute);
   }));
 
   document.querySelectorAll("[data-home-link]").forEach((link) => link.addEventListener("click", (event) => {
@@ -1284,7 +3527,7 @@ function applySelectedAdminDraftFromForm() {
   if (selected.type === "ticker" && data.get("tickerEditorPresent") === "1") {
     state.settings.tickerVisible = data.get("tickerVisible") === "on";
     state.settings.tickerSpeed = Number(data.get("tickerSpeed") || state.settings.tickerSpeed || 36);
-    state.settings.tickerBackground = data.get("tickerBackground") || state.settings.tickerBackground || "#fff148";
+    state.settings.tickerBackground = data.get("tickerBackground") || state.settings.tickerBackground || "#dff3ff";
     const tickerItems = data.getAll("tickerId").map((id) => ({
       id,
       icon: data.get(`tickerIcon-${id}`) || "",
@@ -1317,6 +3560,12 @@ function applySelectedAdminDraftFromForm() {
       accent: data.get("accent") || state.settings.accent,
       font: data.get("font") || state.settings.font,
       youtubeUrl: normalizeYouTube(data.get("youtubeUrl") || state.settings.youtubeUrl || ""),
+      seoTitle: data.get("seoTitle") || state.settings.seoTitle,
+      seoDescription: data.get("seoDescription") || state.settings.seoDescription,
+      supportEmail: data.get("supportEmail") || state.settings.supportEmail,
+      supportPhone: data.get("supportPhone") || state.settings.supportPhone,
+      facebookUrl: data.get("facebookUrl") || state.settings.facebookUrl,
+      instagramUrl: data.get("instagramUrl") || state.settings.instagramUrl,
     };
     setCssVars();
     return;
@@ -1424,7 +3673,7 @@ async function handleCreate(event) {
 function handleProfile(event) {
   event.preventDefault();
   const data = new FormData(event.currentTarget);
-  state.profile = { ...state.profile, name: data.get("name"), email: data.get("email"), phone: data.get("phone") };
+  state.profile = { ...state.profile, name: data.get("name"), email: data.get("email"), phone: data.get("phone"), district: data.get("district"), notifyEmail: data.get("notifyEmail") === "on", notifyPhone: data.get("notifyPhone") === "on" };
   saveState();
   showToast("Profile saved.");
   render();
@@ -1450,7 +3699,7 @@ async function handleAdminSettings(event) {
       ...state.settings,
       tickerVisible: data.get("tickerVisible") === "on",
       tickerSpeed: Number(data.get("tickerSpeed") || state.settings.tickerSpeed || 36),
-      tickerBackground: data.get("tickerBackground") || state.settings.tickerBackground || "#fff148",
+      tickerBackground: data.get("tickerBackground") || state.settings.tickerBackground || "#dff3ff",
       tickerItems,
     };
   }
@@ -1474,6 +3723,12 @@ async function handleAdminSettings(event) {
       accent: data.get("accent") || state.settings.accent,
       font: data.get("font") || state.settings.font,
       youtubeUrl: normalizeYouTube(data.get("youtubeUrl") || state.settings.youtubeUrl || ""),
+      seoTitle: data.get("seoTitle") || state.settings.seoTitle,
+      seoDescription: data.get("seoDescription") || state.settings.seoDescription,
+      supportEmail: data.get("supportEmail") || state.settings.supportEmail,
+      supportPhone: data.get("supportPhone") || state.settings.supportPhone,
+      facebookUrl: data.get("facebookUrl") || state.settings.facebookUrl,
+      instagramUrl: data.get("instagramUrl") || state.settings.instagramUrl,
     };
   }
 
@@ -1767,7 +4022,7 @@ function addReminder(id) {
 async function shareItem(id) {
   const item = [...state.events, ...state.promotions, ...currentArticles()].find((entry) => entry.id === id);
   if (!item) return;
-  const path = item.date ? `#event/${item.id}` : `#guide/${item.id}`;
+  const path = `#${routeForItem(item)}`;
   const url = `${window.location.origin}${window.location.pathname}${path}`;
   const text = `${item.title} - shared from What's On Imphal & Manipur`;
   if (navigator.share) await navigator.share({ title: item.title, text, url }).catch(() => {});

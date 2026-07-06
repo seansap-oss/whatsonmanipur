@@ -1,0 +1,3 @@
+User-agent: *
+Allow: /
+Sitemap: https://whatson.imphal.in/sitemap.xml
