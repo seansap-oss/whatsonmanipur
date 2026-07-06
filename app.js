@@ -1,17 +1,17 @@
 const STORAGE_KEY = "whatson-imphal-state-v2";
 
 const image = {
-  hero: "./assets/hero-imphal-night.png",
-  culture: "./assets/event-lai-haraoba.png",
-  market: "./assets/event-ema-keithel.png",
-  music: "./assets/event-indie-music.png",
-  loktak: "./assets/event-loktak.png",
-  cafe: "./assets/event-cafe.png",
-  promoCafe: "./assets/promo-cafe.png",
-  promoConcert: "./assets/promo-concert.png",
-  promoResort: "./assets/promo-resort.png",
-  handloom: "./assets/promo-local-shop.png",
-  expo: "./assets/promo-handloom.png",
+  hero: "/assets/hero-imphal-night.png",
+  culture: "/assets/event-lai-haraoba.png",
+  market: "/assets/event-ema-keithel.png",
+  music: "/assets/event-indie-music.png",
+  loktak: "/assets/event-loktak.png",
+  cafe: "/assets/event-cafe.png",
+  promoCafe: "/assets/promo-cafe.png",
+  promoConcert: "/assets/promo-concert.png",
+  promoResort: "/assets/promo-resort.png",
+  handloom: "/assets/promo-local-shop.png",
+  expo: "/assets/promo-handloom.png",
 };
 
 const districts = [
