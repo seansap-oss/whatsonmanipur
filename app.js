@@ -1,4 +1,4 @@
-const STORAGE_KEY = "whatson-imphal-state-v4-last-chance-fixed-content";
+const STORAGE_KEY = "whatson-imphal-state-v8-mobile-photo-route-final";
 
 const image = {
   hero: "/assets/hero-imphal-night.png",
@@ -12,6 +12,19 @@ const image = {
   promoResort: "/assets/promo-resort.png",
   handloom: "/assets/promo-local-shop.png",
   expo: "/assets/promo-handloom.png",
+};
+
+
+const finalPhotoPool = Array.from({ length: 96 }, (_, i) => `/assets/final/launch-photo-${String(i + 1).padStart(3, "0")}.jpg`);
+
+const photoSets = {
+  food: finalPhotoPool.slice(0, 8),
+  culture: finalPhotoPool.slice(8, 16),
+  market: finalPhotoPool.slice(16, 24),
+  music: finalPhotoPool.slice(24, 32),
+  visitor: finalPhotoPool.slice(32, 44),
+  shopping: finalPhotoPool.slice(44, 52),
+  generic: finalPhotoPool,
 };
 
 const districts = [
@@ -2439,28 +2452,21 @@ const holidays2026 = [
   ["2026-12-25", "Christmas"],
 ].map(([date, title]) => ({ id: `holiday-${date}`, date, title, category: "Public holiday", image: image.culture }));
 
-const publicPhotoPool = [
-  image.hero,
-  image.culture,
-  image.market,
-  image.music,
-  image.loktak,
-  image.cafe,
-  image.promoCafe,
-  image.promoConcert,
-  image.promoResort,
-  image.handloom,
-  image.expo,
-];
+const publicPhotoPool = finalPhotoPool;
+
+function pickPhoto(setName, index = 0) {
+  const set = photoSets[setName] || photoSets.generic;
+  return set[Math.abs(index) % set.length];
+}
 
 function fixedPhotoForItem(item = {}, index = 0) {
   const text = [item.title, item.category, item.group, item.location, item.district, item.summary].map(plainTextSafe).join(" ").toLowerCase();
-  if (/cafe|coffee|tea|restaurant|food|dining|meal|snack|breakfast|brunch|thali/.test(text)) return [image.cafe, image.promoCafe, image.market][index % 3];
-  if (/handloom|textile|shopping|market|retail|gift|fashion|accessor|artisan|craft|shop|offer|ima/.test(text)) return [image.market, image.handloom, image.expo, image.promoCafe][index % 4];
-  if (/music|concert|gig|acoustic|comedy|theatre|film|night|stage|entertainment/.test(text)) return [image.music, image.promoConcert, image.hero][index % 3];
-  if (/loktak|lake|tour|travel|visitor|airport|taxi|hotel|homestay|resort|stay|farm|district|hill|route|walking|map|ukhrul|senapati|bishnupur|churachandpur|chandel|tamenglong|moreh/.test(text)) return [image.loktak, image.promoResort, image.hero, image.market][index % 4];
-  if (/culture|festival|heritage|kangla|lai|dance|traditional|thang-ta|yaoshang|sangai|temple/.test(text)) return [image.culture, image.expo, image.market][index % 3];
-  return publicPhotoPool[index % publicPhotoPool.length];
+  if (/cafe|coffee|tea|restaurant|food|dining|meal|snack|breakfast|brunch|thali/.test(text)) return pickPhoto("food", index);
+  if (/handloom|textile|shopping|market|retail|gift|fashion|accessor|artisan|craft|shop|offer|ima/.test(text)) return pickPhoto("shopping", index);
+  if (/music|concert|gig|acoustic|comedy|theatre|film|night|stage|entertainment/.test(text)) return pickPhoto("music", index);
+  if (/loktak|lake|tour|travel|visitor|airport|taxi|hotel|homestay|resort|stay|farm|district|hill|route|walking|map|ukhrul|senapati|bishnupur|churachandpur|chandel|tamenglong|moreh/.test(text)) return pickPhoto("visitor", index);
+  if (/culture|festival|heritage|kangla|lai|dance|traditional|thang-ta|yaoshang|sangai|temple/.test(text)) return pickPhoto("culture", index);
+  return pickPhoto("generic", index);
 }
 
 function plainTextSafe(value = "") {
@@ -2537,16 +2543,28 @@ let ui = {
 };
 let activeRichEditor = null;
 let savedRichRange = null;
+let megaCloseTimer = null;
+let lastRenderedRoute = "";
+let lastNavigationWasProgrammatic = false;
+let homeBackWarningArmed = false;
 let secretTapTimes = [];
 let toastTimer;
+if ("scrollRestoration" in history) history.scrollRestoration = "manual";
 normalizeLoadedStateText();
 
 window.addEventListener("hashchange", () => {
   route = getRoute();
   ui = { ...ui, burger: false, menu: "", searchPanel: "" };
   render();
+  if (route !== "admin") {
+    scrollPageTop(false);
+    setTimeout(() => scrollPageTop(false), 160);
+  }
 });
-document.addEventListener("DOMContentLoaded", render);
+document.addEventListener("DOMContentLoaded", () => {
+  setupAndroidBackHandler();
+  render();
+});
 
 function loadState() {
   const raw = localStorage.getItem(STORAGE_KEY);
@@ -2585,20 +2603,111 @@ function getRoute() {
 }
 
 function closeOverlays() {
+  clearMegaCloseTimer();
   const hadOpenLayer = Boolean(ui.burger || ui.menu || ui.searchPanel);
   ui = { burger: false, menu: "", searchPanel: "" };
   return hadOpenLayer;
 }
 
+function isDesktopHoverDevice() {
+  return window.matchMedia("(hover: hover) and (pointer: fine)").matches;
+}
+
+function clearMegaCloseTimer() {
+  if (megaCloseTimer) {
+    clearTimeout(megaCloseTimer);
+    megaCloseTimer = null;
+  }
+}
+
+function openMegaMenu(key) {
+  clearMegaCloseTimer();
+  if (!key || ui.menu === key) return;
+  ui.menu = key;
+  ui.burger = false;
+  ui.searchPanel = "";
+  render();
+}
+
+function toggleMegaMenu(key) {
+  clearMegaCloseTimer();
+  ui.menu = ui.menu === key ? "" : key;
+  ui.burger = false;
+  ui.searchPanel = "";
+  render();
+}
+
+function scheduleMegaMenuClose(delay = 240) {
+  clearMegaCloseTimer();
+  megaCloseTimer = setTimeout(() => {
+    if (!ui.menu) return;
+    ui.menu = "";
+    render();
+  }, delay);
+}
+
 function navigate(next) {
   closeOverlays();
+  lastNavigationWasProgrammatic = true;
+  homeBackWarningArmed = false;
   if ((window.location.hash.replace("#", "") || "home") === next) {
     route = next;
     render();
-    window.scrollTo({ top: 0, behavior: "smooth" });
+    scrollPageTop(true);
     return;
   }
   window.location.hash = next;
+}
+
+function scrollPageTop(smooth = false) {
+  const behavior = smooth ? "smooth" : "auto";
+  requestAnimationFrame(() => {
+    window.scrollTo({ top: 0, left: 0, behavior });
+    document.documentElement.scrollTop = 0;
+    document.body.scrollTop = 0;
+    setTimeout(() => {
+      window.scrollTo({ top: 0, left: 0, behavior: "auto" });
+      document.documentElement.scrollTop = 0;
+      document.body.scrollTop = 0;
+    }, 80);
+  });
+}
+
+function handleRouteAfterRender() {
+  if (route === "admin") return;
+  if (route !== lastRenderedRoute) {
+    scrollPageTop(false);
+    lastRenderedRoute = route;
+  }
+}
+
+function setupAndroidBackHandler() {
+  try {
+    const capacitor = window.Capacitor;
+    const app = window.Capacitor?.Plugins?.App;
+    if (!capacitor || !app?.addListener) return;
+    app.addListener("backButton", ({ canGoBack } = {}) => {
+      const current = getRoute();
+      if (ui.burger || ui.menu || ui.searchPanel) {
+        closeOverlays();
+        render();
+        return;
+      }
+      if (current !== "home" && window.history.length > 1) {
+        window.history.back();
+        return;
+      }
+      if (!homeBackWarningArmed) {
+        homeBackWarningArmed = true;
+        showToast("Press back again to exit");
+        setTimeout(() => (homeBackWarningArmed = false), 1800);
+        return;
+      }
+      app.exitApp?.();
+    });
+  } catch (error) {
+    console.warn("Back handler unavailable", error);
+  }
 }
 
 function escapeHtml(value = "") {
@@ -2855,6 +2964,7 @@ function render() {
   document.querySelector("#app").innerHTML = `${renderHeader()}${renderTicker()}<main class="page-shell">${renderRoute()}</main>${renderFooter()}${renderBottomNav()}`;
   bindEvents();
   if (route === "admin") focusAdminPreviewSelection();
+  handleRouteAfterRender();
 }
 
 function renderHeader() {
@@ -2862,7 +2972,7 @@ function renderHeader() {
     .map(([key, menu]) => `<button class="menu-trigger ${ui.menu === key ? "active" : ""}" data-menu="${key}">${escapeHtml(menu.label)} <span>${ui.menu === key ? "⌃" : "⌄"}</span></button>`)
     .join("");
   return `
-    <header class="topbar">
+    <header class="topbar" data-mega-zone>
       <button class="burger-button" data-burger aria-label="Open menu">☰</button>
       <a href="#home" class="brand" data-home-link aria-label="Home"><span class="brand-mark">WO</span><span class="brand-title">${renderRichContent(state.settings.siteTitle)}</span></a>
       <nav class="desktop-nav mega-nav" aria-label="Primary">${menuButtons}</nav>
@@ -2904,6 +3014,11 @@ function renderBurgerMenu() {
     { label: "Promote", route: "vendor", secret: true },
   ];
   const discovery = [
+    { label: "Things to do", menu: "things" },
+    { label: "Eat & Drink", menu: "eat" },
+    { label: "Shopping", menu: "shopping" },
+    { label: "Visitor info", menu: "visitor" },
+    { label: "Manipur", menu: "manipur" },
     { label: "Food & Cafes", search: "Cafes" },
     { label: "Markets", search: "Markets" },
     { label: "Venues", search: "Venues" },
@@ -2918,6 +3033,7 @@ function renderBurgerMenu() {
   const renderItem = (item) => {
     const secret = item.secret ? " data-secret-trigger" : "";
     if (item.route) return `<button data-burger-route="${escapeHtml(item.route)}"${secret}>${escapeHtml(item.label)}</button>`;
+    if (item.menu) return `<button data-burger-mega="${escapeHtml(item.menu)}">${escapeHtml(item.label)} ▾</button>`;
     if (item.search) return `<button data-burger-search="${escapeHtml(item.search)}">${escapeHtml(item.label)}</button>`;
     return `<button data-external-link="${escapeHtml(item.href)}">${escapeHtml(item.label)}</button>`;
   };
@@ -2943,8 +3059,8 @@ function renderMegaMenu(key) {
 }
 
 function renderGuideRow(title, index) {
-  const imgs = [image.culture, image.cafe, image.market, image.loktak, "/assets/ai/blue-guide-01.svg", "/assets/ai/blue-guide-02.svg", "/assets/ai/blue-guide-03.svg"];
-  return `<button class="guide-row" data-menu-search="${escapeHtml(title)}"><img src="${imgs[index % imgs.length]}" alt="${escapeHtml(title)}"><span>${escapeHtml(title)}</span></button>`;
+  const img = pickPhoto("generic", index + 7);
+  return `<button class="guide-row" data-menu-search="${escapeHtml(title)}"><img src="${img}" alt="${escapeHtml(title)}"><span>${escapeHtml(title)}</span></button>`;
 }
 
 function renderRoute() {
@@ -2963,8 +3079,8 @@ function renderRoute() {
 
 function renderHome() {
   const featured = weightedFeaturedItems()[0] || approvedEvents()[0];
-  const week = approvedEvents().slice(0, 4);
-  const month = approvedEvents().slice(2, 6);
+  const week = approvedEvents().slice(0, 5);
+  const month = approvedEvents().slice(2, 7);
   const articles = currentArticles();
   const family = allPublicItems().filter((item) => /family|kids|visitor|guide/i.test(`${item.category} ${item.summary}`)).slice(0, 4);
   const coming = approvedEvents().filter((item) => item.date >= "2026-08-01").slice(0, 4);
@@ -2978,7 +3094,7 @@ function renderHome() {
       </div>
       ${renderHeroMedia()}
     </section>
-    <section class="content-grid">${renderFeaturedEvent(featured)}<div class="stack"><div class="section-head"><h2>Happening this week</h2><button class="link-btn" data-route="latest">View all events</button></div><div class="event-row">${week.map(renderEventCard).join("")}</div></div>${renderOrganiserPanel()}</section>
+    <section class="content-grid promotion-start-grid" aria-label="Featured promotions and events">${renderFeaturedEvent(featured)}<div class="stack"><div class="section-head"><h2>Happening this week</h2><button class="link-btn" data-route="latest">View all events</button></div><div class="event-row mobile-scroll-row">${week.map(renderEventCard).join("")}</div></div>${renderOrganiserPanel()}</section>
     ${renderHomeSection("Free discoveries", articles.slice(0, 4))}
     ${renderHomeSection("What's on this month", month)}
     <section class="city-banner"><div><h2>Winter only in the city</h2><p>Use this space for paid hero campaigns, sponsor photography, and seasonal city guides.</p></div><img src="${image.hero}" alt="Imphal city night"></section>
@@ -3300,23 +3416,36 @@ function renderEventDetail(id) {
   const event = state.events.find((item) => item.id === id);
   if (!event) return renderEmpty("Event not found.", "Return to latest events and try again.");
   const saved = state.savedEventIds.includes(event.id);
-  return `<section class="detail-layout"><img class="detail-image" src="${escapeHtml(event.image)}" alt="${escapeHtml(plainText(event.title))}"><article class="detail-panel"><span class="pill ${event.paid ? "paid" : ""}">${renderRichContent(event.category)} · ${renderRichContent(event.price)}</span><h1>${renderRichContent(event.title)}</h1><p>${renderRichContent(event.summary)}</p><dl><div><dt>Date</dt><dd>${formatDate(event.date)}</dd></div><div><dt>Time</dt><dd>${escapeHtml(event.time)}</dd></div><div><dt>Location</dt><dd>${escapeHtml(event.location)}</dd></div><div><dt>District</dt><dd>${escapeHtml(event.district || "Manipur")}</dd></div><div><dt>Organiser</dt><dd>${escapeHtml(event.organiser)}</dd></div></dl><div class="share-brand">Shared from What's On Imphal & Manipur · whatson.imphal.in</div><div class="button-line"><button class="btn primary" data-save="${event.id}">${saved ? "Saved" : "Save event"}</button><button class="btn ghost" data-remind="${event.id}">Set reminder</button><button class="btn ghost" data-share="${event.id}">Share</button></div></article></section>`;
+  return `<section class="detail-layout detail-page"><img class="detail-image" src="${escapeHtml(event.image || fixedPhotoForItem(event))}" alt="${escapeHtml(plainText(event.title))}"><article class="detail-panel"><button class="link-btn detail-back" type="button" data-go-back>← Back</button><span class="pill ${event.paid ? "paid" : ""}">${renderRichContent(event.category)} · ${renderRichContent(event.price)}</span><h1>${renderRichContent(event.title)}</h1><p class="detail-summary">${renderRichContent(event.summary)}</p><dl><div><dt>Date</dt><dd>${formatDate(event.date)}</dd></div><div><dt>Time</dt><dd>${escapeHtml(event.time)}</dd></div><div><dt>Location</dt><dd>${escapeHtml(event.location)}</dd></div><div><dt>District</dt><dd>${escapeHtml(event.district || "Manipur")}</dd></div><div><dt>Organiser</dt><dd>${escapeHtml(event.organiser)}</dd></div></dl><div class="share-brand">Shared from What's On Imphal & Manipur · whatson.imphal.in</div><div class="button-line"><button class="btn primary" data-save="${event.id}">${saved ? "Saved" : "Save event"}</button><button class="btn ghost" data-remind="${event.id}">Set reminder</button><button class="btn ghost" data-share="${event.id}">Share</button></div></article></section>${renderRelatedItems(event, "event")}`;
 }
 
 function renderGuideDetail(id) {
   const article = currentArticles().find((item) => item.id === id);
   if (!article) return renderEmpty("Guide not found.", "Return to Latest and try again.");
-  return `<section class="detail-layout"><img class="detail-image" src="${escapeHtml(article.image)}" alt="${escapeHtml(plainText(article.title))}"><article class="detail-panel"><span class="pill">${renderRichContent(article.category)}</span><h1>${renderRichContent(article.title)}</h1><p>${renderRichContent(article.summary)}</p><div class="rich-output">${renderRichContent(article.body)}</div><div class="share-brand">Shared from What's On Imphal & Manipur · whatson.imphal.in</div><div class="button-line"><button class="btn primary" data-search-now="${escapeHtml(article.category)}">Find related</button><button class="btn ghost" data-share="${article.id}">Share</button></div></article></section>`;
+  return `<section class="detail-layout detail-page"><img class="detail-image" src="${escapeHtml(article.image || fixedPhotoForItem(article))}" alt="${escapeHtml(plainText(article.title))}"><article class="detail-panel"><button class="link-btn detail-back" type="button" data-go-back>← Back</button><span class="pill">${renderRichContent(article.category)}</span><h1>${renderRichContent(article.title)}</h1><p class="detail-summary">${renderRichContent(article.summary)}</p><div class="rich-output">${renderRichContent(article.body)}</div><div class="share-brand">Shared from What's On Imphal & Manipur · whatson.imphal.in</div><div class="button-line"><button class="btn primary" data-search-now="${escapeHtml(article.category)}">Find related</button><button class="btn ghost" data-share="${article.id}">Share</button></div></article></section>${renderRelatedItems(article, "guide")}`;
 }
 
 function renderPromotionDetail(id) {
   const promo = state.promotions.find((item) => item.id === id);
   if (!promo) return renderEmpty("Promotion not found.", "Return to Latest and try again.");
-  return `<section class="detail-layout"><img class="detail-image" src="${escapeHtml(promo.image)}" alt="${escapeHtml(plainText(promo.title))}"><article class="detail-panel"><span class="pill paid">${escapeHtml(promo.category)} · ${escapeHtml(packageById(promo.packageId).label)}</span><h1>${renderRichContent(promo.title)}</h1><p>${renderRichContent(promo.summary)}</p><dl><div><dt>Location</dt><dd>${escapeHtml(promo.location || "Imphal & Manipur")}</dd></div><div><dt>District</dt><dd>${escapeHtml(promo.district || "Manipur")}</dd></div><div><dt>Promotion type</dt><dd>${escapeHtml(packageById(promo.packageId).name)}</dd></div></dl><div class="rich-output"><p>This is an original What's On Imphal & Manipur promotion page. Business owners can replace this launch copy with verified menus, photos, offers, contact details and opening hours from AdminPro.</p></div><div class="share-brand">Shared from What's On Imphal & Manipur · whatson.imphal.in</div><div class="button-line"><button class="btn primary" data-route="vendor">Promote your business</button><button class="btn ghost" data-share="${promo.id}">Share</button></div></article></section>`;
+  return `<section class="detail-layout detail-page"><img class="detail-image" src="${escapeHtml(promo.image || fixedPhotoForItem(promo))}" alt="${escapeHtml(plainText(promo.title))}"><article class="detail-panel"><button class="link-btn detail-back" type="button" data-go-back>← Back</button><span class="pill paid">${escapeHtml(promo.category)} · ${escapeHtml(packageById(promo.packageId).label)}</span><h1>${renderRichContent(promo.title)}</h1><p class="detail-summary">${renderRichContent(promo.summary)}</p><dl><div><dt>Location</dt><dd>${escapeHtml(promo.location || "Imphal & Manipur")}</dd></div><div><dt>District</dt><dd>${escapeHtml(promo.district || "Manipur")}</dd></div><div><dt>Promotion type</dt><dd>${escapeHtml(packageById(promo.packageId).name)}</dd></div></dl><div class="rich-output"><p>This is an original What's On Imphal & Manipur promotion page. Business owners can replace this launch copy with verified menus, photos, offers, contact details and opening hours from AdminPro.</p></div><div class="share-brand">Shared from What's On Imphal & Manipur · whatson.imphal.in</div><div class="button-line"><button class="btn primary" data-route="vendor">Promote your business</button><button class="btn ghost" data-share="${promo.id}">Share</button></div></article></section>${renderRelatedItems(promo, "promo")}`;
 }
 
 function renderEmpty(title, copy) {
   return `<div class="empty-state"><strong>${escapeHtml(title)}</strong><p>${escapeHtml(copy)}</p></div>`;
+}
+
+function renderRelatedItems(current, kind = "guide") {
+  const pool = allPublicItems()
+    .filter((item) => item.id !== current.id)
+    .filter((item) => {
+      const hay = `${item.category || ""} ${item.group || ""} ${item.district || ""}`.toLowerCase();
+      const needles = `${current.category || ""} ${current.group || ""} ${current.district || ""}`.toLowerCase().split(/\s+/).filter(Boolean);
+      return needles.some((word) => word.length > 3 && hay.includes(word));
+    })
+    .slice(0, 4);
+  const related = pool.length ? pool : allPublicItems().filter((item) => item.id !== current.id).slice(0, 4);
+  return `<section class="section-block related-section"><div class="section-head"><h2>Related stories ›</h2><button class="link-btn" data-route="latest">Explore all</button></div><div class="story-grid mobile-scroll-row">${related.map((item) => renderStoryCard(item)).join("")}</div></section>`;
 }
 
 function renderFooter() {
@@ -3334,6 +3463,13 @@ function bindEvents() {
     event.stopPropagation();
     setAdminSelection(el.dataset.adminSelectType, el.dataset.adminSelectId || el.dataset.adminSelectType, { sourceElement: el.closest(".admin-site-preview") ? el : null });
     render();
+  }));
+
+  document.querySelectorAll("[data-go-back]").forEach((button) => button.addEventListener("click", (event) => {
+    event.preventDefault();
+    event.stopPropagation();
+    if (window.history.length > 1) window.history.back();
+    else navigate("home");
   }));
 
   document.querySelectorAll("[data-route]").forEach((button) => button.addEventListener("click", (event) => {
@@ -3363,26 +3499,25 @@ function bindEvents() {
     button.addEventListener("click", (event) => {
       event.preventDefault();
       event.stopPropagation();
-      ui.menu = ui.menu === button.dataset.menu ? "" : button.dataset.menu;
-      ui.burger = false;
-      ui.searchPanel = "";
-      render();
+      toggleMegaMenu(button.dataset.menu);
     });
     button.addEventListener("mouseenter", () => {
-      if (window.matchMedia("(hover: hover) and (pointer: fine)").matches) {
-        ui.menu = button.dataset.menu;
-        ui.burger = false;
-        ui.searchPanel = "";
-        render();
-      }
+      if (isDesktopHoverDevice()) openMegaMenu(button.dataset.menu);
+    });
+    button.addEventListener("focus", () => {
+      if (isDesktopHoverDevice()) openMegaMenu(button.dataset.menu);
     });
   });
 
-  document.querySelector(".topbar")?.addEventListener("mouseleave", () => {
-    if (window.matchMedia("(hover: hover) and (pointer: fine)").matches && ui.menu) {
-      ui.menu = "";
-      render();
-    }
+  const megaZone = document.querySelector("[data-mega-zone]");
+  megaZone?.addEventListener("mouseenter", clearMegaCloseTimer);
+  megaZone?.addEventListener("mouseleave", () => {
+    if (isDesktopHoverDevice() && ui.menu) scheduleMegaMenuClose(260);
+  });
+
+  document.querySelector(".mega-panel")?.addEventListener("mouseenter", clearMegaCloseTimer);
+  document.querySelector(".mega-panel")?.addEventListener("mouseleave", () => {
+    if (isDesktopHoverDevice() && ui.menu) scheduleMegaMenuClose(260);
   });
 
   document.querySelector("[data-burger]")?.addEventListener("click", (event) => {
@@ -3398,6 +3533,14 @@ function bindEvents() {
     event.preventDefault();
     event.stopPropagation();
     navigate(button.dataset.burgerRoute);
+  }));
+
+  document.querySelectorAll("[data-burger-mega]").forEach((button) => button.addEventListener("click", (event) => {
+    event.preventDefault();
+    event.stopPropagation();
+    ui.burger = false;
+    ui.searchPanel = "";
+    toggleMegaMenu(button.dataset.burgerMega);
   }));
 
   document.querySelectorAll("[data-external-link]").forEach((button) => button.addEventListener("click", (event) => {

@@ -1,24 +1,21 @@
-# What's On Imphal & Manipur
+# What's On Imphal & Manipur — v1.5 Mobile Photo Route Fix
 
-Last-chance reliability build.
+This build fixes the mobile reliability problems:
 
-This build keeps the approved layout and fixes the launch-readiness problems reported during local testing:
+- Replaced weak blue placeholder cards with 96 local JPEG image assets in `public/assets/final`.
+- Changed the localStorage key so old broken cached content will not override this build.
+- Detail/article/promo/event pages scroll to the top after route changes.
+- Mobile detail pages show image/title/content in a readable order.
+- Homepage promotion/event cards are aligned and mobile-scrollable.
+- Back buttons use browser history first.
+- Public layout is not redesigned.
 
-- Every public card now uses a production-safe local image from `/public/assets`.
-- The app starts with a fresh localStorage key so old placeholder card images do not override the fixed content.
-- Promotions now have real detail pages at `#promo/<id>`.
-- Event, guide and promotion cards are clickable from the image, title, card body, or Open/View buttons.
-- Share links now point to the correct event/guide/promotion route.
-- Dev/build scripts call Vite through Node to avoid Windows/Vercel executable permission problems.
-- Premium navy/blue/gold theme remains; public UI layout is not redesigned.
-
-## Local run
+Test with:
 
 ```powershell
 npm install
+npm run build
 npm run dev -- --host 127.0.0.1 --port 5177
 ```
 
-Open: http://127.0.0.1:5177
-
-If the browser previously cached an older build, clear site data once.
+Clear browser site data before testing older builds.
