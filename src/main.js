@@ -1,8 +1,11 @@
 const $app = document.querySelector('#app');
 const AS = '/assets/';
-const VERSION = 8;
-const VERSION_LABEL = 'Website Version 8 · July 2026';
-const STORAGE = 'wom-adminpro-v8-state';
+const VERSION = 9;
+const VERSION_LABEL = 'Website Version 9 · July 2026';
+const STORAGE = 'wom-adminpro-v9-state';
+const LEGACY_STORAGE = 'wom-adminpro-v8-state';
+const STATE_CHANNEL = 'wom-live-state-v9';
+const stateChannel = 'BroadcastChannel' in window ? new BroadcastChannel(STATE_CHANNEL) : null;
 const ADMIN_PASSWORD = 'admin@av123';
 
 const MENUS = {
@@ -41,10 +44,18 @@ const defaultItems = [
   item('ev-organic','Organic Market Morning','Fresh produce, local food ideas and community market notes for a morning visit.','Food','Imphal East','Kongba area','15 Jul 2026','8:30 AM','Market Team',`${AS}card-08.jpg`,'ORGANISER SUBMITTED','Organiser Submitted')
 ];
 
-let ui = { menu:null, burger:false, heroIndex:0, view:'grid', searchPanel:null, postSheet:false, studioMode:'edit', adminTab:'content', adminPreviewRoute:'home', adminPreviewHistory:['home'], aiOpen:false, aiPanel:'search', toast:'', lastRich:null, autoScroll:null, log:'WOM v8 ready. Mobile menu rail, calendar picker, compact dock, draggable AI, share tools and mobile-tight layout repairs are active.' };
+let ui = { menu:null, burger:false, burgerGroup:null, heroIndex:0, view:'grid', searchPanel:null, postSheet:false, studioMode:'edit', adminTab:'content', adminPreviewRoute:'home', adminPreviewHistory:['home'], aiOpen:false, aiPanel:'search', toast:'', lastRich:null, autoScroll:null, log:'WOM v8 ready. Mobile menu rail, calendar picker, compact dock, draggable AI, share tools and mobile-tight layout repairs are active.' };
 let route = normalizeRoute(location.hash.replace('#','') || 'home');
 let state = loadState();
 applyTheme();
+stateChannel?.addEventListener('message',(event)=>{
+  if(event.data?.type!=='state-updated' || !event.data.payload) return;
+  try{ const incoming=JSON.parse(event.data.payload); if(incoming?.version===VERSION){ state=incoming; applyTheme(); render(); } }catch{}
+});
+window.addEventListener('storage',(event)=>{
+  if(event.key!==STORAGE || !event.newValue) return;
+  try{ const incoming=JSON.parse(event.newValue); if(incoming?.version===VERSION){ state=incoming; applyTheme(); render(); } }catch{}
+});
 
 function defaultState(){
   return {
@@ -68,8 +79,15 @@ function defaultState(){
 }
 function loadState(){
   try{
-    const saved = JSON.parse(localStorage.getItem(STORAGE)||'null');
-    if(saved?.version === VERSION){ ui.view = saved.settings.defaultView || 'grid'; return saved; }
+    const current = JSON.parse(localStorage.getItem(STORAGE)||'null');
+    if(current?.version === VERSION){ ui.view = current.settings.defaultView || 'grid'; return current; }
+    const legacy = JSON.parse(localStorage.getItem(LEGACY_STORAGE)||'null');
+    if(legacy){
+      legacy.version = VERSION;
+      ui.view = legacy.settings?.defaultView || 'grid';
+      localStorage.setItem(STORAGE, JSON.stringify(legacy));
+      return legacy;
+    }
   }catch{}
   return defaultState();
 }
@@ -87,7 +105,7 @@ function go(r){ route = normalizeRoute(r); location.hash = route; }
 function e(s=''){ return String(s).replace(/[&<>'"]/g,c=>({'&':'&amp;','<':'&lt;','>':'&gt;',"'":'&#039;','"':'&quot;'}[c])); }
 function logoSrc(){ return state?.settings?.logo || `${AS}wom-logo.svg`; }
 function menuLabel(k){ return state?.settings?.menuLabels?.[k] || MENUS[k]?.label || k; }
-function setQuiet(){ localStorage.setItem(STORAGE, JSON.stringify(state)); }
+function setQuiet(){ state.version=VERSION; const payload=JSON.stringify(state); localStorage.setItem(STORAGE,payload); stateChannel?.postMessage({type:'state-updated',payload,at:Date.now()}); }
 function plain(s=''){ const d=document.createElement('div'); d.innerHTML=String(s||''); return (d.textContent||'').replace(/\s+/g,' ').trim(); }
 function rich(s=''){ return sanitize(String(s||'')); }
 function sanitize(html){
@@ -192,8 +210,8 @@ function renderMega(k){
 }
 function renderBurger(){
   const routes = [['Home','home'],['Explore','explore'],['Calendar','calendar'],['Profile','profile'],['Saved','saved'],['Post your event','post'],['Promote','promote'],['Support','support']];
-  const groups = Object.entries(MENUS).map(([k,m])=>`<div class="burger-group"><button class="burger-group-title" data-menu="${k}">${e(menuLabel(k))} <span>⌄</span></button><div class="burger-subgrid">${m.cols.flat().map(x=>`<button data-filter="${e(x)}">${e(x)}</button>`).join('')}</div></div>`).join('');
-  return `<aside class="burger-panel" data-menu-surface><div class="burger-routes">${routes.map(([x,r])=>`<button data-route="${r}">${x}</button>`).join('')}</div>${groups}<small class="muted">All buttons stay inside WOM. Submenu selections close automatically.</small></aside>`;
+  const groups = Object.entries(MENUS).map(([k,m])=>`<div class="burger-group ${ui.burgerGroup===k?'open':''}"><button class="burger-group-title" data-burger-group="${k}" aria-expanded="${ui.burgerGroup===k}">${e(menuLabel(k))} <span>${ui.burgerGroup===k?'⌃':'⌄'}</span></button><div class="burger-subgrid" ${ui.burgerGroup===k?'':'hidden'}>${m.cols.flat().map(x=>`<button data-burger-filter="${e(x)}">${e(x)}</button>`).join('')}</div></div>`).join('');
+  return `<aside class="burger-panel" data-menu-surface><div class="burger-panel-head"><strong>Menu</strong><button data-burger-close aria-label="Close menu">×</button></div><div class="burger-routes">${routes.map(([x,r])=>`<button data-route="${r}">${x}</button>`).join('')}</div>${groups}<small class="muted">Burger submenus are independent from the header menu and close after a selection.</small></aside>`;
 }
 function renderTicker(preview=false){
   const t=state.settings.ticker;
@@ -315,7 +333,7 @@ function renderAIPanel(){
 
 function renderAdmin(){
   const c=selected();
-  return `<section class="admin-shell ${ui.studioMode==='preview'?'show-preview':''}"><div class="studio-top"><div class="studio-brand"><span class="studio-logo">WOM</span><span>AdminPro · Content Studio<br><small class="muted">Hidden URL: #-admin · ${VERSION_LABEL}</small></span></div><div class="studio-actions"><button class="btn ghost" data-admin-logout>Lock admin</button><button class="btn primary" data-action="publish">Publish now</button></div></div><div class="studio-hint">ⓘ Preview is internal: menus, subpages and back buttons open inside AdminPro only. Click editable sections to edit; Publish saves to the public localhost view.</div><div class="mobile-preview-tabs"><button class="${ui.studioMode==='preview'?'active':''}" data-studio-mode="preview">Website Preview</button><button class="${ui.studioMode!=='preview'?'active':''}" data-studio-mode="edit">Editor</button></div><div class="studio-layout"><aside class="preview-pane ${state.settings.gridOverlay?'grid-on':''}"><div class="preview-mini-bar"><button data-admin-preview-home>Home</button><button data-admin-preview-back>Back</button><span>Editing preview: ${e(ui.adminPreviewRoute)}</span></div><div class="preview-frame">${renderPublic(ui.adminPreviewRoute,true)}</div></aside><main class="editor-pane">${renderAdminPane(c)}</main></div>${ui.toast?`<div class="toast">${e(ui.toast)}</div>`:''}</section>`;
+  return `<section class="admin-shell ${ui.studioMode==='preview'?'show-preview':''}"><div class="studio-top"><div class="studio-brand"><span class="studio-logo">WOM</span><span>AdminPro · Content Studio<br><small class="muted">Hidden URL: #-admin · ${VERSION_LABEL}</small></span></div><div class="studio-actions"><button class="btn ghost" data-admin-logout>Lock admin</button><button class="btn primary" data-action="publish">Publish now</button></div></div><div class="studio-hint">ⓘ Preview is internal: menus, subpages and back buttons open inside AdminPro only. Click editable sections to edit; Publish updates the public view immediately in the same browser/origin. Cross-device publishing requires a connected database backend.</div><div class="mobile-preview-tabs"><button class="${ui.studioMode==='preview'?'active':''}" data-studio-mode="preview">Website Preview</button><button class="${ui.studioMode!=='preview'?'active':''}" data-studio-mode="edit">Editor</button></div><div class="studio-layout"><aside class="preview-pane ${state.settings.gridOverlay?'grid-on':''}"><div class="preview-mini-bar"><button data-admin-preview-home>Home</button><button data-admin-preview-back>Back</button><span>Editing preview: ${e(ui.adminPreviewRoute)}</span></div><div class="preview-frame">${renderPublic(ui.adminPreviewRoute,true)}</div></aside><main class="editor-pane">${renderAdminPane(c)}</main></div>${ui.toast?`<div class="toast">${e(ui.toast)}</div>`:''}</section>`;
 }
 function renderAdminPane(c){
   return `${renderAdminTabs()}${ui.adminTab==='content'?renderContentStudio(c):ui.adminTab==='ticker'?renderTickerStudio():ui.adminTab==='style'?renderStyleStudio():ui.adminTab==='nav'?renderNavigationStudio():ui.adminTab==='media'?renderMediaStudio(c):ui.adminTab==='builder'?renderBuilderStudio():ui.adminTab==='queue'?renderQueueStudio():renderHistoryStudio(c)}`;
@@ -387,9 +405,12 @@ function setupFloatingDock(){
 function wakeDock(){ document.body.classList.add('dock-awake'); document.body.classList.remove('dock-idle'); }
 function bind(){
   document.querySelectorAll('[data-admin-login]').forEach(f=>f.onsubmit=(ev)=>{ev.preventDefault(); const pass=new FormData(f).get('password'); if(pass===ADMIN_PASSWORD){sessionStorage.setItem('wom-admin-auth','yes'); flash('AdminPro unlocked'); render();} else {flash('Wrong admin password');}});
-  document.querySelectorAll('[data-route]').forEach(el=>el.onclick=(ev)=>{ev.preventDefault(); ui.menu=null; ui.burger=false; ui.searchPanel=null; ui.postSheet=false; go(el.dataset.route);});
+  document.querySelectorAll('[data-route]').forEach(el=>el.onclick=(ev)=>{ev.preventDefault(); ui.menu=null; ui.burger=false; ui.burgerGroup=null; ui.searchPanel=null; ui.postSheet=false; go(el.dataset.route);});
   document.querySelectorAll('[data-back]').forEach(el=>el.onclick=()=>history.length>1?history.back():go('home'));
-  document.querySelectorAll('[data-burger]').forEach(el=>el.onclick=()=>{ui.burger=!ui.burger; ui.menu=null; render();});
+  document.querySelectorAll('[data-burger]').forEach(el=>el.onclick=()=>{ui.burger=!ui.burger; ui.burgerGroup=null; ui.menu=null; render();});
+  document.querySelectorAll('[data-burger-close]').forEach(el=>el.onclick=()=>{ui.burger=false;ui.burgerGroup=null;render();});
+  document.querySelectorAll('[data-burger-group]').forEach(el=>el.onclick=(ev)=>{ev.preventDefault();ev.stopPropagation();ui.burgerGroup=ui.burgerGroup===el.dataset.burgerGroup?null:el.dataset.burgerGroup;ui.menu=null;render();});
+  document.querySelectorAll('[data-burger-filter]').forEach(el=>el.onclick=()=>{ui.burger=false;ui.burgerGroup=null;ui.menu=null;go('category/'+encodeURIComponent(el.dataset.burgerFilter));});
   document.querySelectorAll('[data-menu]').forEach(el=>{
     el.onmouseenter=()=>{ if(matchMedia('(hover:hover)').matches){ ui.menu=el.dataset.menu; ui.burger=false; render(); } };
     el.onclick=(ev)=>{ ev.preventDefault(); if(matchMedia('(hover:hover)').matches){ go(el.dataset.route); } else { ui.menu=ui.menu===el.dataset.menu?null:el.dataset.menu; render(); } };
@@ -482,14 +503,14 @@ function adminPreviewGo(r){
   const next=normalizeRoute(r||'home');
   if(ui.adminPreviewRoute!==next) ui.adminPreviewHistory.push(ui.adminPreviewRoute||'home');
   ui.adminPreviewRoute=next;
-  ui.menu=null; ui.burger=false;
+  ui.menu=null; ui.burger=false; ui.burgerGroup=null;
   if(next.startsWith('event/')){ const id=next.split('/')[1]; if(state.items.some(x=>x.id===id)) state.selectedId=id; ui.adminTab='content'; }
   setQuiet();
   render();
 }
 function adminPreviewBack(){
   ui.adminPreviewRoute = ui.adminPreviewHistory.pop() || 'home';
-  ui.menu=null; ui.burger=false;
+  ui.menu=null; ui.burger=false; ui.burgerGroup=null;
   render();
 }
 function handleAdminPreviewClick(ev){
@@ -505,7 +526,12 @@ function handleAdminPreviewClick(ev){
   if(searchOption){ const v=searchOption.dataset.searchOption; ui.searchPanel=null; adminPreviewGo((searchOption.dataset.searchType==='where' && v!=='Anywhere')?'district/'+encodeURIComponent(v):searchOption.dataset.searchType==='when'?'calendar':'category/'+encodeURIComponent(v)); return; }
   if(target.closest('[data-post-sheet-open]')){ ui.postSheet=true; render(); return; }
   if(target.closest('[data-post-sheet-close]')){ ui.postSheet=false; render(); return; }
-  if(target.closest('[data-burger]')){ ui.burger=!ui.burger; ui.menu=null; render(); return; }
+  if(target.closest('[data-burger]')){ ui.burger=!ui.burger; ui.burgerGroup=null; ui.menu=null; render(); return; }
+  if(target.closest('[data-burger-close]')){ ui.burger=false; ui.burgerGroup=null; render(); return; }
+  const burgerGroup=target.closest('[data-burger-group]');
+  if(burgerGroup){ ui.burgerGroup=ui.burgerGroup===burgerGroup.dataset.burgerGroup?null:burgerGroup.dataset.burgerGroup; ui.menu=null; render(); return; }
+  const burgerFilter=target.closest('[data-burger-filter]');
+  if(burgerFilter){ ui.burger=false; ui.burgerGroup=null; adminPreviewGo('category/'+encodeURIComponent(burgerFilter.dataset.burgerFilter)); return; }
   const filter=target.closest('[data-filter]');
   if(filter){ adminPreviewGo('category/'+encodeURIComponent(filter.dataset.filter)); return; }
   const view=target.closest('[data-view]');
@@ -569,7 +595,7 @@ function bindAIAdmin(){
 function handleAdminAction(action,id){
   const c=selected();
   if(action==='analyse-url'){ c.sourcePlatform=platformFrom(c.sourceUrl); if(!c.title || c.title.includes('New WOM')) c.title=`${c.sourcePlatform} discovery draft`; c.lastChecked=new Date().toLocaleDateString('en-GB'); saveState('Source analysed with manual fallback fields'); return render(); }
-  if(action==='publish'){ c.status='published'; c.lastChecked=c.lastChecked||new Date().toLocaleDateString('en-GB'); saveState('Published to public localhost view'); return render(); }
+  if(action==='publish'){ c.status='published'; c.lastChecked=c.lastChecked||new Date().toLocaleDateString('en-GB'); saveState('Published to public view on this browser'); return render(); }
   if(action==='draft'){ c.status='draft'; saveState('Saved as draft'); return render(); }
   if(action==='schedule'){ c.status='scheduled'; saveState('Scheduled'); return render(); }
   if(action==='archive'){ c.status='archived'; saveState('Archived'); return render(); }

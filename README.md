@@ -1,9 +1,9 @@
-# What’s On Manipur · WOM Version 8
+# What’s On Manipur · WOM Version 9
 
 Mobile-first stability build.
 
 ## Version
-Website Version 8 · July 2026
+Website Version 9 · July 2026
 
 ## Main fixes
 - Mobile menu rail is visible between the header and ticker.
@@ -20,3 +20,6 @@ Website Version 8 · July 2026
 ## Admin
 AdminPro: /#-admin
 Password: admin@av123
+
+
+Version 9 fixes burger/header menu state isolation, forces the mobile navigation dock to stay visible above iPhone/Android safe areas, and synchronises AdminPro edits across same-origin tabs. Persistent cross-device publishing still requires a backend database.
