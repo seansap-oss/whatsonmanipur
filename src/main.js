@@ -1,8 +1,8 @@
 const $app = document.querySelector('#app');
 const AS = '/assets/';
-const VERSION = 6;
-const VERSION_LABEL = 'Website Version 6 · July 2026';
-const STORAGE = 'wom-adminpro-v5-state';
+const VERSION = 7;
+const VERSION_LABEL = 'Website Version 7 · July 2026';
+const STORAGE = 'wom-adminpro-v7-state';
 const ADMIN_PASSWORD = 'admin@av123';
 
 const MENUS = {
@@ -41,7 +41,7 @@ const defaultItems = [
   item('ev-organic','Organic Market Morning','Fresh produce, local food ideas and community market notes for a morning visit.','Food','Imphal East','Kongba area','15 Jul 2026','8:30 AM','Market Team',`${AS}card-08.jpg`,'ORGANISER SUBMITTED','Organiser Submitted')
 ];
 
-let ui = { menu:null, burger:false, heroIndex:0, view:'grid', studioMode:'edit', adminTab:'content', adminPreviewRoute:'home', adminPreviewHistory:['home'], aiOpen:false, aiPanel:'search', toast:'', lastRich:null, autoScroll:null, log:'WOM v6 ready. Mobile floating dock, improved hero/search layout, and AdminPro editing remain active.' };
+let ui = { menu:null, burger:false, heroIndex:0, view:'grid', searchPanel:null, postSheet:false, studioMode:'edit', adminTab:'content', adminPreviewRoute:'home', adminPreviewHistory:['home'], aiOpen:false, aiPanel:'search', toast:'', lastRich:null, autoScroll:null, log:'WOM v7 ready. Mobile app shell, search panels, action sheet, fixed dock and routing repairs are active.' };
 let route = normalizeRoute(location.hash.replace('#','') || 'home');
 let state = loadState();
 applyTheme();
@@ -171,7 +171,7 @@ function render(){
 }
 function renderPublic(r='home', preview=false){
   const inner = r.startsWith('event/') ? renderDetail(r.split('/')[1], preview) : renderPage(r, preview);
-  return `${renderHeader(preview)}${renderTicker(preview)}<main>${inner}</main>${renderFooter(preview)}${renderBottomNav(r)}${renderFloatingAI()}${ui.toast?`<div class="toast">${e(ui.toast)}</div>`:''}`;
+  return `${renderHeader(preview)}${renderTicker(preview)}<main>${inner}</main>${renderFooter(preview)}${renderBottomNav(r)}${renderSearchPanel()}${renderPostActionSheet()}${renderFloatingAI()}${ui.toast?`<div class="toast">${e(ui.toast)}</div>`:''}`;
 }
 function renderHeader(preview=false){
   const nav = Object.entries(MENUS).map(([k,m])=>`<button class="menu-trigger ${ui.menu===k?'active':''}" data-menu="${k}" data-route="${m.route}">${e(menuLabel(k))}⌄</button>`).join('');
@@ -209,7 +209,22 @@ function renderHome(preview=false){
   const cards=state.items.filter(x=>x.status==='published');
   return `<section class="page hero"><div class="hero-grid"><div class="hero-copy" ${preview?'data-admin-select="settings"':''}><span class="pill hot">✨ What’s Happening</span><h1>${e(state.settings.siteTitle)}</h1><p>${e(state.settings.tagline)}</p>${renderSearch()}</div>${renderHero(preview)}</div>${renderViewSwitch()}<div class="section-head"><h2>Happening this week</h2><button class="link-btn" data-route="explore">View all events</button></div><section class="cards ${ui.view}">${cards.map(c=>renderCard(c,preview)).join('')}</section><section class="quick-panels"><article><h3>For organisers and vendors</h3><p>Create events, café offers, resort promos, venue listings and shop pages.</p><button class="btn primary" data-route="post">Create listing</button></article><article><h3>WOM Discovery posts</h3><p>Use original writing and authorised images. Link back to source and verify details.</p><button class="btn ghost" data-route="explore">Explore discoveries</button></article></section></section>`;
 }
-function renderSearch(){ return `<div class="search-box"><label>What <strong>Anything</strong></label><label>When <strong>Anytime</strong></label><label>Where <strong>Anywhere</strong></label><input data-search-input placeholder="Search events, districts, cafes…"><button data-search-btn>🔎</button></div>`; }
+function renderSearch(){ return `<div class="search-box search-pro"><button type="button" class="search-segment" data-search-panel="what"><span>What</span><strong>Anything</strong></button><button type="button" class="search-segment" data-search-panel="when"><span>When</span><strong>Anytime</strong></button><button type="button" class="search-segment" data-search-panel="where"><span>Where</span><strong>Anywhere</strong></button><label class="keyword-segment"><span>Keywords</span><input data-search-input placeholder="Search events, districts, cafes…"></label><button class="search-submit" data-search-btn>🔎</button></div>`; }
+function renderSearchPanel(){
+  if(!ui.searchPanel) return '';
+  const what=['Anything','Things to do','Eat & Drink','Shopping','Hotels','Guides','Free','Family and kids','Events','Restaurant','Market','Festival','Music and Concerts','Art','Exhibition','Sport','Accessibility'];
+  const when=['Anytime','Today','Tomorrow','This weekend','Specific dates','July 2026','August 2026'];
+  const where=['Anywhere',...districts,'Paona Bazaar','Thangal Bazaar','Ema Keithel','Kangla','Loktak Lake'];
+  const list = ui.searchPanel==='what'?what:ui.searchPanel==='when'?when:where;
+  const title = ui.searchPanel==='what'?'What are you looking for?':ui.searchPanel==='when'?'When are you visiting?':'Where do you want to look?';
+  return `<div class="search-overlay" data-close-panel><section class="search-modal ${ui.searchPanel}" onclick="event.stopPropagation()"><div class="modal-head"><h2>${title}</h2><button data-close-panel>×</button></div><div class="option-grid ${ui.searchPanel}">${list.map((x,i)=>`<button class="${i===0?'selected':''}" data-search-option="${e(x)}" data-search-type="${ui.searchPanel}"><span>${ui.searchPanel==='what'?(i===0?'🔎':i===1?'🎟️':i===2?'🍽️':i===3?'🛍️':i===4?'🛏️':i===5?'⭐':'•'):ui.searchPanel==='when'?(i===0?'🗓️':i===1?'☀️':i===2?'➡️':i===3?'🎉':'📅'):(i===0?'📍':'□')}</span>${e(x)}</button>`).join('')}</div></section></div>`;
+}
+function renderPostActionSheet(){
+  if(!ui.postSheet) return '';
+  const actions=[['post','🎟️','Post an event','Create event listing'],['promote','📣','Post your ad','Promotion or paid highlight'],['post','🛍️','Submit offer','Shop, cafe or local deal'],['post','🔗','Paste social link','Facebook, Instagram, YouTube'],['promote','🏪','Claim business','Update business details'],['support','☎️','Contact support','Ask WOM for help']];
+  return `<div class="action-sheet-backdrop" data-post-sheet-close><section class="post-action-sheet" onclick="event.stopPropagation()"><div class="sheet-handle"></div><div class="modal-head"><h2>Create or promote</h2><button data-post-sheet-close>×</button></div><div class="sheet-actions">${actions.map(([r,ico,title,desc])=>`<button data-route="${r}"><span>${ico}</span><strong>${title}</strong><small>${desc}</small></button>`).join('')}</div></section></div>`;
+}
+
 function renderHero(preview=false){
   const s=state.hero[ui.heroIndex%state.hero.length];
   const media=s.mediaType==='embed'&&s.embedUrl?`<iframe src="${e(embedUrl(s.embedUrl))}" allowfullscreen></iframe>`:s.mediaType==='video'&&s.videoData?`<video src="${e(s.videoData)}" controls playsinline></video>`:`<img src="${e(s.image)}" alt="${e(s.title)}">`;
@@ -239,7 +254,7 @@ function renderFooter(preview=false){
 }
 function renderBottomNav(r){
   const items=[['home','⌂','Home'],['explore','◉','Explore'],['post','＋','Post your ad'],['calendar','▣','Calendar'],['profile','♙','Profile']];
-  return `<nav class="bottom-nav floating-dock" aria-label="Mobile navigation">${items.map(([rr,ico,label],i)=>`<button class="${r===rr?'active':''} ${i===2?'dock-post':''}" data-route="${rr}"><span class="ico">${ico}</span><span class="dock-label">${label}</span></button>`).join('')}</nav>`;
+  return `<nav class="bottom-nav floating-dock" aria-label="Mobile navigation">${items.map(([rr,ico,label],i)=>`<button class="${r===rr?'active':''} ${i===2?'dock-post':''}" ${i===2?'data-post-sheet-open':'data-route="'+rr+'"'}><span class="ico">${ico}</span><span class="dock-label">${label}</span></button>`).join('')}</nav>`;
 }
 
 function renderFloatingAI(){
@@ -340,7 +355,7 @@ function setupFloatingDock(){
 
 function bind(){
   document.querySelectorAll('[data-admin-login]').forEach(f=>f.onsubmit=(ev)=>{ev.preventDefault(); const pass=new FormData(f).get('password'); if(pass===ADMIN_PASSWORD){sessionStorage.setItem('wom-admin-auth','yes'); flash('AdminPro unlocked'); render();} else {flash('Wrong admin password');}});
-  document.querySelectorAll('[data-route]').forEach(el=>el.onclick=(ev)=>{ev.preventDefault(); ui.menu=null; ui.burger=false; go(el.dataset.route);});
+  document.querySelectorAll('[data-route]').forEach(el=>el.onclick=(ev)=>{ev.preventDefault(); ui.menu=null; ui.burger=false; ui.searchPanel=null; ui.postSheet=false; go(el.dataset.route);});
   document.querySelectorAll('[data-back]').forEach(el=>el.onclick=()=>history.length>1?history.back():go('home'));
   document.querySelectorAll('[data-burger]').forEach(el=>el.onclick=()=>{ui.burger=!ui.burger; ui.menu=null; render();});
   document.querySelectorAll('[data-menu]').forEach(el=>{
@@ -364,6 +379,11 @@ function bindButtons(){
   document.querySelectorAll('[data-action="claim"]').forEach(b=>b.onclick=()=>{state.claims.push({id:b.dataset.id, at:new Date().toLocaleString()}); saveState('Claim request started'); go('support');});
   document.querySelectorAll('[data-action="report"]').forEach(b=>b.onclick=()=>{state.reports.push({id:b.dataset.id, at:new Date().toLocaleString()}); saveState('Report saved for admin review'); go('support');});
   document.querySelectorAll('[data-search-btn]').forEach(b=>b.onclick=()=>{const q=document.querySelector('[data-search-input]')?.value||''; go('category/'+encodeURIComponent(q||'Explore'));});
+  document.querySelectorAll('[data-search-panel]').forEach(b=>b.onclick=(ev)=>{ev.preventDefault(); ui.searchPanel=b.dataset.searchPanel; ui.postSheet=false; render();});
+  document.querySelectorAll('[data-close-panel]').forEach(b=>b.onclick=()=>{ui.searchPanel=null; render();});
+  document.querySelectorAll('[data-search-option]').forEach(b=>b.onclick=()=>{const v=b.dataset.searchOption; ui.searchPanel=null; go((b.dataset.searchType==='where' && v!=='Anywhere')?'district/'+encodeURIComponent(v):b.dataset.searchType==='when'?'calendar':'category/'+encodeURIComponent(v));});
+  document.querySelectorAll('[data-post-sheet-open]').forEach(b=>b.onclick=(ev)=>{ev.preventDefault(); ui.postSheet=true; ui.searchPanel=null; wakeDock(); render();});
+  document.querySelectorAll('[data-post-sheet-close]').forEach(b=>b.onclick=()=>{ui.postSheet=false; render();});
 }
 function bindForms(){
   document.querySelectorAll('[data-simple-form]').forEach(f=>f.onsubmit=(ev)=>{ev.preventDefault(); const type=f.dataset.simpleForm; const data=Object.fromEntries(new FormData(f).entries()); state[type==='contact'?'contacts':type==='guestbook'?'guestbook':'submissions'].push({...data,at:new Date().toLocaleString()}); saveState(type==='contact'?'Support message saved':type==='guestbook'?'Guestbook signed':'Submission saved for review'); f.reset(); render();});
@@ -430,6 +450,14 @@ function handleAdminPreviewClick(ev){
   const target=ev.target;
   const menu=target.closest('[data-menu]');
   if(menu){ ui.menu = ui.menu===menu.dataset.menu ? null : menu.dataset.menu; ui.burger=false; render(); return; }
+  const searchPanel=target.closest('[data-search-panel]');
+  if(searchPanel){ ui.searchPanel=searchPanel.dataset.searchPanel; render(); return; }
+  const closePanel=target.closest('[data-close-panel]');
+  if(closePanel){ ui.searchPanel=null; render(); return; }
+  const searchOption=target.closest('[data-search-option]');
+  if(searchOption){ const v=searchOption.dataset.searchOption; ui.searchPanel=null; adminPreviewGo((searchOption.dataset.searchType==='where' && v!=='Anywhere')?'district/'+encodeURIComponent(v):searchOption.dataset.searchType==='when'?'calendar':'category/'+encodeURIComponent(v)); return; }
+  if(target.closest('[data-post-sheet-open]')){ ui.postSheet=true; render(); return; }
+  if(target.closest('[data-post-sheet-close]')){ ui.postSheet=false; render(); return; }
   if(target.closest('[data-burger]')){ ui.burger=!ui.burger; ui.menu=null; render(); return; }
   const filter=target.closest('[data-filter]');
   if(filter){ adminPreviewGo('category/'+encodeURIComponent(filter.dataset.filter)); return; }

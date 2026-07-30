@@ -1,29 +1,21 @@
-# What’s On Manipur — WOM AdminPro Version 6
+# What's On Manipur — WOM AdminPro Version 7
 
-Hidden admin URL: `#-admin`
+Version 7 focuses on mobile shell stability and routing repairs.
 
+## Fixed in v7
+- Mobile header no longer overlaps on small Android/iPhone screens.
+- Desktop header/menu wording remains unchanged.
+- Promote/Post buttons are moved into the floating middle action button on mobile.
+- Floating dock stays above Android/iPhone safe area.
+- Dock fades to 30% when idle and returns to 100% on scroll/touch.
+- Middle dock button opens a selectable action sheet: post event, post ad, submit offer, paste social link, claim business, support.
+- What / When / Where search panels now open like the reference UI.
+- Burger/menu routes and footer/dock routes stay internal.
+- Horizontal page drift is blocked with mobile containment.
+- Mobile zoom is disabled for PWA/APK feel.
+- AdminPro preview uses the same v7 shell and stays inside AdminPro.
+- Footer version label: Website Version 7 · July 2026.
+
+## Admin
+URL: `#-admin`  
 Password: `admin@av123`
-
-## Version 6 changes
-
-- AdminPro preview now opens pages, menus, submenus and routes inside the admin preview pane only.
-- Clicking inside AdminPro never opens the external/live public website.
-- Admin preview has Home and Back controls.
-- Public publishing now saves to the same localStorage state used by the normal localhost public view.
-- Navigation & Pages editor added.
-- Menu names are editable from AdminPro.
-- Website title, short brand, tagline and logo are editable.
-- Logo upload added.
-- Free Transform / Mobile Alignment editor added for spacing, line height, letter spacing, card gap, section spacing, text width, x/y movement and scale.
-- Mobile grid overlay option added for AdminPro preview alignment checks.
-- Footer label shows Website Version 6 · July 2026.
-
-## Run
-
-```powershell
-npm install
-npm run dev
-```
-
-Public: `http://127.0.0.1:5174/#home`
-AdminPro: `http://127.0.0.1:5174/#-admin`
