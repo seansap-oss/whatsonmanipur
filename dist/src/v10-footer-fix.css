@@ -1,0 +1,197 @@
+/* WOM Version 10 — isolated mobile footer/navigation repair.
+   No public layout, menu, hero, cards, AdminPro, or desktop UI redesign. */
+
+@media (max-width: 859px) {
+  :root {
+    --wom-v10-dock-height: 54px;
+    --wom-v10-dock-bottom: max(8px, env(safe-area-inset-bottom, 0px));
+  }
+
+  html,
+  body,
+  #app {
+    width: 100%;
+    max-width: 100%;
+    overflow-x: hidden !important;
+  }
+
+  body {
+    padding-bottom: calc(
+      var(--wom-v10-dock-height) + 30px + env(safe-area-inset-bottom, 0px)
+    ) !important;
+  }
+
+  main {
+    position: relative;
+    z-index: 1;
+    padding-bottom: 16px;
+  }
+
+  .bottom-nav.floating-dock {
+    position: fixed !important;
+    left: 50% !important;
+    right: auto !important;
+    bottom: var(--wom-v10-dock-bottom) !important;
+    transform: translateX(-50%) !important;
+
+    display: grid !important;
+    grid-template-columns: repeat(5, minmax(0, 1fr)) !important;
+    align-items: center !important;
+
+    width: min(92vw, 372px) !important;
+    height: var(--wom-v10-dock-height) !important;
+    min-height: var(--wom-v10-dock-height) !important;
+    padding: 3px 8px !important;
+    gap: 2px !important;
+
+    border: 1px solid rgba(220, 228, 240, 0.98) !important;
+    border-radius: 999px !important;
+    background: rgba(255, 255, 255, 0.97) !important;
+    backdrop-filter: blur(18px) !important;
+    -webkit-backdrop-filter: blur(18px) !important;
+    box-shadow: 0 10px 28px rgba(10, 39, 86, 0.18) !important;
+
+    opacity: 1 !important;
+    visibility: visible !important;
+    pointer-events: auto !important;
+    z-index: 1000 !important;
+  }
+
+  .bottom-nav.floating-dock button {
+    min-width: 0 !important;
+    height: 46px !important;
+    padding: 2px 1px !important;
+    margin: 0 !important;
+
+    display: flex !important;
+    flex-direction: column !important;
+    align-items: center !important;
+    justify-content: center !important;
+    gap: 2px !important;
+
+    border: 0 !important;
+    border-radius: 14px !important;
+    background: transparent !important;
+    color: #14223b !important;
+    line-height: 1 !important;
+    overflow: visible !important;
+  }
+
+  .bottom-nav.floating-dock button .ico {
+    display: block !important;
+    font-size: 1.34rem !important;
+    line-height: 1 !important;
+    transform: none !important;
+  }
+
+  .bottom-nav.floating-dock .dock-label {
+    display: block !important;
+    max-width: 100% !important;
+    margin: 0 !important;
+    padding: 0 !important;
+    position: static !important;
+    transform: none !important;
+    white-space: nowrap !important;
+    overflow: hidden !important;
+    text-overflow: ellipsis !important;
+
+    background: transparent !important;
+    color: inherit !important;
+    font-size: 0.60rem !important;
+    font-weight: 850 !important;
+    line-height: 1 !important;
+    text-shadow: none !important;
+  }
+
+  .bottom-nav.floating-dock button.active:not(.dock-post) {
+    background: rgba(40, 110, 234, 0.10) !important;
+    color: var(--accent) !important;
+  }
+
+  .bottom-nav.floating-dock .dock-post {
+    position: relative !important;
+    transform: translateY(-5px) !important;
+    background: transparent !important;
+    box-shadow: none !important;
+    color: #0a2756 !important;
+  }
+
+  .bottom-nav.floating-dock .dock-post .ico {
+    width: 38px !important;
+    height: 38px !important;
+    display: grid !important;
+    place-items: center !important;
+    border-radius: 50% !important;
+
+    background: linear-gradient(135deg, #c79c3f, #d9b34e) !important;
+    color: #fff !important;
+    font-size: 1.50rem !important;
+    box-shadow: 0 8px 18px rgba(157, 111, 28, 0.28) !important;
+  }
+
+  .bottom-nav.floating-dock .dock-post .dock-label {
+    margin-top: -1px !important;
+    font-size: 0.58rem !important;
+  }
+
+  .site-footer {
+    padding-bottom: calc(
+      var(--wom-v10-dock-height) + 36px + env(safe-area-inset-bottom, 0px)
+    ) !important;
+  }
+
+  .ai-widget {
+    right: 10px !important;
+    bottom: calc(
+      var(--wom-v10-dock-height) + 18px + env(safe-area-inset-bottom, 0px)
+    ) !important;
+    z-index: 990 !important;
+  }
+
+  .ai-fab {
+    width: 50px !important;
+    height: 50px !important;
+    min-width: 50px !important;
+    min-height: 50px !important;
+    padding: 0 !important;
+    font-size: 1.04rem !important;
+  }
+
+  .ai-fab small {
+    font-size: 0.43rem !important;
+    margin-top: -4px !important;
+  }
+
+  /* Admin preview keeps a contained footer, never a fixed viewport overlay. */
+  .preview-frame .bottom-nav.floating-dock {
+    position: sticky !important;
+    left: auto !important;
+    right: auto !important;
+    bottom: 0 !important;
+    transform: none !important;
+    width: 100% !important;
+    max-width: 100% !important;
+    border-radius: 16px 16px 0 0 !important;
+    z-index: 50 !important;
+  }
+}
+
+@media (max-width: 390px) {
+  .bottom-nav.floating-dock {
+    width: min(94vw, 350px) !important;
+  }
+
+  .bottom-nav.floating-dock button .ico {
+    font-size: 1.28rem !important;
+  }
+
+  .bottom-nav.floating-dock .dock-label {
+    font-size: 0.56rem !important;
+  }
+}
+
+@media (min-width: 860px) {
+  .bottom-nav.floating-dock {
+    display: none !important;
+  }
+}
