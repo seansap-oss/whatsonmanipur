@@ -1,8 +1,8 @@
 {
   "name": "whats-on-manipur-wom-adminpro",
-  "version": "5.0.0",
+  "version": "6.0.0",
   "private": true,
-  "description": "What’s On Manipur WOM v5 mobile-first public website and password-protected hidden AdminPro Content Studio",
+  "description": "What’s On Manipur WOM v6 mobile-first public website and password-protected hidden AdminPro Content Studio",
   "scripts": {
     "dev": "node server.js",
     "build": "node build.js",

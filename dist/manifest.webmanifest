@@ -1,0 +1,12 @@
+{
+  "name": "What’s On Manipur",
+  "short_name": "WOM",
+  "description": "Local discovery for events, offers and guides across Manipur.",
+  "start_url": "/#home",
+  "display": "standalone",
+  "background_color": "#fff7ea",
+  "theme_color": "#0a2756",
+  "icons": [
+    { "src": "/assets/wom-logo.svg", "sizes": "512x512", "type": "image/svg+xml", "purpose": "any maskable" }
+  ]
+}
