@@ -26,7 +26,7 @@ const server = http.createServer((req,res)=>{
   });
 });
 server.listen(port,'127.0.0.1',()=>{
-  console.log(`WOM v5 local server running:`);
+  console.log(`WOM v8 local server running:`);
   console.log(`Local: http://localhost:${port}/#home`);
   console.log(`AdminPro: http://localhost:${port}/#-admin`);
 });

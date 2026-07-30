@@ -1,8 +1,8 @@
 const $app = document.querySelector('#app');
 const AS = '/assets/';
-const VERSION = 7;
-const VERSION_LABEL = 'Website Version 7 · July 2026';
-const STORAGE = 'wom-adminpro-v7-state';
+const VERSION = 8;
+const VERSION_LABEL = 'Website Version 8 · July 2026';
+const STORAGE = 'wom-adminpro-v8-state';
 const ADMIN_PASSWORD = 'admin@av123';
 
 const MENUS = {
@@ -41,7 +41,7 @@ const defaultItems = [
   item('ev-organic','Organic Market Morning','Fresh produce, local food ideas and community market notes for a morning visit.','Food','Imphal East','Kongba area','15 Jul 2026','8:30 AM','Market Team',`${AS}card-08.jpg`,'ORGANISER SUBMITTED','Organiser Submitted')
 ];
 
-let ui = { menu:null, burger:false, heroIndex:0, view:'grid', searchPanel:null, postSheet:false, studioMode:'edit', adminTab:'content', adminPreviewRoute:'home', adminPreviewHistory:['home'], aiOpen:false, aiPanel:'search', toast:'', lastRich:null, autoScroll:null, log:'WOM v7 ready. Mobile app shell, search panels, action sheet, fixed dock and routing repairs are active.' };
+let ui = { menu:null, burger:false, heroIndex:0, view:'grid', searchPanel:null, postSheet:false, studioMode:'edit', adminTab:'content', adminPreviewRoute:'home', adminPreviewHistory:['home'], aiOpen:false, aiPanel:'search', toast:'', lastRich:null, autoScroll:null, log:'WOM v8 ready. Mobile menu rail, calendar picker, compact dock, draggable AI, share tools and mobile-tight layout repairs are active.' };
 let route = normalizeRoute(location.hash.replace('#','') || 'home');
 let state = loadState();
 applyTheme();
@@ -171,19 +171,29 @@ function render(){
 }
 function renderPublic(r='home', preview=false){
   const inner = r.startsWith('event/') ? renderDetail(r.split('/')[1], preview) : renderPage(r, preview);
-  return `${renderHeader(preview)}${renderTicker(preview)}<main>${inner}</main>${renderFooter(preview)}${renderBottomNav(r)}${renderSearchPanel()}${renderPostActionSheet()}${renderFloatingAI()}${ui.toast?`<div class="toast">${e(ui.toast)}</div>`:''}`;
+  return `${renderHeader(preview)}${renderMobileMenu(preview)}${renderTicker(preview)}<main>${inner}</main>${renderFooter(preview)}${renderBottomNav(r)}${renderSearchPanel()}${renderPostActionSheet()}${renderFloatingAI()}${ui.toast?`<div class="toast">${e(ui.toast)}</div>`:''}`;
 }
 function renderHeader(preview=false){
   const nav = Object.entries(MENUS).map(([k,m])=>`<button class="menu-trigger ${ui.menu===k?'active':''}" data-menu="${k}" data-route="${m.route}">${e(menuLabel(k))}⌄</button>`).join('');
   return `<header class="topbar" style="background:${e(state.settings.headerBg)};color:${e(state.settings.headerText)}" ${preview?'data-admin-select="settings"':''}><div class="topbar-inner"><button class="burger" data-burger aria-label="Open menu">☰</button><a class="brand" data-route="home"><img class="brand-logo" src="${e(logoSrc())}" alt="WOM"><span class="brand-copy"><span class="brand-title">${e(state.settings.siteTitle)}</span><span class="brand-short">${e(state.settings.short)} · local discovery</span></span></a><nav class="desktop-nav">${nav}</nav><div class="top-actions"><button class="btn ghost small" data-route="promote">Promote</button><button class="btn primary small" data-route="post">Post your event</button></div></div>${ui.menu?renderMega(ui.menu):''}${ui.burger?renderBurger():''}</header>`;
+}
+function renderMobileMenu(preview=false){
+  const nav = Object.entries(MENUS).map(([k,m])=>`<button class="mobile-menu-trigger ${ui.menu===k?'active':''}" data-menu="${k}" data-route="${m.route}">${e(menuLabel(k))}<span>⌄</span></button>`).join('');
+  return `<section class="mobile-menu-rail" ${preview?'data-admin-select="settings"':''}>${nav}</section>${ui.menu?renderMobileMega(ui.menu):''}`;
+}
+function renderMobileMega(k){
+  const m=MENUS[k];
+  const flat=m.cols.flat();
+  return `<section class="mobile-mega-sheet" data-menu-surface><div class="mobile-mega-head"><strong>${e(menuLabel(k))}</strong><button data-menu-close>×</button></div><div class="mobile-mega-list">${flat.map((x,i)=>`<button data-filter="${e(x)}"><span>${['🏛️','🎟️','🎉','🧭','🎭','⛰️','👨‍👩‍👧','🎵','☕','🛍️','🏨','🚌'][i%12]}</span>${e(x)}</button>`).join('')}</div><div class="mobile-mega-tools"><button data-route="post">Post your event</button><button data-route="promote">Promote</button><button data-route="calendar">Calendar</button></div></section>`;
 }
 function renderMega(k){
   const m=MENUS[k];
   return `<section class="mega-panel" data-menu-surface>${m.cols.map((col,i)=>`<div class="mega-column"><h3>${i===0?e(menuLabel(k)):i===1?'Popular':'Guides'}</h3>${col.map(x=>`<button data-filter="${e(x)}">⌾ ${e(x)}</button>`).join('')}</div>`).join('')}<div class="mega-column"><h3>WOM tools</h3><button data-route="post">Submit event</button><button data-route="promote">Promote business</button><button data-route="profile">Profile</button><button data-ai-open>Ask WOM AI</button></div></section>`;
 }
 function renderBurger(){
-  const routes = [['Home','home'],['Explore','explore'],['Calendar','calendar'],['Profile','profile'],['Post your event','post'],['Promote','promote'],['Support','support']];
-  return `<aside class="burger-panel" data-menu-surface>${routes.map(([x,r])=>`<button data-route="${r}">${x}</button>`).join('')}${Object.entries(MENUS).map(([k,m])=>`<button data-filter="${e(menuLabel(k))}">${e(menuLabel(k))}</button>`).join('')}<small class="muted">Use Profile, Support, Promote, or Post your event from this menu.</small></aside>`;
+  const routes = [['Home','home'],['Explore','explore'],['Calendar','calendar'],['Profile','profile'],['Saved','saved'],['Post your event','post'],['Promote','promote'],['Support','support']];
+  const groups = Object.entries(MENUS).map(([k,m])=>`<div class="burger-group"><button class="burger-group-title" data-menu="${k}">${e(menuLabel(k))} <span>⌄</span></button><div class="burger-subgrid">${m.cols.flat().map(x=>`<button data-filter="${e(x)}">${e(x)}</button>`).join('')}</div></div>`).join('');
+  return `<aside class="burger-panel" data-menu-surface><div class="burger-routes">${routes.map(([x,r])=>`<button data-route="${r}">${x}</button>`).join('')}</div>${groups}<small class="muted">All buttons stay inside WOM. Submenu selections close automatically.</small></aside>`;
 }
 function renderTicker(preview=false){
   const t=state.settings.ticker;
@@ -194,7 +204,7 @@ function renderTicker(preview=false){
 function renderPage(r, preview=false){
   if(r==='home') return renderHome(preview);
   if(r==='explore' || r==='latest') return renderListing('Explore WOM', 'Search markets, cafés, shopping, tourist ideas and local offers.', state.items, preview);
-  if(r==='calendar') return renderListing('Calendar', 'Upcoming public events and promotions by date.', [...state.items].sort((a,b)=>String(a.date).localeCompare(String(b.date))), preview, true);
+  if(r==='calendar') return renderCalendarPage(preview);
   if(r==='saved') return renderListing('Saved', 'Events and posts saved on this device.', state.items.filter(x=>state.saved.includes(x.id)), preview);
   if(r==='profile') return renderProfile();
   if(r==='post') return renderPostForm();
@@ -209,15 +219,47 @@ function renderHome(preview=false){
   const cards=state.items.filter(x=>x.status==='published');
   return `<section class="page hero"><div class="hero-grid"><div class="hero-copy" ${preview?'data-admin-select="settings"':''}><span class="pill hot">✨ What’s Happening</span><h1>${e(state.settings.siteTitle)}</h1><p>${e(state.settings.tagline)}</p>${renderSearch()}</div>${renderHero(preview)}</div>${renderViewSwitch()}<div class="section-head"><h2>Happening this week</h2><button class="link-btn" data-route="explore">View all events</button></div><section class="cards ${ui.view}">${cards.map(c=>renderCard(c,preview)).join('')}</section><section class="quick-panels"><article><h3>For organisers and vendors</h3><p>Create events, café offers, resort promos, venue listings and shop pages.</p><button class="btn primary" data-route="post">Create listing</button></article><article><h3>WOM Discovery posts</h3><p>Use original writing and authorised images. Link back to source and verify details.</p><button class="btn ghost" data-route="explore">Explore discoveries</button></article></section></section>`;
 }
-function renderSearch(){ return `<div class="search-box search-pro"><button type="button" class="search-segment" data-search-panel="what"><span>What</span><strong>Anything</strong></button><button type="button" class="search-segment" data-search-panel="when"><span>When</span><strong>Anytime</strong></button><button type="button" class="search-segment" data-search-panel="where"><span>Where</span><strong>Anywhere</strong></button><label class="keyword-segment"><span>Keywords</span><input data-search-input placeholder="Search events, districts, cafes…"></label><button class="search-submit" data-search-btn>🔎</button></div>`; }
+function renderSearch(){ return `<div class="search-box search-pro v8-search"><button type="button" class="search-segment" data-search-panel="what"><span>What</span><strong>Anything</strong></button><button type="button" class="search-segment" data-search-panel="when"><span>When</span><strong>Anytime</strong></button><button type="button" class="search-segment" data-search-panel="where"><span>Where</span><strong>Anywhere in Manipur</strong></button><label class="keyword-segment"><span>Keywords</span><input data-search-input placeholder="Search events, districts, cafes…"></label><button class="search-submit" data-search-btn><span>🔎</span><b>Search</b></button></div>`; }
 function renderSearchPanel(){
   if(!ui.searchPanel) return '';
   const what=['Anything','Things to do','Eat & Drink','Shopping','Hotels','Guides','Free','Family and kids','Events','Restaurant','Market','Festival','Music and Concerts','Art','Exhibition','Sport','Accessibility'];
-  const when=['Anytime','Today','Tomorrow','This weekend','Specific dates','July 2026','August 2026'];
   const where=['Anywhere',...districts,'Paona Bazaar','Thangal Bazaar','Ema Keithel','Kangla','Loktak Lake'];
-  const list = ui.searchPanel==='what'?what:ui.searchPanel==='when'?when:where;
   const title = ui.searchPanel==='what'?'What are you looking for?':ui.searchPanel==='when'?'When are you visiting?':'Where do you want to look?';
-  return `<div class="search-overlay" data-close-panel><section class="search-modal ${ui.searchPanel}" onclick="event.stopPropagation()"><div class="modal-head"><h2>${title}</h2><button data-close-panel>×</button></div><div class="option-grid ${ui.searchPanel}">${list.map((x,i)=>`<button class="${i===0?'selected':''}" data-search-option="${e(x)}" data-search-type="${ui.searchPanel}"><span>${ui.searchPanel==='what'?(i===0?'🔎':i===1?'🎟️':i===2?'🍽️':i===3?'🛍️':i===4?'🛏️':i===5?'⭐':'•'):ui.searchPanel==='when'?(i===0?'🗓️':i===1?'☀️':i===2?'➡️':i===3?'🎉':'📅'):(i===0?'📍':'□')}</span>${e(x)}</button>`).join('')}</div></section></div>`;
+  if(ui.searchPanel==='when') return `<div class="search-overlay" data-close-panel><section class="search-modal when calendar-picker" onclick="event.stopPropagation()"><div class="modal-head"><h2>${title}</h2><button data-close-panel>×</button></div>${renderCalendarPanel()}</section></div>`;
+  const list = ui.searchPanel==='what'?what:where;
+  return `<div class="search-overlay" data-close-panel><section class="search-modal ${ui.searchPanel}" onclick="event.stopPropagation()"><div class="modal-head"><h2>${title}</h2><button data-close-panel>×</button></div><div class="option-grid ${ui.searchPanel}">${list.map((x,i)=>`<button class="${i===0?'selected':''}" data-search-option="${e(x)}" data-search-type="${ui.searchPanel}"><span>${ui.searchPanel==='what'?(i===0?'🔎':i===1?'🎟️':i===2?'🍽️':i===3?'🛍️':i===4?'🛏️':i===5?'⭐':'•'):(i===0?'📍':'□')}</span>${e(x)}</button>`).join('')}</div></section></div>`;
+}
+function renderCalendarPanel(){
+  return `<div class="calendar-tools"><button data-search-option="Today" data-search-type="when">Today</button><button data-search-option="Tomorrow" data-search-type="when">Tomorrow</button><button class="active" data-search-option="This weekend" data-search-type="when">This weekend</button><button data-search-option="Next week" data-search-type="when">Next week</button></div><div class="calendar-mode-tabs"><button class="active" data-calendar-view="month">▦ Month</button><button data-calendar-view="week">▤ Week</button><button data-calendar-view="day">▥ Day</button><button data-calendar-view="weekend">☀ Weekend</button><button data-calendar-view="list">☰ List</button></div><div class="two-months">${renderMiniCalendar(0)}${renderMiniCalendar(1)}</div><div class="holiday-strip"><strong>Public holidays & local calendar</strong><div>${calendarHolidays().map(h=>`<button data-search-option="${e(h.name)}" data-search-type="when"><span>${e(h.date)}</span>${e(h.name)} <small>${e(h.type)}</small></button>`).join('')}</div></div><div class="calendar-actions"><button data-search-option="Anytime" data-search-type="when">Clear</button><button class="primary-lite" data-search-option="Specific dates" data-search-type="when">Done</button></div>`;
+}
+function renderMiniCalendar(offset=0){
+  const today=new Date();
+  const first=new Date(today.getFullYear(),today.getMonth()+offset,1);
+  const month=first.toLocaleString('en-GB',{month:'long',year:'numeric'});
+  const startDay=first.getDay();
+  const days=new Date(first.getFullYear(),first.getMonth()+1,0).getDate();
+  const cells=[];
+  for(let i=0;i<startDay;i++) cells.push('<span></span>');
+  for(let d=1;d<=days;d++){
+    const isToday=offset===0 && d===today.getDate();
+    const isWeekend=[0,6].includes(new Date(first.getFullYear(),first.getMonth(),d).getDay());
+    cells.push(`<button class="${isToday?'today':''} ${isWeekend?'weekend':''}" data-search-option="${d} ${month}" data-search-type="when">${d}</button>`);
+  }
+  return `<article class="mini-cal"><h3>${e(month)}</h3><div class="week-head">${['Su','Mo','Tu','We','Th','Fr','Sa'].map(x=>`<b>${x}</b>`).join('')}</div><div class="days-grid">${cells.join('')}</div></article>`;
+}
+function calendarHolidays(){
+  return [
+    {date:'26 Jan',name:'Republic Day',type:'India'},
+    {date:'14 Apr',name:'Cheiraoba / Ambedkar Jayanti',type:'Manipur / India'},
+    {date:'15 Aug',name:'Independence Day',type:'India'},
+    {date:'2 Oct',name:'Gandhi Jayanti',type:'India'},
+    {date:'21–30 Nov',name:'Sangai Festival period',type:'Manipur event'},
+    {date:'Dec',name:'Ningol Chakouba / Diwali / Christmas',type:'Local + India'}
+  ];
+}
+function renderCalendarPage(preview=false){
+  const items=[...state.items].sort((a,b)=>String(a.date).localeCompare(String(b.date)));
+  return `<section class="page calendar-page"><div class="section-head tall"><div><span class="pill purple">Calendar</span><h1>Calendar</h1><p class="muted">Month, list, day, week and weekend views for WOM events, offers, Indian public holidays and Manipur-specific local dates. Holiday dates are starter entries and can be edited in AdminPro before public launch.</p></div>${renderViewSwitch()}</div>${renderCalendarPanel()}<h2>Event list</h2><section class="cards list">${items.map(c=>renderCard(c,preview)).join('')}</section></section>`;
 }
 function renderPostActionSheet(){
   if(!ui.postSheet) return '';
@@ -233,12 +275,12 @@ function renderHero(preview=false){
 function renderViewSwitch(){ return `<div class="view-switch"><span>View</span>${[['grid','▦ Grid'],['compact','▥ Compact'],['list','☰ List']].map(([v,l])=>`<button class="${ui.view===v?'active':''}" data-view="${v}">${l}</button>`).join('')}</div>`; }
 function renderCard(c,preview=false){
   const media = c.mediaType==='embed'&&c.embedUrl?`<iframe src="${e(embedUrl(c.embedUrl))}" loading="lazy"></iframe>`:c.mediaType==='video'&&c.videoData?`<video src="${e(c.videoData)}" muted playsinline></video>`:`<img src="${e(c.image)}" alt="${e(plain(c.title))}" loading="lazy">`;
-  return `<article class="card ${state.selectedId===c.id?'selected':''}" ${preview?`data-admin-select="item" data-id="${e(c.id)}"`:''}><a data-route="event/${e(c.id)}"><div class="card-media">${media}<div class="date-badge">${e((c.date||'Today').split(' ')[0])}<br><small>${e((c.date||'').split(' ')[1]||'')}</small></div></div><div class="card-body"><span class="pill ${c.verification==='Sponsored'?'hot':c.verification==='Verified'?'green':''}">${e(c.verification)}</span><h3>${rich(c.title)}</h3><p>${rich(c.summary)}</p><div class="card-meta"><span>📍 ${e(c.area)}</span><span>🏷 ${e(c.category)} · ${e(c.district)}</span></div></a><div class="card-actions"><button data-action="save" data-id="${e(c.id)}">${state.saved.includes(c.id)?'Saved':'Save'}</button><button data-action="remind" data-id="${e(c.id)}">Reminder</button><button data-action="share" data-id="${e(c.id)}">Share</button><button data-route="event/${e(c.id)}">Open</button></div></div></article>`;
+  return `<article class="card ${state.selectedId===c.id?'selected':''}" ${preview?`data-admin-select="item" data-id="${e(c.id)}"`:''}><a data-route="event/${e(c.id)}"><div class="card-media">${media}<div class="date-badge">${e((c.date||'Today').split(' ')[0])}<br><small>${e((c.date||'').split(' ')[1]||'')}</small></div></div><div class="card-body"><span class="pill ${c.verification==='Sponsored'?'hot':c.verification==='Verified'?'green':''}">${e(c.verification)}</span><h3>${rich(c.title)}</h3><p>${rich(c.summary)}</p><div class="card-meta"><span>📍 ${e(c.area)}</span><span>🏷 ${e(c.category)} · ${e(c.district)}</span></div></a><div class="social-row"><button data-social="facebook" data-id="${e(c.id)}">f</button><button data-social="instagram" data-id="${e(c.id)}">◎</button><button data-social="youtube" data-id="${e(c.id)}">▶</button><button data-social="twitter" data-id="${e(c.id)}">𝕏</button><small>👁 ${Number(c.views||0)}</small></div><div class="card-actions"><button data-action="save" data-id="${e(c.id)}">${state.saved.includes(c.id)?'Saved':'Save'}</button><button data-action="remind" data-id="${e(c.id)}">Reminder</button><button data-action="share" data-id="${e(c.id)}">Share</button><button data-route="event/${e(c.id)}">Open</button></div></div></article>`;
 }
 function renderDetail(id,preview=false){
   const c=state.items.find(x=>x.id===id)||state.items[0];
   const media=c.mediaType==='embed'&&c.embedUrl?`<iframe src="${e(embedUrl(c.embedUrl))}" allowfullscreen></iframe>`:c.mediaType==='video'&&c.videoData?`<video src="${e(c.videoData)}" controls playsinline></video>`:`<img src="${e(c.image)}" alt="${e(plain(c.title))}">`;
-  return `<section class="page discovery-post"><button class="link-btn" data-back>← Back</button><div class="discovery-layout"><div class="post-hero-img" ${preview?`data-admin-select="item" data-id="${e(c.id)}"`:''}>${media}</div><article class="post-panel"><span class="pill hot">${e(c.badge||'WOM DISCOVERY')}</span><h1>${rich(c.title)}</h1><p class="muted"><strong>${rich(c.subheadline||'Original WOM local discovery post')}</strong></p><div>${rich(c.body)}</div><div class="detail-grid">${detail('Category',c.category)}${detail('District',c.district)}${detail('Area',c.area)}${detail('Dates',`${c.date} · ${c.time}`)}${detail('Offer status',c.offerStatus)}${detail('Verification',c.verification)}${detail('Last checked',c.lastChecked)}${detail('Expiry',c.expiry||'Not set')}</div><div class="source-box">Source: ${c.sourceUrl?`<a href="${e(c.sourceUrl)}" target="_blank" rel="noreferrer">View original source</a>`:'Source link not added yet'}</div><div class="card-actions"><button data-open-source="${e(c.sourceUrl||'')}">View original source</button><button data-action="claim" data-id="${e(c.id)}">Claim this business</button><button data-action="report" data-id="${e(c.id)}">Report incorrect information</button></div><p class="disclaimer">${e(state.settings.siteTitle)} is a local discovery platform. We do not directly sell or stock the featured products. Please verify current details with the business or organiser.</p></article></div><div class="section-head"><h2>Related stories</h2><button class="link-btn" data-route="explore">Explore all</button></div><section class="cards grid">${state.items.filter(x=>x.id!==c.id&&x.status==='published').slice(0,4).map(x=>renderCard(x,false)).join('')}</section></section>`;
+  return `<section class="page discovery-post"><button class="link-btn" data-back>← Back</button><div class="discovery-layout"><div class="post-hero-img" ${preview?`data-admin-select="item" data-id="${e(c.id)}"`:''}>${media}</div><article class="post-panel"><span class="pill hot">${e(c.badge||'WOM DISCOVERY')}</span><h1>${rich(c.title)}</h1><p class="muted"><strong>${rich(c.subheadline||'Original WOM local discovery post')}</strong></p><div>${rich(c.body)}</div><div class="detail-grid">${detail('Category',c.category)}${detail('District',c.district)}${detail('Area',c.area)}${detail('Dates',`${c.date} · ${c.time}`)}${detail('Offer status',c.offerStatus)}${detail('Verification',c.verification)}${detail('Last checked',c.lastChecked)}${detail('Expiry',c.expiry||'Not set')}</div><div class="source-box">Source: ${c.sourceUrl?`<a href="${e(c.sourceUrl)}" target="_blank" rel="noreferrer">View original source</a>`:'Source link not added yet'}</div><div class="social-row detail-share"><span>Share:</span><button data-social="facebook" data-id="${e(c.id)}">Facebook</button><button data-social="instagram" data-id="${e(c.id)}">Instagram</button><button data-social="youtube" data-id="${e(c.id)}">YouTube</button><button data-social="twitter" data-id="${e(c.id)}">Twitter / X</button><small>Views: ${Number(c.views||0)} · reading time tracked locally</small></div><div class="card-actions"><button data-open-source="${e(c.sourceUrl||'')}">View original source</button><button data-action="claim" data-id="${e(c.id)}">Claim this business</button><button data-action="report" data-id="${e(c.id)}">Report incorrect information</button></div><p class="disclaimer">${e(state.settings.siteTitle)} is a local discovery platform. We do not directly sell or stock the featured products. Please verify current details with the business or organiser.</p></article></div><div class="section-head"><h2>Related stories</h2><button class="link-btn" data-route="explore">Explore all</button></div><section class="cards grid">${state.items.filter(x=>x.id!==c.id&&x.status==='published').slice(0,4).map(x=>renderCard(x,false)).join('')}</section></section>`;
 }
 function detail(k,v){ return `<div><span>${e(k)}</span><strong>${rich(v||'—')}</strong></div>`; }
 function renderListing(title,subtitle,items,preview=false, calendar=false){ return `<section class="page"><div class="section-head tall"><div><h1>${e(title)}</h1><p class="muted">${e(subtitle)}</p></div>${renderViewSwitch()}</div>${items.length?`<section class="cards ${calendar?'list':ui.view}">${items.map(c=>renderCard(c,preview)).join('')}</section>`:`<div class="empty-state"><h2>No saved items yet</h2><p>Use Save on any WOM card and it will appear here.</p></div>`}</section>`; }
@@ -253,12 +295,14 @@ function renderFooter(preview=false){
   return `<footer class="site-footer" style="background:${e(state.settings.footerBg)};color:${e(state.settings.footerText)}" ${preview?'data-admin-select="footer"':''}><div class="footer-inner"><div class="brand"><img class="brand-logo" src="${e(logoSrc())}" alt="WOM"><span class="brand-copy"><strong>${e(state.settings.siteTitle)}</strong><small class="muted">Your guide to what is happening across Manipur.</small><small class="version-label">${VERSION_LABEL}</small></span></div><nav class="footer-links"><button data-route="post">Post your event</button><button data-route="promote">Promote</button><button data-route="support">Support</button><button data-route="explore">Explore</button><button data-route="profile">Profile</button></nav></div>${builder}</footer>`;
 }
 function renderBottomNav(r){
-  const items=[['home','⌂','Home'],['explore','◉','Explore'],['post','＋','Post your ad'],['calendar','▣','Calendar'],['profile','♙','Profile']];
+  const items=[['home','⌂','Home'],['calendar','▣','Calendar'],['post','＋','Post your ad'],['saved','♡','Saved'],['profile','♙','Profile']];
   return `<nav class="bottom-nav floating-dock" aria-label="Mobile navigation">${items.map(([rr,ico,label],i)=>`<button class="${r===rr?'active':''} ${i===2?'dock-post':''}" ${i===2?'data-post-sheet-open':'data-route="'+rr+'"'}><span class="ico">${ico}</span><span class="dock-label">${label}</span></button>`).join('')}</nav>`;
 }
 
 function renderFloatingAI(){
-  return `<aside class="ai-widget ${ui.aiOpen?'open':''}"><button class="ai-fab" data-ai-toggle>✨ WOM AI</button>${ui.aiOpen?`<div class="ai-panel"><div class="ai-head"><strong>WOM AI Guide</strong><button data-ai-toggle>×</button></div><div class="ai-tabs">${[['search','Search'],['support','Support'],['post','Add post'],['reader','Kindle tools']].map(([p,l])=>`<button class="${ui.aiPanel===p?'active':''}" data-ai-panel="${p}">${l}</button>`).join('')}</div>${renderAIPanel()}</div>`:''}</aside>`;
+  const pos=state.settings.aiPos||{};
+  const style=(Number.isFinite(pos.x)&&Number.isFinite(pos.y))?`style="left:${pos.x}px;top:${pos.y}px;right:auto;bottom:auto"`:'';
+  return `<aside class="ai-widget ${ui.aiOpen?'open':''}" data-ai-widget ${style}><button class="ai-fab" data-ai-toggle data-ai-drag-handle><span>✦</span>AI<small>Drag me</small></button>${ui.aiOpen?`<div class="ai-panel"><div class="ai-head"><strong>WOM AI Guide</strong><button data-ai-toggle>×</button></div><div class="ai-tabs">${[['search','Search'],['support','Support'],['post','Add post'],['reader','Kindle tools']].map(([p,l])=>`<button class="${ui.aiPanel===p?'active':''}" data-ai-panel="${p}">${l}</button>`).join('')}</div>${renderAIPanel()}</div>`:''}</aside>`;
 }
 function renderAIPanel(){
   if(ui.aiPanel==='support') return `<p class="muted">Contact: What would you like to hear? What do you need help with?</p><form data-simple-form="contact" class="mini-form"><input name="name" placeholder="Name"><input name="contact" placeholder="Phone / email"><textarea name="message" placeholder="Message"></textarea><button class="btn primary">Send support request</button></form><button class="btn ghost" data-route="support">Open full support page</button>`;
@@ -337,22 +381,10 @@ function renderHistoryStudio(c){
 }
 
 function setupFloatingDock(){
-  const nav=document.querySelector('.bottom-nav');
-  if(!nav) return;
-  clearTimeout(window.__womDockTimer);
-  const wake=()=>{
-    document.body.classList.add('dock-awake');
-    document.body.classList.remove('dock-idle');
-    clearTimeout(window.__womDockTimer);
-    window.__womDockTimer=setTimeout(()=>{
-      document.body.classList.remove('dock-awake');
-      document.body.classList.add('dock-idle');
-    },2200);
-  };
-  wake();
-  ['scroll','touchstart','mousemove','keydown','click'].forEach(evt=>window.addEventListener(evt,wake,{passive:true}));
+  document.body.classList.remove('dock-idle');
+  document.body.classList.add('dock-awake');
 }
-
+function wakeDock(){ document.body.classList.add('dock-awake'); document.body.classList.remove('dock-idle'); }
 function bind(){
   document.querySelectorAll('[data-admin-login]').forEach(f=>f.onsubmit=(ev)=>{ev.preventDefault(); const pass=new FormData(f).get('password'); if(pass===ADMIN_PASSWORD){sessionStorage.setItem('wom-admin-auth','yes'); flash('AdminPro unlocked'); render();} else {flash('Wrong admin password');}});
   document.querySelectorAll('[data-route]').forEach(el=>el.onclick=(ev)=>{ev.preventDefault(); ui.menu=null; ui.burger=false; ui.searchPanel=null; ui.postSheet=false; go(el.dataset.route);});
@@ -363,7 +395,8 @@ function bind(){
     el.onclick=(ev)=>{ ev.preventDefault(); if(matchMedia('(hover:hover)').matches){ go(el.dataset.route); } else { ui.menu=ui.menu===el.dataset.menu?null:el.dataset.menu; render(); } };
   });
   document.querySelectorAll('[data-menu-surface]').forEach(el=>el.onmouseleave=()=>{setTimeout(()=>{ui.menu=null; render();},220)});
-  document.querySelectorAll('[data-filter]').forEach(el=>el.onclick=()=>go('category/'+encodeURIComponent(el.dataset.filter)));
+  document.querySelectorAll('[data-filter]').forEach(el=>el.onclick=()=>{ui.menu=null; ui.burger=false; go('category/'+encodeURIComponent(el.dataset.filter));});
+  document.querySelectorAll('[data-menu-close]').forEach(el=>el.onclick=()=>{ui.menu=null; render();});
   document.querySelectorAll('[data-view]').forEach(el=>el.onclick=()=>{ui.view=el.dataset.view; state.settings.defaultView=ui.view; saveState('View changed'); render();});
   document.querySelectorAll('[data-hero-next]').forEach(el=>el.onclick=()=>{ui.heroIndex=(ui.heroIndex+1)%state.hero.length;render();});
   document.querySelectorAll('[data-hero-prev]').forEach(el=>el.onclick=()=>{ui.heroIndex=(ui.heroIndex-1+state.hero.length)%state.hero.length;render();});
@@ -382,6 +415,8 @@ function bindButtons(){
   document.querySelectorAll('[data-search-panel]').forEach(b=>b.onclick=(ev)=>{ev.preventDefault(); ui.searchPanel=b.dataset.searchPanel; ui.postSheet=false; render();});
   document.querySelectorAll('[data-close-panel]').forEach(b=>b.onclick=()=>{ui.searchPanel=null; render();});
   document.querySelectorAll('[data-search-option]').forEach(b=>b.onclick=()=>{const v=b.dataset.searchOption; ui.searchPanel=null; go((b.dataset.searchType==='where' && v!=='Anywhere')?'district/'+encodeURIComponent(v):b.dataset.searchType==='when'?'calendar':'category/'+encodeURIComponent(v));});
+  document.querySelectorAll('[data-calendar-view]').forEach(b=>b.onclick=()=>{flash(b.textContent.trim()+' view selected');});
+  document.querySelectorAll('[data-social]').forEach(b=>b.onclick=async()=>{const it=state.items.find(x=>x.id===b.dataset.id); const url=location.origin+location.pathname+`#event/${it.id}`; const txt=`${plain(it.title)} - ${url}`; if(b.dataset.social==='facebook') window.open(`https://www.facebook.com/sharer/sharer.php?u=${encodeURIComponent(url)}`,'_blank'); else if(b.dataset.social==='twitter') window.open(`https://twitter.com/intent/tweet?text=${encodeURIComponent(txt)}`,'_blank'); else {await navigator.clipboard?.writeText(txt); flash(`${b.dataset.social} share text copied`);} });
   document.querySelectorAll('[data-post-sheet-open]').forEach(b=>b.onclick=(ev)=>{ev.preventDefault(); ui.postSheet=true; ui.searchPanel=null; wakeDock(); render();});
   document.querySelectorAll('[data-post-sheet-close]').forEach(b=>b.onclick=()=>{ui.postSheet=false; render();});
 }
@@ -396,7 +431,18 @@ function bindAI(){
   document.querySelectorAll('[data-setting]').forEach(el=>el.oninput=()=>{const k=el.dataset.setting; state.settings[k]=el.type==='range'?Number(el.value):el.value; saveState('Reader/style setting changed'); render();});
   document.querySelectorAll('[data-autoscroll]').forEach(b=>b.onclick=()=>{clearInterval(ui.autoScroll); ui.autoScroll=setInterval(()=>scrollBy({top:1,behavior:'smooth'}),60); flash('Auto-scroll started'); render();});
   document.querySelectorAll('[data-autoscroll-stop]').forEach(b=>b.onclick=()=>{clearInterval(ui.autoScroll); flash('Auto-scroll stopped'); render();});
+  bindAIDrag();
 }
+function bindAIDrag(){
+  const widget=document.querySelector('[data-ai-widget]');
+  const handle=document.querySelector('[data-ai-drag-handle]');
+  if(!widget||!handle) return;
+  let moved=false, sx=0, sy=0, ox=0, oy=0;
+  handle.onpointerdown=(ev)=>{moved=false; sx=ev.clientX; sy=ev.clientY; const r=widget.getBoundingClientRect(); ox=r.left; oy=r.top; handle.setPointerCapture?.(ev.pointerId);};
+  handle.onpointermove=(ev)=>{if(!handle.hasPointerCapture?.(ev.pointerId)) return; const dx=ev.clientX-sx, dy=ev.clientY-sy; if(Math.abs(dx)+Math.abs(dy)>6) moved=true; const x=Math.max(8, Math.min(innerWidth-86, ox+dx)); const y=Math.max(78, Math.min(innerHeight-190, oy+dy)); widget.style.left=x+'px'; widget.style.top=y+'px'; widget.style.right='auto'; widget.style.bottom='auto'; state.settings.aiPos={x,y}; setQuiet();};
+  handle.onpointerup=(ev)=>{try{handle.releasePointerCapture(ev.pointerId)}catch{}; if(moved){ev.preventDefault(); ev.stopPropagation(); flash('AI button position saved'); render();}};
+}
+
 function bindAdmin(){
   const previewPane = document.querySelector('.preview-pane');
   if(previewPane){
@@ -450,6 +496,7 @@ function handleAdminPreviewClick(ev){
   const target=ev.target;
   const menu=target.closest('[data-menu]');
   if(menu){ ui.menu = ui.menu===menu.dataset.menu ? null : menu.dataset.menu; ui.burger=false; render(); return; }
+  if(target.closest('[data-menu-close]')){ ui.menu=null; render(); return; }
   const searchPanel=target.closest('[data-search-panel]');
   if(searchPanel){ ui.searchPanel=searchPanel.dataset.searchPanel; render(); return; }
   const closePanel=target.closest('[data-close-panel]');

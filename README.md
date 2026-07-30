@@ -1,21 +1,22 @@
-# What's On Manipur — WOM AdminPro Version 7
+# What’s On Manipur · WOM Version 8
 
-Version 7 focuses on mobile shell stability and routing repairs.
+Mobile-first stability build.
 
-## Fixed in v7
-- Mobile header no longer overlaps on small Android/iPhone screens.
-- Desktop header/menu wording remains unchanged.
-- Promote/Post buttons are moved into the floating middle action button on mobile.
-- Floating dock stays above Android/iPhone safe area.
-- Dock fades to 30% when idle and returns to 100% on scroll/touch.
-- Middle dock button opens a selectable action sheet: post event, post ad, submit offer, paste social link, claim business, support.
-- What / When / Where search panels now open like the reference UI.
-- Burger/menu routes and footer/dock routes stay internal.
-- Horizontal page drift is blocked with mobile containment.
-- Mobile zoom is disabled for PWA/APK feel.
-- AdminPro preview uses the same v7 shell and stays inside AdminPro.
-- Footer version label: Website Version 7 · July 2026.
+## Version
+Website Version 8 · July 2026
+
+## Main fixes
+- Mobile menu rail is visible between the header and ticker.
+- Menu dropdowns open/retract inside the page and work with burger menu logic.
+- Search box is rebuilt for mobile: What, When, Where, keyword and aligned Search button.
+- When picker includes quick buttons, two-month calendar, month/week/day/weekend/list mode buttons, and starter India/Manipur holiday entries.
+- Bottom floating nav is thinner and fixed above Android/iPhone navigation.
+- Website scrolls underneath the floating nav.
+- AI button is smaller, says AI only, and can be dragged to a saved position.
+- Post your ad opens a multi-action sheet.
+- Social share buttons added for Facebook, Instagram copy, YouTube copy and Twitter/X.
+- Mobile horizontal drift is locked down for APK/PWA feel.
 
 ## Admin
-URL: `#-admin`  
-Password: `admin@av123`
+AdminPro: /#-admin
+Password: admin@av123
