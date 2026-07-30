@@ -1,21 +1,29 @@
-# What's On Imphal & Manipur — v1.5 Mobile Photo Route Fix
+# What’s On Manipur — WOM AdminPro Version 5
 
-This build fixes the mobile reliability problems:
+Hidden admin URL: `#-admin`
 
-- Replaced weak blue placeholder cards with 96 local JPEG image assets in `public/assets/final`.
-- Changed the localStorage key so old broken cached content will not override this build.
-- Detail/article/promo/event pages scroll to the top after route changes.
-- Mobile detail pages show image/title/content in a readable order.
-- Homepage promotion/event cards are aligned and mobile-scrollable.
-- Back buttons use browser history first.
-- Public layout is not redesigned.
+Password: `admin@av123`
 
-Test with:
+## Version 5 changes
+
+- AdminPro preview now opens pages, menus, submenus and routes inside the admin preview pane only.
+- Clicking inside AdminPro never opens the external/live public website.
+- Admin preview has Home and Back controls.
+- Public publishing now saves to the same localStorage state used by the normal localhost public view.
+- Navigation & Pages editor added.
+- Menu names are editable from AdminPro.
+- Website title, short brand, tagline and logo are editable.
+- Logo upload added.
+- Free Transform / Mobile Alignment editor added for spacing, line height, letter spacing, card gap, section spacing, text width, x/y movement and scale.
+- Mobile grid overlay option added for AdminPro preview alignment checks.
+- Footer label shows Website Version 5 · July 2026.
+
+## Run
 
 ```powershell
 npm install
-npm run build
-npm run dev -- --host 127.0.0.1 --port 5177
+npm run dev
 ```
 
-Clear browser site data before testing older builds.
+Public: `http://127.0.0.1:5174/#home`
+AdminPro: `http://127.0.0.1:5174/#-admin`
